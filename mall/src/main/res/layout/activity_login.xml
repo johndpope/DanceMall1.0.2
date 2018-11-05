@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:rtv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/close"
+            android:layout_width="104px"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/login_close_icon" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="160px"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_dance_mall"
+            android:textColor="@color/black"
+            android:textSize="60px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22px"
+            android:text="@string/login_tip"
+            android:textColor="@color/gray_9"
+            android:textSize="28px" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="78px"
+            android:layout_marginTop="72px">
+
+            <EditText
+                android:id="@+id/phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:hint="@string/please_input_you_phone"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:textColor="@color/black_3"
+                android:textSize="26px" />
+
+            <TextView
+                android:id="@+id/get_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:inputType="phone"
+                android:text="@string/get_verification"
+                android:textColor="#3FB9FF"
+                android:textSize="30px" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/gray_e" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="78px"
+            android:layout_marginTop="34px">
+
+            <EditText
+                android:id="@+id/verification_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:hint="@string/please_input_verification"
+                android:inputType="phone"
+                android:textColor="@color/black_3"
+                android:textSize="26px" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/gray_e" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/login"
+        android:layout_width="690px"
+        android:layout_height="88px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="89px"
+        android:background="#3FB9FF"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="34px"
+        rtv:corner_radius="88px" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="28px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_agree"
+            android:textColor="@color/gray_b"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/use_agree"
+            android:textColor="#3FB9FF"
+            android:id="@+id/user_agreement"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/and"
+            android:textColor="@color/gray_b"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/secret_agree"
+            android:textColor="#3FB9FF"
+            android:id="@+id/person_agreement"
+            android:textSize="28px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="222px">
+
+        <View
+            android:layout_width="144px"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:background="@color/gray_9" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19px"
+            android:layout_marginRight="19px"
+            android:text="@string/third_part_login"
+
+            android:textColor="@color/gray_9"
+            android:textSize="28px" />
+
+        <View
+            android:layout_width="144px"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:background="@color/gray_9" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:id="@+id/wechat_login"
+        android:layout_width="60px"
+        android:layout_height="60px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="38px"
+        android:background="@drawable/wechat_icon"
+        app:layout_auto_basewidth="height" />
+</com.zhy.autolayout.AutoLinearLayout>

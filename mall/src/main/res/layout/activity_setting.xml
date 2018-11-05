@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/suggest_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="意见建议"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/dispute_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="交易纠纷"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/report_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="举报中心"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/platform_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="平台规范"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/standard_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="招商标准"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/enter_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="入驻事项"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/clean_cache"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="清理缓存"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="0.2M"
+            android:id="@+id/cache"
+            android:textColor="@color/gray_9"
+            android:textSize="32px"
+
+            />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.ruffian.library.RTextView
+        android:layout_width="690px"
+        android:layout_height="88px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="290px"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="退出登录"
+        android:id="@+id/login_out"
+        android:textColor="@color/gray_9"
+        android:textSize="32px"
+        app:corner_radius="88px" />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    >
+<include layout="@layout/title_layout"/>
+ <com.zhy.autolayout.AutoLinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="68px"
+     android:layout_marginTop="1px"
+     android:layout_marginBottom="1px"
+     android:background="@color/white"
+     >
+     <TextView
+         android:layout_width="0px"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:textSize="28px"
+         android:text="时间"
+         android:gravity="center"
+
+         />
+     <TextView
+         android:layout_width="0px"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:textSize="28px"
+         android:text="变更原因"
+         android:gravity="center"
+
+         />
+     <TextView
+         android:layout_width="0px"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:textSize="28px"
+         android:text="变更数量"
+         android:gravity="center"
+
+         />
+ </com.zhy.autolayout.AutoLinearLayout>
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycle_view"
+        >
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+</com.zhy.autolayout.AutoLinearLayout>

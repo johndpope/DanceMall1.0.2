@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:rtv="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:id="@+id/menu_layout"
+        android:layout_marginBottom="24px"
+        >
+
+    </GridLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:background="@color/gray_f7" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68px"
+        android:id="@+id/pop_layout"
+        >
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:id="@+id/select_topic_layout"
+            android:layout_weight="1">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/video_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="分类"
+                    android:id="@+id/sort_title"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/sort_down_icon" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="38px"
+            android:layout_gravity="center_vertical"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/select_sort_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="排序"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/sort_down_icon" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="38px"
+            android:layout_gravity="center_vertical"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:id="@+id/select_local_layout"
+            android:layout_weight="1">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/screen_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="同城"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:id="@+id/local_view"
+                    android:layout_marginLeft="10px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/position_un_select"
+             />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_e" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zhy.autolayout.AutoLinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/topic_layout"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@color/white"
+           >
+
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400px"
+                android:background="@color/white"
+
+
+                >
+
+                <ScrollView
+                    android:layout_width="280px"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <GridLayout
+                        android:id="@+id/sort_left_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnCount="1">
+
+                    </GridLayout>
+                </ScrollView>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <GridLayout
+                        android:id="@+id/sort_right_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:columnCount="1">
+
+                    </GridLayout>
+                </ScrollView>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#99000000" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/search_layout"
+            android:orientation="vertical"
+            android:id="@+id/sort_layout"
+            android:visibility="gone">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="330px"
+                android:background="@color/white"
+
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="71px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px">
+
+                    <TextView
+                        android:id="@+id/sort_text1"
+                        android:layout_width="650px"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="综合排序"
+                        android:textColor="@color/appColor"
+                        android:textSize="28px" />
+
+                    <View
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/main_position_select" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/gray_e" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="71px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px">
+
+                    <TextView
+                        android:id="@+id/sort_text2"
+                        android:layout_width="650px"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="浏览量"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <View
+                        android:id="@+id/sort_select_icon_2"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/main_position_select"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/gray_e" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="71px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px">
+
+                    <TextView
+                        android:id="@+id/sort_text3"
+                        android:layout_width="650px"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="点赞量"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <View
+                        android:id="@+id/sort_select_icon_3"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/main_position_select"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/gray_e" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="71px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px">
+
+                    <TextView
+                        android:id="@+id/sort_text4"
+                        android:layout_width="650px"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="评论量"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <View
+                        android:id="@+id/sort_select_icon_4"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/main_position_select"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/gray_e" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#99000000" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>
+</layout>

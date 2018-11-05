@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/CaMnter/GitHub/EasySlidingTabs/easyslidingtabs/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="bg_easy_sliding_tabs_pressed">#ff5CC1CB</color>
+    <declare-styleable name="EasySlidingTabs"><attr format="color" name="easyIndicatorColor"/><attr format="color" name="easyUnderlineColor"/><attr format="color" name="easyTabTextColor"/><attr format="color" name="easySelectedTagTextColor"/><attr format="color" name="easyDividerColor"/><attr format="dimension" name="easyIndicatorHeight"/><attr format="dimension" name="easyUnderlineHeight"/><attr format="dimension" name="easyDividerPadding"/><attr format="dimension" name="easyTabPaddingLeftRight"/><attr format="reference" name="easyTabBackground"/><attr format="dimension" name="easyScrollOffset"/><attr format="boolean" name="easyShouldExpand"/><attr format="boolean" name="easyTextAllCaps"/><attr format="reference" name="easyIndicatorDrawable"/></declare-styleable>
+    <!-- From: file:/Users/CaMnter/GitHub/EasySlidingTabs/easyslidingtabs/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">EasySlidingTabs</string>
+</resources>

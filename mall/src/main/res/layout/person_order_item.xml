@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="30px"
+            android:paddingRight="30px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="72px">
+
+                <TextView
+                    android:id="@+id/inquiry_sn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:id="@+id/statue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="暂无报价"
+                    android:textColor="@color/dc"
+                    android:textSize="26px" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray_e" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:layout_marginTop="20px">
+
+                <GridLayout
+                    android:id="@+id/image_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="20px"
+                android:background="@color/gray_f7" />
+
+            <TextView
+                android:id="@+id/service_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18px"
+                android:text="共 2 项服务"
+                android:layout_marginBottom="18px"
+                android:textColor="@color/gray_9"
+                android:textSize="26px" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_marginBottom="18px"
+              >
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="询价有效时间还剩"
+                    android:textColor="@color/gray_9"
+                    android:textSize="26px" />
+
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/count_time_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28px">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付有效时间还剩"
+
+                    android:textColor="@color/dc"
+
+                    android:textSize="26px" />
+
+                <cn.iwgang.countdownview.CountdownView
+                    android:id="@+id/count_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4px"
+                    app:isHideTimeBackground="true"
+                    app:isShowHour="true"
+                    app:isShowMinute="true"
+                    app:isShowSecond="true"
+                    app:suffixGravity="center"
+                    app:suffixTextColor="@color/dc"
+                    app:suffixTextSize="13sp"
+                    app:timeTextColor="@color/dc"
+                    app:timeTextSize="13sp" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right">
+
+
+                <com.ruffian.library.RTextView
+                    android:id="@+id/cancel"
+                    android:layout_width="162px"
+                    android:layout_height="58px"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="15px"
+                    android:layout_marginRight="20px"
+                    android:layout_marginTop="34px"
+                    android:gravity="center"
+                    android:text="取消订单"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px"
+                    app:border_color_normal="@color/gray_9"
+                    app:border_width_normal="1px"
+                    app:corner_radius="58px" />
+
+                <com.ruffian.library.RTextView
+                    android:id="@+id/confirm"
+                    android:layout_width="162px"
+                    android:layout_height="58px"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="15px"
+                    android:layout_marginTop="34px"
+                    android:gravity="center"
+                    android:text="确认完成"
+                    android:textColor="@color/appColor"
+                    android:textSize="28px"
+                    app:border_color_normal="@color/appColor"
+                    app:border_width_normal="1px"
+                    app:corner_radius="58px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10px"
+                android:background="@color/gray_f7" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

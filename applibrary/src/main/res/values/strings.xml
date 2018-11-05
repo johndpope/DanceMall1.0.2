@@ -1,0 +1,48 @@
+<resources>
+
+    <string name="image">图片</string>
+    <string name="all_image">所有图片</string>
+    <string name="preview">预览</string>
+    <string name="msg_no_camera">无法启用系统相机</string>
+    <string name="msg_amount_limit">已经达到最高选择数量</string>
+    <string name="done">完成</string>
+    <string name="done_with_count">完成(%1$d/%2$d)</string>
+    <string name="image_index">%1$d/%2$d</string>
+    <string name="delete">删除</string>
+    <string name="deleted_a_photo">删除了一张图片</string>
+    <string name="confirm_to_delete">确认删除？</string>
+    <string name="yes">确定</string>
+    <string name="cancel">取消</string>
+    <string name="undo">撤消</string>
+    <string name="input_invitation_info">填写邀请信息</string>
+    <string name="please_input_invitation_name">请填写邀请人姓名</string>
+    <string name="visitor_name">访客姓名</string>
+    <string name="drive_or_not">是否驾车</string>
+    <string name="input_visitor_name">填写访客姓名</string>
+    <string name="sex_type">性别</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="please_select_parking">请选择停车位</string>
+    <string name="apartment_not_hava_parking">注意：小区可能没有临时车位</string>
+    <string name="join">参与</string>
+    <string name="fans">粉丝</string>
+    <string name="care">关注</string>
+
+
+    <string name="verify_result_item01">到访小区 :</string>
+    <string name="verify_result_item02">访客姓名 :</string>
+    <string name="verify_result_item03">业主手机 :</string>
+    <string name="verify_result_item04">业主门牌 :</string>
+    <string name="verify_result_item08">到访时间 :</string>
+    <string name="verify_result_item09">离开时间 :</string>
+    <string name="verify_result_item05">有效日期 :</string>
+    <string name="verify_result_item06">访客证的日期超出有效日期</string>
+    <string name="verify_result_item07">访客车牌 :</string>
+    <string name="verify_pass">通过</string>
+    <string name="verify_unpass_date">时间不符</string>
+    <string name="verify_unpass">出错了</string>
+    <string name="verify_pass_tip">核对信息无误,确认为我小区宾客</string>
+    <string name="verify_pass_date_tip">核对信息无误,确认为我小区宾客</string>
+    <string name="verify_unpass_tip">访客证不合法</string>
+    <string name="verify_unpass_date_tip">部分信息核对出错。</string>
+</resources>

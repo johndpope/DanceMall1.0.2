@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:rti="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/back"
+                android:layout_width="73px"
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/back_icon" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
+                android:textSize="36px" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_vertical"
+                android:paddingRight="30px"
+                android:text="更改城市范围"
+                android:id="@+id/change_city"
+                android:textColor="@color/gray_9"
+                android:textSize="24px" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="#f2f2f2" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_layout"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="690px"
+            android:layout_height="58px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10px"
+            android:layout_marginTop="10px"
+            android:background="@drawable/shape_search_demand_edit_bg">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="230px"
+                android:background="@drawable/main_search_icon" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="287px"
+                android:background="@color/transparent"
+                android:hint="商家名称搜索"
+                android:id="@+id/search"
+                android:textColorHint="#d2d2d2"
+                android:textSize="28px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="68px"
+            android:id="@+id/pop_layout"
+            >
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="0px"
+
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/sort_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="排序"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <View
+                        android:layout_width="40px"
+                        android:layout_height="40px"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/sort_down_icon" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="38px"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray_e" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/screen_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="筛选"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <View
+                        android:layout_width="30px"
+                        android:layout_height="30px"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/screen_icon" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_e" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_layout"
+        android:layout_below="@id/search_layout">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="58px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30px"
+                    android:text="精选商户"
+                    android:textColor="@color/gray_9"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30px"
+                    android:text="推广"
+                    android:textColor="@color/gray_9"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <GridLayout
+                android:id="@+id/carefully_select_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10px"
+                android:background="@color/gray_f7" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="58px"
+                android:gravity="center_vertical"
+                android:paddingLeft="30px"
+                android:text="更多商户"
+                android:textColor="@color/gray_9"
+                android:textSize="24px" />
+
+            <GridLayout
+                android:id="@+id/more_shop_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="1" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="180px"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="20px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="已选商家"
+                    android:textColor="@color/gray_6"
+                    android:textSize="28px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="21px"
+                    android:text="清空"
+                    android:id="@+id/clean"
+                    android:textColor="@color/gray_b"
+                    android:textSize="28px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/select_merchant_layout"
+                android:columnCount="3"
+                >
+
+            </com.zhy.view.flowlayout.TagFlowLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100px">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="290px"
+                android:layout_height="match_parent">
+
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30px"
+                    android:background="@drawable/main_select_demand_result_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="22px"
+                    android:text="已选"
+                    android:textColor="@color/black_3"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+android:id="@+id/select_number"
+                    android:text="0"
+                    android:textColor="#DC0000"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:text="个商家"
+                    android:textColor="@color/black_3"
+                    android:textSize="26px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <TextView
+                android:layout_width="230px"
+                android:layout_height="match_parent"
+
+                android:id="@+id/select_merchant"
+                android:background="#87d3ff"
+                android:gravity="center"
+                android:text="选择已选"
+                android:textColor="@color/white"
+                android:textSize="32px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/appColor"
+                android:gravity="center"
+                android:text="不限商家"
+                android:id="@+id/no_merchant"
+                android:textColor="@color/white"
+                android:textSize="32px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_layout"
+        android:visibility="gone"
+        android:id="@+id/sort_select_layout"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="330px"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="71px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px">
+
+                <TextView
+                    android:layout_width="650px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_text1"
+                    android:text="综合排序"
+                    android:textColor="@color/appColor"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_select_icon_1"
+                    android:background="@drawable/main_position_select" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_e" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="71px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px">
+
+                <TextView
+                    android:layout_width="650px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_text2"
+                    android:text="按评分高低"
+                    android:textColor="@color/black"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_select_icon_2"
+                    android:visibility="gone"
+                    android:background="@drawable/main_position_select" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_e" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="71px"
+
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px">
+
+                <TextView
+                    android:layout_width="650px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_text3"
+                    android:text="按成交记录"
+                    android:textColor="@color/black"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_select_icon_3"
+                    android:visibility="gone"
+                    android:background="@drawable/main_position_select" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_e" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="71px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px">
+
+                <TextView
+                    android:layout_width="650px"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_text4"
+                    android:text="按位置远近"
+                    android:textColor="@color/black"
+                    android:textSize="28px" />
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sort_select_icon_4"
+                    android:visibility="gone"
+                    android:background="@drawable/main_position_select" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_e" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#99000000"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/select_screen_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_layout"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="250px"
+            android:layout_height="match_parent"
+            android:background="#99000000" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="28px"
+                android:text="商家类型"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60px"
+                android:layout_marginTop="20px">
+
+                <com.ruffian.library.RTextView
+                    android:id="@+id/person"
+                    android:layout_width="145px"
+                    android:layout_height="60px"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="个人"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px"
+                    rti:border_color_normal="@color/gray_9"
+                    rti:border_width_normal="1px"
+                    rti:corner_radius="20px" />
+
+                <com.ruffian.library.RTextView
+                    android:id="@+id/company"
+                    android:layout_width="145px"
+                    android:layout_height="60px"
+                    android:layout_marginLeft="26px"
+                    android:gravity="center"
+                    android:text="公司"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px"
+                    rti:border_color_normal="@color/gray_9"
+                    rti:border_width_normal="1px"
+                    rti:corner_radius="20px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="35px"
+                android:text="评分范围"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/score_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="59px"
+                android:layout_marginTop="18px"
+                android:text="0分以上"
+                android:textColor="@color/appColor"
+                android:textSize="28px" />
+
+            <SeekBar
+                android:id="@+id/score"
+                android:layout_width="380px"
+                android:layout_height="30px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="35px"
+                android:text="成交数据单位"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/order_num_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="59px"
+                android:layout_marginTop="18px"
+                android:text="0单以上"
+                android:textColor="@color/appColor"
+                android:textSize="28px" />
+
+            <SeekBar
+                android:id="@+id/order_num"
+                android:layout_width="380px"
+                android:layout_height="30px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="35px"
+                android:text="所属区县"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/flow_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="34px"
+                android:layout_weight="1">
+
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="98px">
+
+                <TextView
+                    android:id="@+id/reset"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#87D3FF"
+                    android:gravity="center"
+                    android:text="重置"
+                    android:textColor="@color/white"
+                    android:textSize="32px" />
+
+                <TextView
+                    android:id="@+id/screen_confirm"
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/appColor"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:textSize="32px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

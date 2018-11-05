@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18px"
+            android:text="发票 "
+
+            android:textColor="@color/black_3"
+            android:textSize="32px" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="类型"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_marginLeft="30px"
+                android:id="@+id/type_view1"
+                android:background="@drawable/position_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10px"
+                android:text="公司"
+                android:id="@+id/company"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_marginLeft="50px"
+                android:id="@+id/type_view2"
+                android:background="@drawable/position_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10px"
+                android:text="个人"
+                android:id="@+id/person"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_marginLeft="50px"
+                android:id="@+id/type_view3"
+                android:background="@drawable/position_un_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10px"
+                android:text="不开发票"
+                android:id="@+id/no_ticket"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="抬头"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58px"
+                android:layout_marginLeft="30px"
+                android:textSize="28px"
+                android:paddingLeft="10px"
+                android:textColor="@color/black_3"
+                android:hint="请输入抬头"
+                android:id="@+id/company_name"
+                android:textColorHint="@color/gray_d2"
+                android:background="@drawable/remark_edit_bg"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="30px"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="纳税人识别号"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="58px"
+                android:layout_marginLeft="30px"
+                android:textSize="28px"
+                android:paddingLeft="10px"
+                android:id="@+id/company_no"
+                android:textColor="@color/black_3"
+                android:hint="请输入抬头"
+                android:textColorHint="@color/gray_d2"
+                android:background="@drawable/remark_edit_bg"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18px"
+            android:text="备注 "
+             android:layout_marginLeft="30px"
+            android:textColor="@color/black_3"
+            android:textSize="32px" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="200px"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="20px"
+            android:textColor="@color/black_3"
+            android:textSize="28px"
+            android:hint="请输入备注"
+            android:id="@+id/remark"
+            android:gravity="top"
+            android:padding="20px"
+            android:textColorHint="@color/gray_d2"
+            android:background="@drawable/remark_edit_bg"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:textSize="34px"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="确定"
+        android:background="@drawable/common_rec_btn"
+        android:id="@+id/submit"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

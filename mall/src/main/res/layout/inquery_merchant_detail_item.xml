@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rtv="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/gray_e" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="234px"
+            android:layout_marginLeft="32px"
+            android:layout_marginRight="32px"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="共享舞美"
+                    android:textColor="@color/black"
+                    android:textSize="32px"
+                    android:id="@+id/shop_name"
+
+                    />
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:background="@drawable/vip_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4px"
+                    android:text="企业"
+                    android:id="@+id/shop_type"
+                    android:textColor="@color/gray_9"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20px"
+                    android:layout_weight="1"
+                    android:text="杭州江干"
+                    android:id="@+id/area"
+                    android:textColor="@color/gray_9"
+                    android:textSize="24px" />
+
+                <com.ruffian.library.RTextView
+                    android:layout_width="98px"
+                    android:layout_height="48px"
+                    android:gravity="center"
+                    android:text="置顶"
+                    android:id="@+id/is_top"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px"
+                    rtv:border_color_normal="@color/gray_9"
+                    rtv:border_width_normal="1px"
+                    rtv:corner_radius="10px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.9"
+                    android:id="@+id/rank"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20px"
+                    android:text="可开票"
+                    android:id="@+id/have_ticket"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20px"
+                    android:text="￥"
+                    android:textColor="#dc0000"
+                    android:textSize="28px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10px"
+                    android:text="1000.00"
+                    android:id="@+id/fee"
+                    android:textColor="#dc0000"
+                    android:textSize="28px" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32px">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/chat"
+                    >
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:background="@drawable/message_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8px"
+                        android:text="聊天"
+                         android:layout_gravity="center_vertical"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:id="@+id/phone"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="24px"
+                    >
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:background="@drawable/phone_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8px"
+                        android:text="电话"
+                         android:layout_gravity="center_vertical"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoLinearLayout>
+                <com.ruffian.library.RTextView
+                    android:layout_width="175px"
+                    android:layout_height="58px"
+                    android:background="@color/white"
+                    android:text="了解商家"
+                    android:id="@+id/about_shop"
+                    android:textSize="28px"
+                    rtv:border_width_normal="1px"
+                    rtv:border_color_normal="@color/appColor"
+                    android:textColor="@color/appColor"
+                    android:gravity="center"
+                    rtv:corner_radius="58px"
+                    android:layout_marginRight="20px"
+                    />
+                <com.ruffian.library.RTextView
+                    android:layout_width="175px"
+                    android:layout_height="58px"
+                    android:background="@color/appColor"
+                    android:text="下单结算"
+                    android:textSize="28px"
+                    android:id="@+id/settle"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    rtv:corner_radius="58px"
+                    />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

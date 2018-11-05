@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="40px">
+    <View
+        android:layout_width="44px"
+        android:layout_height="44px"
+        android:id="@+id/select_icon"
+
+        android:background="@drawable/slector_inquiry_des_flow" />
+
+    <TextView
+        android:id="@+id/service_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10px"
+        android:text="包拆卸"
+        android:textColor="@color/black"
+        android:textSize="28px" />
+</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

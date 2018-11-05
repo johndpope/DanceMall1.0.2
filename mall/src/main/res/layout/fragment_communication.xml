@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:rtv="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="40px"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <View
+            android:layout_width="57px"
+            android:layout_height="45px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20px"
+            android:id="@+id/camera"
+            android:background="@drawable/circle_camera" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="舞美圈"
+            android:textColor="@color/black"
+            android:textSize="36px"
+
+            />
+
+        <View
+            android:layout_width="46px"
+            android:layout_height="46px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30px"
+            android:visibility="gone"
+            android:id="@+id/message"
+            android:background="@drawable/circle_message" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_e" />
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:minHeight="1200px"
+        >
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

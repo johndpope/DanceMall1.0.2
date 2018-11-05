@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+<include layout="@layout/title_layout"/>
+ <View
+     android:layout_width="match_parent"
+     android:layout_height="466px"
+     android:background="@drawable/merchant_check_bg"
+     />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96px"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#4d4d4d"
+        android:textSize="34px"
+        android:text="您的资料正在审核中..."
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24px"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#a6a6a6"
+        android:textSize="30px"
+        android:gravity="center_horizontal"
+        android:text="您已完成资质提交，审核需要1-2天，\n 请耐心等待审核"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="98px"
+        android:textSize="32px"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="确定"
+        android:id="@+id/submit"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/common_rec_btn"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

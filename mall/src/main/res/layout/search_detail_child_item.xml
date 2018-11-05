@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    app:layout_auto_basewidth="height"
+    android:layout_marginBottom="30px"
+    android:layout_height="108px">
+    <ImageView
+        android:layout_width="108px"
+        android:layout_height="match_parent"
+        android:id="@+id/head_image"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主屏"
+        android:textSize="28px"
+        android:layout_marginLeft="128px"
+        android:textColor="@color/black"
+        android:layout_centerVertical="true"
+        android:id="@+id/type_name"
+        />
+    <com.ruffian.library.RTextView
+        android:layout_width="128px"
+        android:layout_height="54px"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:textSize="28px"
+        android:textColor="@color/gray_9"
+        android:text="选择"
+        android:id="@+id/inquiry"
+        android:layout_marginRight="44px"
+        android:gravity="center"
+        app:corner_radius="54px"
+        app:border_width_normal="1px"
+        app:border_color_normal="@color/gray_9"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>

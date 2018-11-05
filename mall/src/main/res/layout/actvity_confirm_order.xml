@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="10px"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26px"
+            android:background="@drawable/user_icon"
+
+            />
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="82px"
+            android:background="@color/transparent"
+            android:hint="收件人姓名"
+            android:textColor="@color/black_3"
+            android:textColorHint="#d2d2d2"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:background="@drawable/phone_icon"
+
+            />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="82px"
+            android:background="@color/transparent"
+            android:hint="联系电话"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/black_3"
+            android:textColorHint="#d2d2d2"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26px"
+            android:background="@drawable/position_icon"
+
+            />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="82px"
+            android:background="@color/transparent"
+            android:hint="收货地址"
+            android:textColor="@color/black_3"
+            android:textColorHint="#d2d2d2"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@color/white"
+
+        >
+
+        <ImageView
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_marginBottom="25px"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="25px"
+            android:id="@+id/goods_Image"
+            android:background="@drawable/post_image_default" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="166px"
+            android:layout_marginTop="34px"
+            android:text="小米冰箱"
+            android:id="@+id/goods_name"
+            android:textColor="@color/black"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="166px"
+            android:layout_marginTop="106px"
+            android:text="500积分"
+            android:id="@+id/integral"
+            android:textColor="@color/dc"
+            android:textSize="28px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34px"
+
+            android:text="配送方式"
+            android:textColor="@color/black"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="34px"
+            android:text="快递配送"
+            android:textColor="@color/gray_9"
+            android:textSize="28px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34px"
+
+            android:text="支付方式"
+            android:textColor="@color/black"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="34px"
+            android:text="积分抵扣"
+            android:textColor="@color/gray_9"
+            android:textSize="28px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30px"
+            android:text="应付:"
+            android:textColor="@color/black"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="500积分"
+            android:id="@+id/pay"
+            android:textColor="@color/dc"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="460px"
+            android:layout_height="98px"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/common_rec_btn"
+            android:gravity="center"
+            android:text="提交订单"
+            android:textColor="@color/white"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

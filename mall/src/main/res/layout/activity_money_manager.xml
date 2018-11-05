@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    android:orientation="vertical">
+    <include layout="@layout/title_layout"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350px"
+        android:layout_marginTop="10px"
+        android:background="@color/white"
+        android:id="@+id/deposit_layout"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32px"
+            android:layout_marginRight="32px"
+            android:layout_marginTop="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待提现收入"
+                android:textColor="@color/gray_6"
+                android:textSize="28px"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="明细"
+                android:textColor="@color/gray_6"
+                android:textSize="28px"
+
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50px"
+            android:text="500"
+            android:textStyle="bold"
+            android:id="@+id/deposit_money"
+            android:textColor="@color/black"
+            android:textSize="60px"
+
+            />
+        <TextView
+            android:layout_width="230px"
+            android:layout_height="68px"
+            android:layout_marginTop="50px"
+            android:textColor="@color/white"
+            android:textSize="32px"
+            android:text="提现"
+            android:id="@+id/deposit"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/common_btn"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350px"
+        android:layout_marginTop="10px"
+        android:id="@+id/pay_layout"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32px"
+            android:layout_marginRight="32px"
+            android:layout_marginTop="30px">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="店铺保证金"
+                android:textColor="@color/gray_6"
+                android:textSize="28px"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="明细"
+                android:textColor="@color/gray_6"
+                android:textSize="28px"
+
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50px"
+            android:text="500"
+            android:id="@+id/pay_money"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="60px"
+
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+        <TextView
+            android:layout_width="230px"
+            android:layout_height="68px"
+
+            android:textColor="@color/white"
+            android:textSize="32px"
+            android:text="缴纳"
+            android:id="@+id/pay"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/common_btn"
+            />
+
+            <TextView
+                android:layout_width="230px"
+                android:layout_height="68px"
+                 android:layout_marginLeft="30px"
+                android:textColor="@color/white"
+                android:textSize="32px"
+                android:text="退店提现"
+                android:id="@+id/out_deposit"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/common_btn"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

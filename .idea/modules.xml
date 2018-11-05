@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DanceMall1.0.2.iml" filepath="$PROJECT_DIR$/DanceMall1.0.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/applibrary/applibrary.iml" filepath="$PROJECT_DIR$/applibrary/applibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall/mall.iml" filepath="$PROJECT_DIR$/mall/mall.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="650px"
+            android:layout_height="188px"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="20px"
+            android:background="@drawable/select_coupon_bg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="29px"
+                android:layout_marginTop="30px"
+                android:text="￥"
+                android:id="@+id/money_symbol"
+                android:textColor="@color/appColor"
+                android:textSize="28px"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="60px"
+                android:text="30"
+                android:maxLength="3"
+                android:textColor="@color/appColor"
+                android:textSize="140px"
+                android:id="@+id/money"
+                android:textStyle="bold" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="248px"
+                android:layout_marginTop="30px"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XXXXXXX"
+                    android:id="@+id/coupon_name"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="28px" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12px"
+                    android:text="2018.05.05-2018.05.05"
+                    android:textColor="@color/gray_9"
+                    android:id="@+id/use_time"
+                    android:textSize="20px" />
+
+                <TextView
+
+                  android:id="@+id/coupon_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40px"
+                    android:text="XXXXXXX"
+
+                    android:textColor="@color/gray_9"
+                    android:textSize="20px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即\n使用"
+                android:textSize="54px"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="24px"
+                android:textColor="@color/white"
+
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

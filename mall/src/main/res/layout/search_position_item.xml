@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="137px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:orientation="vertical"
+        >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/address_name"
+    android:textSize="32px"
+    android:textColor="@color/black"
+    android:layout_marginTop="27px"
+    android:text="广厦天都城爵士花园"
+    android:singleLine="true"
+    />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/address_detail"
+            android:textSize="26px"
+            android:textColor="@color/gray_9"
+            android:layout_marginTop="16px"
+            android:text="广厦天都城爵士花园"
+            android:singleLine="true"
+
+
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:background="@color/gray_e"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+</layout>

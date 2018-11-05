@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    android:background="#80000000">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="580px"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="706px"
+            android:background="@drawable/my_self_contact_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30px"
+                android:text="提示"
+                android:textColor="@color/black"
+                android:textSize="34px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:layout_marginTop="20px"
+                android:text="1.需商户确认：商户将在30分钟内进行订单确认，商户确认前您可以免费取消订单；\n\n2.取消扣款：订单确认后取消订单，将扣除您订单金额的30%作为违约金赔偿给商户；\n\n3.结清尾款：如您选择定金支付模式，请于活动开始前付清尾款，超时订单将自动取消并扣除您订单金额的30%作为违约金赔偿给商户。"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="88px"
+            android:layout_marginTop="66px"
+            android:background="@drawable/common_btn"
+            android:gravity="center"
+            android:text="立即下单"
+            android:textColor="@color/white"
+            android:textSize="34px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

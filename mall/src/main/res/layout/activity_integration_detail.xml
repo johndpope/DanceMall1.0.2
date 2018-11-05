@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_above="@+id/submit"
+        android:background="@color/white">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="428px">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/goods_image"
+                    android:scaleType="fitXY"
+                   />
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="62px">
+
+                    <com.zhy.autolayout.AutoRelativeLayout
+                        android:id="@+id/back"
+                        android:layout_width="73px"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true">
+
+                        <View
+                            android:layout_width="44px"
+                            android:layout_height="44px"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/white_back_arrow" />
+
+
+                    </com.zhy.autolayout.AutoRelativeLayout>
+
+                    <View
+                        android:layout_width="46px"
+                        android:layout_height="46px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="34px"
+                        android:background="@drawable/main_message"
+                        android:visibility="gone" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="20px"
+                android:text="500积分"
+                android:id="@+id/goods_name"
+                android:textColor="@color/black"
+                android:textSize="32px"
+
+
+                />
+
+            <TextView
+                android:id="@+id/integral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30px"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="20px"
+                android:text="小米音响"
+
+                android:textColor="@color/dc"
+
+                android:textSize="28px" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray_f7" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="68px"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/goods_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="商品详情"
+
+                    android:textColor="@color/black"
+                    android:textSize="28px" />
+
+                <TextView
+                    android:id="@+id/purchase_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="购买须知"
+                    android:textColor="@color/gray_9"
+                    android:textSize="28px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray_f7" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/move_line"
+                android:layout_width="375px"
+                android:layout_height="6px"
+
+                >
+
+                <View
+                    android:layout_width="175px"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@color/appColor" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="300px"
+                android:paddingBottom="36px"
+                android:paddingLeft="51px"
+                android:paddingRight="51px"
+                android:paddingTop="36px"
+                android:text="内容介绍"
+                android:id="@+id/content"
+                android:textColor="@color/gray_9"
+                android:textSize="28px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+    </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="98px"
+        android:textSize="32px"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="立即兑换"
+        android:id="@+id/submit"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/common_rec_btn"
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

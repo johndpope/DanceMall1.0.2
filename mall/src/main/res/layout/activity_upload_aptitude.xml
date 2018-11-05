@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+<include layout="@layout/title_layout"/>
+ <View
+     android:layout_width="match_parent"
+     android:layout_height="10px"
+     android:background="@color/gray_f7"
+     />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            android:text="公司名称"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            android:layout_alignParentEnd="true"
+            android:text=""
+            android:id="@+id/company_name"
+            android:background="@color/transparent"
+            android:hint="请输入公司名称"
+            android:textColorHint="#d2d2d2"
+            />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_f7"
+        />
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="310px"
+        android:orientation="vertical"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="32px"
+            android:layout_marginTop="26px"
+            android:text="公司资质"
+            />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/company_image"
+            android:layout_marginTop="20px"
+            android:scaleType="fitXY"
+
+
+            >
+
+        </GridLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:text="营业执照"
+            android:textSize="26px"
+            android:textColor="@color/gray_9"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/gray_f7"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="98px"
+        android:textSize="32px"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="下一步"
+        android:id="@+id/submit"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/common_rec_btn"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

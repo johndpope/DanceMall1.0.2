@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+
+    >
+    <include layout="@layout/title_layout"/>
+
+<com.zhy.autolayout.AutoRelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="88px"
+    android:layout_marginTop="1px"
+    android:background="@color/white"
+    android:id="@+id/no_use_layout"
+    >
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="不使用优惠券"
+     android:textSize="32px"
+     android:textColor="@color/black_01"
+     android:layout_centerVertical="true"
+     android:layout_marginLeft="32px"
+     />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="88px"
+        android:layout_alignParentEnd="true"
+        android:layout_height="match_parent"
+        android:id="@+id/select_coupon_layout"
+        >
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:background="@drawable/service_un_select"
+            android:id="@+id/select_coupon_view"
+            android:layout_centerInParent="true"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px"
+        android:id="@+id/recycle_view"
+        >
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="750px"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="视频"
+        android:textColor="@color/gray_9"
+        android:textSize="28px"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="20px"
+        android:id="@+id/type_name"
+        />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="1"
+        android:id="@+id/type_layout"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="10px"
+/>
+</com.zhy.autolayout.AutoLinearLayout>
+</layout>

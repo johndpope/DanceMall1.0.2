@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="690px"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10px"
+            android:layout_marginTop="10px"
+            android:background="@color/white"
+
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="20px">
+
+                <ImageView
+                    android:layout_width="100px"
+                    android:layout_height="100px"
+                    android:scaleType="fitXY"
+                    android:id="@+id/service_image"
+                    android:background="@drawable/post_image_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginTop="14px"
+                    android:text="P4屏幕租赁"
+                    android:id="@+id/service_name"
+                    android:textColor="@color/black"
+                    android:textSize="30px" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+           <com.zhy.autolayout.AutoLinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:columnCount="1"
+               android:orientation="vertical"
+               android:id="@+id/service_layout"
+               android:layout_marginLeft="30px"
+               android:layout_marginRight="30px"
+               android:background="@color/white"
+               android:paddingBottom="30px"
+               >
+
+           </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

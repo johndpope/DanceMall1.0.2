@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_f7"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="20px"
+        android:background="@color/white"
+        android:paddingLeft="25px"
+        android:paddingRight="25px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="金额"
+            android:textColor="@color/black_3"
+            android:textSize="32px" />
+
+        <TextView
+            android:id="@+id/pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="￥258.00"
+            android:textColor="@color/black_3"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/ali_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="10px"
+        android:background="@color/white"
+        android:paddingLeft="25px"
+        android:paddingRight="25px">
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ali_pay_icon"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100px"
+            android:text="支付宝支付"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <View
+            android:id="@+id/ali_view"
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/service_select"
+            app:layout_auto_basewidth="height" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/wechat_layouyt"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="25px"
+        android:paddingRight="25px">
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/wechat_pay_icon"
+            app:layout_auto_basewidth="height"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100px"
+            android:text="微信支付"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <View
+            android:id="@+id/wechat_view"
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/service_un_select"
+            app:layout_auto_basewidth="height" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/bank_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="25px"
+        android:paddingRight="25px">
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bank_pay_icon"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100px"
+            android:text="银联支付"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <View
+            android:id="@+id/bank_view"
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/service_un_select"
+            app:layout_auto_basewidth="height" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/other_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+       >
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/credit_pay_icon"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100px"
+            android:text="挂账"
+
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <View
+            android:id="@+id/other_view"
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/service_un_select"
+            app:layout_auto_basewidth="height" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:id="@+id/submit"
+        android:layout_width="680px"
+        android:layout_height="88px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80px"
+        android:background="@drawable/common_btn"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="32px" />
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:rtv="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#80000000">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          >
+
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/select_screen_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="1000px"
+                android:layout_below="@+id/search_layout">
+
+                <View
+                    android:layout_width="250px"
+                    android:layout_height="match_parent"
+                    />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginTop="28px"
+                        android:text="商家类型"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="60px"
+                        android:layout_marginTop="20px">
+
+                        <com.ruffian.library.RTextView
+                            android:id="@+id/person"
+                            android:layout_width="145px"
+                            android:layout_height="60px"
+                            android:background="@color/white"
+                            android:gravity="center"
+
+                            android:text="个人"
+                            android:textColor="@color/gray_9"
+                            android:textSize="28px"
+                            rtv:border_color_normal="@color/gray_9"
+                            rtv:border_width_normal="1px"
+                            rtv:corner_radius="20px" />
+
+                        <com.ruffian.library.RTextView
+                            android:id="@+id/company"
+                            android:layout_width="145px"
+                            android:layout_height="60px"
+                            android:layout_marginLeft="26px"
+                            android:gravity="center"
+                            android:text="公司"
+                            android:textColor="@color/gray_9"
+                            android:textSize="28px"
+                            rtv:border_color_normal="@color/gray_9"
+                            rtv:border_width_normal="1px"
+                            rtv:corner_radius="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginTop="35px"
+                        android:text="评分范围"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/score_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="59px"
+                        android:layout_marginTop="18px"
+                        android:text="0分以上"
+                        android:textColor="@color/appColor"
+                        android:textSize="28px" />
+
+                    <SeekBar
+                        android:id="@+id/score"
+                        android:layout_width="380px"
+                        android:layout_height="30px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginTop="35px"
+                        android:text="成交数据单位"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/order_num_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="59px"
+                        android:layout_marginTop="18px"
+                        android:text="0单以上"
+                        android:textColor="@color/appColor"
+                        android:textSize="28px" />
+
+                    <SeekBar
+                        android:id="@+id/order_num"
+                        android:layout_width="380px"
+                        android:layout_height="30px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30px"
+                        android:layout_marginTop="35px"
+                        android:text="所属区县"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <com.zhy.view.flowlayout.TagFlowLayout
+                        android:id="@+id/flow_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="34px"
+                        android:layout_weight="1">
+
+                    </com.zhy.view.flowlayout.TagFlowLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="98px">
+
+                        <TextView
+                            android:id="@+id/reset"
+                            android:layout_width="0px"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#87D3FF"
+                            android:gravity="center"
+                            android:text="重置"
+                            android:textColor="@color/white"
+                            android:textSize="32px" />
+
+                        <TextView
+                            android:id="@+id/screen_confirm"
+                            android:layout_width="0px"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/appColor"
+                            android:gravity="center"
+                            android:text="确定"
+                            android:textColor="@color/white"
+                            android:textSize="32px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+        </ScrollView>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

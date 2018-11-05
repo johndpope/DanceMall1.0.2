@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128px"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/back"
+            android:layout_width="73px"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15px">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_centerInParent="true"
+                android:background="@drawable/back_icon" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="606px"
+            android:layout_height="58px"
+            android:id="@+id/search_layout"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16px"
+            android:background="@drawable/shape_search_demand_edit_bg">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30px"
+                android:background="@drawable/main_search_icon" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:hint="搜索附近位置"
+                android:textColor="@color/black_3"
+                android:textColorHint="#D2D2D2"
+                android:textSize="26px"
+                android:id="@+id/search"
+                android:gravity="center_vertical"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+   <com.zhy.autolayout.AutoRelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/gray_f7"
+
+       >
+       <com.github.jdsjlzx.recyclerview.LRecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="30px"
+           android:layout_marginRight="30px"
+           android:layout_marginTop="10px"
+           android:background="@color/white"
+           android:id="@+id/recycle_view"
+           >
+
+       </com.github.jdsjlzx.recyclerview.LRecyclerView>
+   </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/title_layout"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="98px"
+        android:layout_alignParentBottom="true"
+        android:background="#525E70"
+        android:text="联系客服成为VIP"
+        android:textSize="32px"
+        android:gravity="center"
+        android:id="@+id/vip_btn"
+        android:textColor="@color/gray_e"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>

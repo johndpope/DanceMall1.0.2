@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_below="@+id/title_layout">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/time_layout"
+                    android:visibility="gone"
+                    android:layout_marginBottom="44px">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="询价有效时间还剩"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true" />
+                    <cn.iwgang.countdownview.CountdownView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:isHideTimeBackground="true"
+                        android:layout_marginLeft="4px"
+                        app:isShowHour="true"
+                        app:isShowMinute="true"
+                        app:isShowSecond="true"
+                        app:timeTextColor="@color/dc"
+                        app:timeTextSize="13sp"
+                        app:suffixGravity="center"
+                        android:layout_gravity="center_vertical"
+                        app:suffixTextColor="@color/dc"
+                        app:suffixTextSize="13sp"
+                        android:id="@+id/count_time"
+                        />
+                </com.zhy.autolayout.AutoLinearLayout>
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65px">
+
+                    <TextView
+                        android:id="@+id/order_sn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="共享舞美"
+                        android:textColor="@color/black"
+                        android:textSize="32px" />
+
+                    <TextView
+                        android:id="@+id/statue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="已报价"
+                        android:textColor="#DC0000"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/gray_e" />
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="服务地址"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="230px"
+                        android:text="杭州奥体中心"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="使用时间"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/use_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="230px"
+                        android:text="6月6日12:00-6月8日12:00"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联系人"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="230px"
+                        android:text="啊康康  188 8888 8888"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <GridLayout
+                    android:id="@+id/image_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:layout_marginTop="20px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/gray_e" />
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/service_layout"
+                    android:layout_height="70px">
+
+                    <View
+                        android:id="@+id/phone"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/blue_phone_icon" />
+
+                    <View
+                        android:id="@+id/chat"
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="64px"
+                        android:background="@drawable/blue_message_icon" />
+
+                    <TextView
+                        android:id="@+id/service_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="共 2 项服务"
+                        android:textColor="@color/gray_9"
+                        android:textSize="26px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10px"
+                android:background="@color/gray_f7" />
+
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="支付方式"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <View
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/arrow_right_gray_icon" />
+
+                    <TextView
+                        android:id="@+id/pay_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="67px"
+                        android:text=""
+                        android:textColor="@color/dc"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="保险"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/insurance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="105px"
+                        android:text="人生意外险"
+                        android:textColor="@color/gray_9"
+                        android:textSize="24px" />
+
+                    <View
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/arrow_right_gray_icon" />
+
+                    <TextView
+                        android:id="@+id/insurance_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="67px"
+                        android:text="平台赠送"
+                        android:textColor="@color/gray_9"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:id="@+id/remark_layout"
+                    android:layout_marginTop="10px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="备注"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <View
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/arrow_right_gray_icon" />
+
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10px"
+                android:background="@color/gray_f7" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:layout_marginTop="20px"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="价格明细"
+                    android:textColor="@color/gray_9"
+                    android:textSize="26px"
+
+                    />
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="服务费用"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/service_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="400.00"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="优惠券"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/coupon_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="400.00"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bond_pay_layout"
+                    android:layout_marginTop="18px">
+
+                    <TextView
+                        android:id="@+id/earnest_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本次定金支付"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/earnest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="400.00"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30px"
+
+                    android:layout_marginTop="18px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="后续需支付"
+                        android:id="@+id/pay_text"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/last_pay_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="150px"
+                        android:text="最晚支付时间6月8日12:00"
+                        android:textColor="@color/dc"
+                        android:visibility="gone"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:id="@+id/tail_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="400.00"
+                        android:textColor="@color/dc"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/breach_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18px"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/breach_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本次定金支付"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/breach_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/refund_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18px"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/refund_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本次定金支付"
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+
+                    <TextView
+                        android:id="@+id/refund_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="28px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_f7" />
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="98px"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40px"
+                android:id="@+id/select_view"
+                android:background="@drawable/position_select" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="已同意"
+                android:textColor="@color/gray_9"
+                android:textSize="26px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="《服务政策》"
+                android:id="@+id/service_agreement"
+                android:textColor="@color/appColor"
+                android:textSize="26px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.ruffian.library.RTextView
+            android:id="@+id/cancel"
+            android:layout_width="162px"
+            android:layout_height="58px"
+            android:layout_centerVertical="true"
+
+            android:layout_gravity="end"
+
+            android:layout_marginRight="20px"
+            android:layout_toLeftOf="@+id/confirm"
+            android:gravity="center"
+            android:text="取消订单"
+            android:textColor="@color/gray_9"
+            android:textSize="28px"
+            app:border_color_normal="@color/gray_9"
+            app:border_width_normal="1px"
+            app:corner_radius="58px" />
+
+        <com.ruffian.library.RTextView
+            android:id="@+id/confirm"
+            android:layout_width="162px"
+            android:layout_height="58px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="确认接单"
+            android:layout_marginRight="40px"
+            android:textColor="@color/appColor"
+            android:textSize="28px"
+
+            app:border_color_normal="@color/appColor"
+            app:border_width_normal="1px"
+
+            app:corner_radius="58px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

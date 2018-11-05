@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+    <include layout="@layout/title_layout" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/merchant_enter_bg"
+        >
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="778px"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="请根据实际情况选择店铺类型"
+                android:textColor="@color/gray_6"
+                android:textSize="28px" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30px">
+
+                <View
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:background="@drawable/position_un_select"
+                    app:layout_auto_basewidth="height"
+                    android:id="@+id/agreement_view"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="22px"
+                    android:text="我同意"
+                    android:textColor="@color/gray_6"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="《商家入驻协议》"
+                    android:id="@+id/enter_agreement"
+                    android:textColor="@color/appColor"
+                    android:textSize="26px" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <TextView
+                android:layout_width="690px"
+                android:layout_height="88px"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32px"
+                android:background="@drawable/common_btn_20"
+                android:gravity="center"
+                android:text="个人"
+                android:id="@+id/person_enter"
+                android:textColor="@color/white"
+                android:textSize="32px" />
+
+            <TextView
+                android:layout_width="690px"
+                android:layout_height="88px"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20px"
+                android:background="@drawable/common_btn_20"
+                android:gravity="center"
+                android:text="公司"
+                android:id="@+id/company_enter"
+                android:textColor="@color/white"
+                android:textSize="32px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>

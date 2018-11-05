@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/type_layout"
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_below="@+id/title_layout"
+        android:layout_marginTop="1px"
+        android:background="@color/white"
+        android:paddingLeft="30px"
+        android:paddingRight="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="认证身份"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="40px"
+            android:text="个人"
+            android:textColor="@color/black"
+            android:textSize="32px"
+
+            />
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/arrow_right_gray_icon" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type_layout">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/company_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="88px"
+                android:layout_marginTop="10px"
+                android:background="@color/white"
+                android:paddingLeft="30px"
+                android:paddingRight="30px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="企业名称"
+                    android:textColor="@color/black"
+                    android:textSize="32px"
+
+                    />
+
+                <EditText
+                    android:id="@+id/company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/transparent"
+                    android:hint="请输入企业名称"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray_d2"
+                    android:textSize="32px"
+
+                    />
+
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="1px"
+                android:background="@color/white"
+                android:paddingLeft="30px"
+                android:paddingTop="30px"
+                android:text="企业营业执照"
+                android:textColor="@color/black"
+                android:textSize="32px" />
+
+            <ImageView
+                android:id="@+id/company_image"
+                android:layout_width="160px"
+                android:layout_height="160px"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="20px"
+                android:background="@drawable/post_image_default"
+                android:paddingBottom="28px"
+                android:paddingRight="30px"
+                android:scaleType="fitXY">
+
+            </ImageView>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/person_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="60px"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+
+                android:text="请点击一次拍摄身份证两面"
+
+                android:textColor="@color/black"
+                android:textSize="30px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="14px"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+
+                android:text="拍摄时，请保证身份证边框完整、字迹清晰、亮度均衡"
+                android:textColor="@color/dc"
+
+                android:textSize="24px" />
+
+            <ImageView
+                android:id="@+id/face_front"
+                android:layout_width="468px"
+                android:layout_height="268px"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60px"
+                android:background="@drawable/identity_front"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/face_background"
+                android:layout_width="468px"
+                android:layout_height="268px"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60px"
+                android:background="@drawable/identity_back"
+                android:scaleType="fitXY" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <TextView
+        android:id="@+id/submit"
+        android:layout_width="690px"
+        android:layout_height="88px"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="168px"
+        android:background="@drawable/common_btn"
+        android:gravity="center"
+        android:text="提交"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="32px" />
+</com.zhy.autolayout.AutoRelativeLayout>

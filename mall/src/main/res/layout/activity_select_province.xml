@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ececec" />
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25px"
+        android:layout_marginRight="25px"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29px"
+            android:text="定位到的位置"
+            android:textColor="@color/gray_9"
+            android:textSize="24px" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/locate_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:background="@drawable/main_position_icon"
+                app:layout_auto_basewidth="height" />
+
+            <TextView
+                android:id="@+id/position_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_weight="1"
+
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="32px" />
+
+            <View
+                android:id="@+id/position_select"
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/main_position_select"
+                android:visibility="gone"
+                app:layout_auto_basewidth="height" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="24px"
+            android:background="@color/gray_e" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+        <com.hzxmkuar.wumeihui.base.util.SideBar
+            android:id="@+id/side_bar"
+            android:layout_width="74px"
+            android:layout_height="800px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginRight="-10px"
+            android:layout_marginTop="100px"
+            tools:ignore="PxUsage" />
+
+        <TextView
+            android:id="@+id/select_dialog"
+            android:layout_width="144px"
+            android:layout_height="144px"
+
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_gray"
+            android:gravity="center"
+            android:textColor="@color/black_3"
+            android:textSize="56px"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>
