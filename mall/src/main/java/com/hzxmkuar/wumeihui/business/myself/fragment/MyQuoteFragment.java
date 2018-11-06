@@ -79,4 +79,6 @@ public class MyQuoteFragment extends BaseFragment {
         startActivity(intent);
     }
 
+
+
 }

@@ -90,10 +90,27 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
                 uploadHeadImageDialog();
                 break;
             case R.id.submit:
-                if (companyLayout.getVisibility() == View.VISIBLE)
+                if (companyLayout.getVisibility() == View.VISIBLE) {
+                    if (TextUtils.isEmpty(companyName.getText().toString())){
+                        showMessage("请填写公司名称");
+                        return;
+                    }
+                    if ( companyImage.getTag()==null||(Integer) companyImage.getTag()==0){
+                        showMessage("请上传企业营业执照");
+                        return;
+                    }
                     presenter.companyIdentity(companyName.getText().toString(), (Integer) companyImage.getTag());
-                else
+                } else {
+                    if ( faceFront.getTag()==null||(Integer) faceFront.getTag()==0){
+                        showMessage("请上传身份证正面");
+                        return;
+                    }
+                    if ( faceBackground.getTag()==null||(Integer) faceBackground.getTag()==0){
+                        showMessage("请上传身份证反面");
+                        return;
+                    }
                     presenter.personIdentity((int) faceFront.getTag(), (int) faceBackground.getTag());
+                }
                 break;
         }
     }
@@ -228,28 +245,28 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
 
     @Override
     public void uploadImageSuccess(String path, int imageId) {
+        currentImage.setTag(null);
         displayImage(currentImage, path);
         currentImage.setTag(imageId);
     }
 
 
-
     @Override
     public void loadDataSuccess(Object data) {
         IdentityResultTo mode = (IdentityResultTo) data;
-        if (mode.getStatus()==2||mode.getStatus()==1){
+        if (mode.getStatus() == 2 || mode.getStatus() == 1) {
             submit.setVisibility(View.GONE);
         }
 
         if (mode.getAuth_info() != null && mode.getAuth_info().getImg1() != null && mode.getAuth_info().getImg2() != null) {
-         if (mode.getAuth_type()==2) {
-             displayImage(faceFront, mode.getAuth_info().getImg1());
-             displayImage(faceBackground, mode.getAuth_info().getImg2());
-             faceBackground.setEnabled(false);
-             faceFront.setEnabled(false);
-         }
+            if (mode.getAuth_type() == 2) {
+                displayImage(faceFront, mode.getAuth_info().getImg1());
+                displayImage(faceBackground, mode.getAuth_info().getImg2());
+                faceBackground.setEnabled(false);
+                faceFront.setEnabled(false);
+            }
 
-            if (mode.getAuth_type()==1) {
+            if (mode.getAuth_type() == 1) {
                 displayImage(companyImage, mode.getAuth_info().getImg1());
                 companyName.setText(mode.getAuth_info().getName());
                 companyImage.setEnabled(false);

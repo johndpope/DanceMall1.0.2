@@ -169,6 +169,7 @@ public class PostDetailActivity extends BaseActivity {
             dialog.dismiss();
         });
         dialog.findViewById(R.id.parent).setOnClickListener(view -> dialog.dismiss());
+        dialog.findViewById(R.id.cancel).setOnClickListener(view -> dialog.dismiss());
 
     }
 

@@ -77,15 +77,15 @@ public class QuoteDetailAdapter extends BaseAdapter<QuoteDetailTo.ServiceListTo,
 //
             } else if (serviceTo.getPtype() == 5) {
                 typeView = View.inflate(mContext, R.layout.inquiry_des_type3, null);
+              if (serviceTo.getPvalues()!=null) {
+                  for (int k = 0; k < serviceTo.getPvalues().size(); k++) {
+                      View type3Child = View.inflate(mContext, R.layout.inquiry_des_type3_child, null);
 
-//                for (int k=0;k<serviceTo.getConflist().size();k++){
-//                    View type3Child=View.inflate(mContext,R.layout.inquiry_des_type3_child,null);
-//                    ((TextView) type3Child.findViewById(R.id.image_title)).setText(serviceTo.getConflist().get(k).getTitle());
-//                    ImageView stageImage=type3Child.findViewById(R.id.stage_image);
-////                    disPlayImage(stageImage,serviceTo.getConflist().get(k).getContent());
-//                    ((GridLayout)typeView.findViewById(R.id.image_layout)).addView(type3Child);
-//                }
-
+                      ImageView stageImage = type3Child.findViewById(R.id.stage_image);
+                      disPlayImage(stageImage, (String) serviceTo.getPvalues().get(k));
+                      ((GridLayout) typeView.findViewById(R.id.image_layout)).addView(type3Child);
+                  }
+              }
 
             } else if (serviceTo.getPtype() == 6) {
                 typeView = View.inflate(mContext, R.layout.inquiry_des_type4, null);

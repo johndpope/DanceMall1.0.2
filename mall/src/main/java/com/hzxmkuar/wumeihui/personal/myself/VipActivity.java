@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.hzxmkuar.wumeihui.MainApp;
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
@@ -26,6 +28,8 @@ import hzxmkuar.com.applibrary.impl.PermissionListener;
 public class VipActivity extends BaseActivity implements PermissionListener {
     @BindView(R.id.vip_btn)
     TextView vipBtn;
+    @BindView(R.id.web_view)
+    WebView webView;
     private VipTo vipTo;
 
     @Override
@@ -35,6 +39,7 @@ public class VipActivity extends BaseActivity implements PermissionListener {
         ButterKnife.bind(this);
         setTitleName(Constant.VIP_RIGHT);
         VipPresenter presenter = new VipPresenter(this);
+        webView.loadUrl(MainApp.webBaseUrl+"8");
     }
 
     @Override
@@ -49,8 +54,8 @@ public class VipActivity extends BaseActivity implements PermissionListener {
     public void onViewClicked() {
         if (!AppUtil.readSIMCard(appContext))
             return;
-        if (vipTo.getStatus()==0){
-            getPermission(Manifest.permission.CALL_PHONE,this);
+        if (vipTo.getStatus() == 0) {
+            getPermission(Manifest.permission.CALL_PHONE, this);
         }
     }
 

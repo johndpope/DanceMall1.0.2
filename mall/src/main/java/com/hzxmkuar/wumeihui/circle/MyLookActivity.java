@@ -30,5 +30,7 @@ public class MyLookActivity extends BaseActivity {
         MyCirclePresenter presenter = new MyCirclePresenter(this);
         presenter.getMyLook();
         setRecycleView(new CircleAdapter(this), recycleView, presenter);
+        recycleView.setLoadMoreEnabled(false);
+        recycleView.setPullRefreshEnabled(false);
     }
 }

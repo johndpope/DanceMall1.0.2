@@ -132,6 +132,10 @@ public class InquiryActivity extends BaseActivity {
             binding.area.setText(mode.getArea());
             merchantLayout.addView(mView);
             binding.settle.setOnClickListener(view -> {
+                if (inquiryInfoTo.getStatus_arr().getStatus()!=1&&inquiryInfoTo.getStatus_arr().getStatus()!=2){
+                    showMessage("订单不能结算");
+                    return;
+                }
                 Intent intent = new Intent(appContext, OrderSettleActivity.class);
                 intent.putExtra("MerchantTo", mode);
                 intent.putExtra("InquiryTo", inquiryInfoTo);

@@ -1,6 +1,9 @@
 package com.hzxmkuar.wumeihui.personal.integral;
 
+import android.Manifest;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
+import com.hzxmkuar.wumeihui.base.util.AppUtil;
 import com.hzxmkuar.wumeihui.personal.integral.fragment.MyIntegralFragment;
 import com.zhy.autolayout.AutoRelativeLayout;
 
@@ -21,6 +25,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.impl.PermissionListener;
 
 /**
  * Created by Administrator on 2018/9/3.
@@ -39,7 +44,8 @@ public class MyIntegralActivity extends BaseActivity {
     AutoRelativeLayout moveLine;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-    private List<MyIntegralFragment>fragmentList=new ArrayList<>();
+
+    private List<MyIntegralFragment> fragmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +56,8 @@ public class MyIntegralActivity extends BaseActivity {
         initFragment();
     }
 
+
+
     private void initFragment() {
         fragmentList.add(new MyIntegralFragment(0));
         fragmentList.add(new MyIntegralFragment(1));
@@ -59,15 +67,15 @@ public class MyIntegralActivity extends BaseActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                moveLine.setX(getScreenWidth()/4*position+positionOffsetPixels/4);
+                moveLine.setX(getScreenWidth() / 4 * position + positionOffsetPixels / 4);
             }
 
             @Override
             public void onPageSelected(int position) {
-            all.setTextColor(position==0?Color.parseColor("#3bafd9"):Color.parseColor("#bbbbbb"));
-            waiteSend.setTextColor(position==1?Color.parseColor("#3bafd9"):Color.parseColor("#bbbbbb"));
-            alreadySend.setTextColor(position==2?Color.parseColor("#3bafd9"):Color.parseColor("#bbbbbb"));
-            finishSend.setTextColor(position==3?Color.parseColor("#3bafd9"):Color.parseColor("#bbbbbb"));
+                all.setTextColor(position == 0 ? Color.parseColor("#3bafd9") : Color.parseColor("#bbbbbb"));
+                waiteSend.setTextColor(position == 1 ? Color.parseColor("#3bafd9") : Color.parseColor("#bbbbbb"));
+                alreadySend.setTextColor(position == 2 ? Color.parseColor("#3bafd9") : Color.parseColor("#bbbbbb"));
+                finishSend.setTextColor(position == 3 ? Color.parseColor("#3bafd9") : Color.parseColor("#bbbbbb"));
             }
 
             @Override
@@ -78,7 +86,7 @@ public class MyIntegralActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send})
+    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send,R.id.telephone})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.all:
@@ -93,9 +101,29 @@ public class MyIntegralActivity extends BaseActivity {
             case R.id.finish_send:
                 viewPager.setCurrentItem(3);
                 break;
+            case R.id.telephone:
+                if (!AppUtil.readSIMCard(appContext))
+                    return;
+                getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
+                    @Override
+                    public void accept(String permission) {
+                        Intent intent = new Intent(Intent.ACTION_CALL);
+                        Uri data = Uri.parse("tel:" + getIntent().getStringExtra("Telephone"));
+                        intent.setData(data);
+                        startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void refuse(String permission) {
+
+                    }
+                });
+                break;
         }
     }
-    FragmentPagerAdapter adapter= new  FragmentPagerAdapter(getSupportFragmentManager()){
+
+    FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
         @Override
         public int getCount() {

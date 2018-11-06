@@ -42,6 +42,7 @@
             <View
                 android:layout_width="44px"
                 android:layout_height="44px"
+                android:id="@+id/message"
                 android:layout_marginRight="30px"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
@@ -91,7 +92,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="待服务"
+            android:text="待付尾款"
             android:id="@+id/already_send"
             android:textColor="@color/gray_b"
             android:textSize="28px" />
@@ -102,7 +103,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="待确认完成"
+            android:text="待完成"
             android:textColor="@color/gray_b"
             android:textSize="28px" />
 

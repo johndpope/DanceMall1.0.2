@@ -32,5 +32,7 @@ public class MyPostActivity extends BaseActivity {
         MyCirclePresenter presenter = new MyCirclePresenter(this);
         presenter.getMyPost();
         setRecycleView(new CircleAdapter(this), recycleView, presenter);
+        recycleView.setLoadMoreEnabled(false);
+        recycleView.setPullRefreshEnabled(false);
     }
 }

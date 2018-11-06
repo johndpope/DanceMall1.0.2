@@ -378,7 +378,8 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
                     showMessage("请选择时间");
                     return;
                 }
-                if (!DateUtil.isBeforeDate(serviceTime.split("-")[0],serviceTime.split("-")[1])){
+
+                if (DateUtil.isBeforeDate(serviceTime.split("-")[0]+":00",serviceTime.split("-")[1]+":00")){
                     showMessage("开始时间不能在结束时间之后");
                     return;
                 }

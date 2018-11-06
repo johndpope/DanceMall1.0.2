@@ -4,6 +4,9 @@ import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.BasePresenter;
 import com.hzxmkuar.wumeihui.base.MyObserver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.MerchantApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
@@ -17,6 +20,7 @@ import rx.schedulers.Schedulers;
  */
 
 public class CollectMerchantPresenter extends BasePresenter {
+    private List<MainMerchantTo.ListsBean> merchantList=new ArrayList<>();
     public CollectMerchantPresenter(BaseActivity activity){
         initContext(activity);
         getMerchantList();
@@ -31,8 +35,13 @@ public class CollectMerchantPresenter extends BasePresenter {
                 new MyObserver<MessageTo<MainMerchantTo>>(this) {
                     @Override
                     public void onNext(MessageTo<MainMerchantTo> msg) {
-                        if (msg.getCode()==0)
-                            setRecycleList(msg.getData().getLists());
+                        if (msg.getCode()==0) {
+                            if (recyclePageIndex==1)
+                                merchantList.clear();
+                            if (msg.getData().getLists()!=null)
+                            merchantList.addAll(msg.getData().getLists());
+                            setRecycleList(merchantList);
+                        }
                     }
                 }
         );

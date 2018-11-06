@@ -8,6 +8,7 @@ import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.IntegralApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.integral.IntegralOrderTo;
+import hzxmkuar.com.applibrary.domain.order.OTypeOnPageParam;
 import hzxmkuar.com.applibrary.domain.order.OTypeParam;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -26,9 +27,9 @@ public class MyIntegralPresenter extends BasePresenter {
 
     private void getMyIntegral(){
 
-        OTypeParam param=new OTypeParam();
+        OTypeOnPageParam param=new OTypeOnPageParam();
         param.setOtype(type);
-        param.setHash(getHashString(OTypeParam.class,param));
+        param.setHash(getHashString(OTypeOnPageParam.class,param));
         showLoadingDialog();
         ApiClient.create(IntegralApi.class).getMyOrder(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<IntegralOrderTo>>(this) {

@@ -66,15 +66,7 @@
             android:textColor="#FF961E"
             android:textSize="28px" />
 
-        <TextView
-            android:layout_width="0px"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="待付款"
-            android:id="@+id/waite_send"
-            android:textColor="@color/gray_b"
-            android:textSize="28px" />
+
 
         <TextView
             android:layout_width="0px"
@@ -101,7 +93,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="待服务"
+        android:text="待完成"
         android:id="@+id/waite_evaluate"
         android:textColor="@color/gray_b"
         android:textSize="28px" />
@@ -110,7 +102,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="待完成"
+            android:text="已完成"
             android:id="@+id/waite_finish"
             android:textColor="@color/gray_b"
             android:textSize="28px" />

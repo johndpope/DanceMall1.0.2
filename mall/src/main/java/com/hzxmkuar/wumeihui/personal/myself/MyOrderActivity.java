@@ -1,5 +1,6 @@
 package com.hzxmkuar.wumeihui.personal.myself;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.ActivityManager;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
+import com.hzxmkuar.wumeihui.personal.MainActivity;
 import com.hzxmkuar.wumeihui.personal.myself.fragment.MyOrderFragment;
 import com.zhy.autolayout.AutoRelativeLayout;
 
@@ -91,7 +93,7 @@ public class MyOrderActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send, R.id.waite_evaluate})
+    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send, R.id.waite_evaluate,R.id.message})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.all:
@@ -108,6 +110,15 @@ public class MyOrderActivity extends BaseActivity {
                 break;
             case R.id.waite_evaluate:
                 viewPager.setCurrentItem(4);
+                break;
+            case R.id.message:
+                Intent intent=new Intent(appContext, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("Index",2);
+                intent.putExtra("MessageIndex",1);
+                startActivity(intent);
+                finish();
+                goToAnimation(1);
                 break;
         }
     }

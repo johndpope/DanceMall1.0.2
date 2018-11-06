@@ -76,10 +76,10 @@ public class ServiceMerchantActivity extends BaseActivity {
             View mView=View.inflate(appContext,R.layout.service_comment_item,null);
             commentLayout.addView(mView);
             List<Integer>imageList=new ArrayList<>();
-            imageList.add(R.drawable.default_head_image);
-            imageList.add(R.drawable.default_head_image);
-            imageList.add(R.drawable.default_head_image);
-            imageList.add(R.drawable.default_head_image);
+            imageList.add(R.drawable.post_image_default);
+            imageList.add(R.drawable.post_image_default);
+            imageList.add(R.drawable.post_image_default);
+            imageList.add(R.drawable.post_image_default);
             setImageLayout(mView.findViewById(R.id.image_layout),imageList);
         }
     }

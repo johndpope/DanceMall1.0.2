@@ -30,15 +30,22 @@ public class PayFinishActivity extends BaseActivity {
         setContentView(R.layout.activity_pay_finish);
         ButterKnife.bind(this);
         setTitleName(Constant.SERVICE_ORDER);
+        findViewById(R.id.back).setOnClickListener(view -> {
+            Intent intent=new Intent(appContext,MainActivity.class);
+            Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+            startActivity(intent);
+            goToAnimation(2);
+        });
     }
 
-    @OnClick({R.id.back, R.id.look_order})
+    @OnClick({R.id.back_main, R.id.look_order})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.back:
+            case R.id.back_main:
                 Intent intent=new Intent(appContext,MainActivity.class);
                 Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
                 startActivity(intent);
+                goToAnimation(2);
                 break;
             case R.id.look_order:
                 intent=new Intent(appContext, PersonOrderActivity.class);

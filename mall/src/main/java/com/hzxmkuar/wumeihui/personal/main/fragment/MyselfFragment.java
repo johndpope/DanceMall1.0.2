@@ -190,6 +190,7 @@ public class MyselfFragment extends BaseFragment {
                 break;
             case R.id.exchange_layout:
                 intent = new Intent(appContext, MyIntegralActivity.class);
+                intent.putExtra("Telephone",mode.getKf_tel());
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -265,13 +266,13 @@ public class MyselfFragment extends BaseFragment {
                 break;
             case R.id.order_id_layout3:
                 intent=new Intent(appContext,MyOrderActivity.class);
-                intent.putExtra("Index",1);
+                intent.putExtra("Index",3);
                 startActivity(intent);
                 goToAnimation(1);
                 break;
             case R.id.order_id_layout4:
                 intent=new Intent(appContext,MyOrderActivity.class);
-                intent.putExtra("Index",3);
+                intent.putExtra("Index",4);
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -314,7 +315,7 @@ public class MyselfFragment extends BaseFragment {
 
     public void showShare() {
 
-        dialog = new CommonDialog(getActivity(), getScreenWidth(), (int) (getScreenWidth() * 140.0 / 750), R.layout.dialog_share_moment, R.style.DialogDown);
+        dialog = new CommonDialog(getActivity(), getScreenWidth(), (int) (getScreenHeight() * 140.0 / 1344), R.layout.dialog_share_moment, R.style.DialogDown);
         dialog.show();
         dialog.findViewById(R.id.wechat_share).setOnClickListener(view1 -> {
             wChatShare();
@@ -326,7 +327,9 @@ public class MyselfFragment extends BaseFragment {
 
             dialog.dismiss();
         });
+
         dialog.findViewById(R.id.parent).setOnClickListener(view -> dialog.dismiss());
+        dialog.findViewById(R.id.cancel).setOnClickListener(view -> dialog.dismiss());
 
     }
 

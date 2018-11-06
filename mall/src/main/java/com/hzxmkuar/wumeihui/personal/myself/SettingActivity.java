@@ -87,7 +87,7 @@ public class SettingActivity extends BaseActivity {
                 goToAnimation(1);
                 break;
             case R.id.clean_cache:
-               AlertDialog.show(this,"确定清楚缓存").setOnClickListener(view1 -> {
+               AlertDialog.show(this,"确定清除缓存").setOnClickListener(view1 -> {
                    AlertDialog.dismiss();
                    cacheUtil.clearImageAllCache(appContext);
                    cache.setText("0MB");

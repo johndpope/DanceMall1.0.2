@@ -391,7 +391,7 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
 
     protected void disPlayImage(ImageView imageView,String imageUrl) {
         if (TextUtils.isEmpty(imageUrl))
-            Glide.with(appContext).load(R.drawable.default_head_image).into(imageView);
+            Glide.with(appContext).load(R.drawable.post_image_default).into(imageView);
         else if (imageUrl.contains("http")) {
             System.out.println(imageUrl + "?imageMogr2/thumbnail/500x");
             Glide.with(appContext).load(imageUrl + "?imageMogr2/thumbnail/500x").into(imageView);

@@ -25,7 +25,7 @@ public class MyQuotePresenter extends BasePresenter {
     public MyQuotePresenter(BaseFragment fragment,int type) {
         initContext(fragment);
         this.type=type;
-        getMyQuote();
+
     }
 
     public void getMyQuote() {

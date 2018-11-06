@@ -51,10 +51,10 @@ public class CommunicationAdapter extends BaseAdapter<DemandSearchTo, Communicat
         CommunicationItemBinding binding = holder.getBinding();
                     disPlayRoundImage(binding.headImage);
         List<Integer> imageList=new ArrayList<>();
-        imageList.add(R.drawable.default_head_image);
-        imageList.add(R.drawable.default_head_image);
-        imageList.add(R.drawable.default_head_image);
-        imageList.add(R.drawable.default_head_image);
+        imageList.add(R.drawable.post_image_default);
+        imageList.add(R.drawable.post_image_default);
+        imageList.add(R.drawable.post_image_default);
+        imageList.add(R.drawable.post_image_default);
         setImageLayout(imageList,binding.imageLayout);
     }
 

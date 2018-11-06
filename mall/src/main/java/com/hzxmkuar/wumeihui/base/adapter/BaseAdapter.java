@@ -92,7 +92,7 @@ public class BaseAdapter<T, H> extends RecyclerView.Adapter<BindingHolder<H>> {
 
     protected void disPlayImage(ImageView imageView,String imageUrl) {
         if (TextUtils.isEmpty(imageUrl))
-            Glide.with(mContext).load(R.drawable.default_head_image).into(imageView);
+            Glide.with(mContext).load(R.drawable.post_image_default).into(imageView);
         else if (imageUrl.contains("http")) {
             System.out.println(imageUrl + "?imageMogr2/thumbnail/500x");
             Glide.with(mContext).load(imageUrl + "?imageMogr2/thumbnail/500x").into(imageView);

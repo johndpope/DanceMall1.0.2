@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/share_bg"
     android:orientation="vertical"
     android:id="@+id/parent"
@@ -55,4 +55,14 @@
             app:layout_auto_basewidth="height" />
 
     </com.zhy.autolayout.AutoLinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:text="取消"
+        android:id="@+id/cancel"
+        android:textSize="32px"
+        android:background="@color/gray_f7"
+        android:textColor="@color/black_3"
+        android:gravity="center"
+        />
 </com.zhy.autolayout.AutoLinearLayout>

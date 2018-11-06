@@ -4,6 +4,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 <include layout="@layout/title_layout"/>
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_layout"
+        android:layout_above="@+id/vip_btn"
+        android:background="@color/white"
+        android:id="@+id/web_view"
+        >
+
+    </WebView>
 
     <TextView
         android:layout_width="match_parent"

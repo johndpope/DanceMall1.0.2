@@ -445,6 +445,7 @@ public class MerchantInfoActivity extends BaseActivity implements PermissionList
                     String[] imagePath = data.getStringExtra("ImagePath").split(",");
                     String imageId = data.getStringExtra("ImageId");
                     mode.getAptitude_license().clear();
+
                     List<String> imageList = new ArrayList<>();
                     companyImageLayout.removeAllViews();
                     for (int i = 0; i < imagePath.length; i++) {
@@ -514,10 +515,23 @@ public class MerchantInfoActivity extends BaseActivity implements PermissionList
                     startActivityForResult(intent, 60);
                     goToAnimation(1);
                 } else {
-                    Intent intent = new Intent(appContext, ModifyCaseActivity.class);
-                    intent.putExtra("CaseTo", mode.getCase_example().get((Integer) mView.getTag()));
-                    startActivityForResult(intent, 120);
-                    goToAnimation(1);
+                    if ((Integer) mView.getTag()<mode.getCase_example().size()) {
+                        Intent intent = new Intent(appContext, ModifyCaseActivity.class);
+                        intent.putExtra("CaseTo", mode.getCase_example().get((Integer) mView.getTag()));
+                        startActivityForResult(intent, 120);
+                        goToAnimation(1);
+                    }else {
+                        CaseInfoTo infoTo = caseList.get((Integer) mView.getTag());
+                        ShopInfoTo.CaseExampleBean bean=new ShopInfoTo.CaseExampleBean();
+                        bean.setId(infoTo.getId());
+                        bean.setDesc(infoTo.getCaseDes());
+                        bean.setPic(infoTo.getImageUrl());
+                        bean.setImgid(infoTo.getImageId());
+                        Intent intent = new Intent(appContext, ModifyCaseActivity.class);
+                        intent.putExtra("CaseTo", bean);
+                        startActivityForResult(intent, 120);
+                        goToAnimation(1);
+                    }
                 }
             });
             mView.findViewById(R.id.delete_image).setVisibility(View.GONE);

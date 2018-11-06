@@ -53,8 +53,6 @@ public class PayPresenter extends BasePresenter {
                             if (msg.getCode() == 0) {
                                 if (type==1||type==3)
                                 getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
-
-
                             }
                             else
                                 showMessage(msg.getMsg());

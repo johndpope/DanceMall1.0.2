@@ -95,12 +95,12 @@ public class MyInquiryFragment extends BaseFragment {
     public void recycleItemClick(View view, int position, Object data) {
         super.recycleItemClick(view, position, data);
         MyInquiryTo.ListsBean mode= (MyInquiryTo.ListsBean) data;
-            if (mode.getStatus_arr().getStatus()!=3) {
+
                 Intent intent = new Intent(appContext, InquiryActivity.class);
                 intent.putExtra("InquiryId", ((MyInquiryTo.ListsBean) data).getId());
                 startActivity(intent);
                 goToAnimation(1);
-            }
+
 
     }
 

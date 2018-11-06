@@ -60,7 +60,7 @@ public class MyMerchantOrderActivity extends BaseActivity {
         fragmentList.add(new MerchantOrderFragment(2));
         fragmentList.add(new MerchantOrderFragment(3));
         fragmentList.add(new MerchantOrderFragment(4));
-        fragmentList.add(new MerchantOrderFragment(5));
+
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

@@ -369,6 +369,7 @@ public class MerchantEnterInputActivity extends BaseActivity implements Permissi
 
     @Override
     public void uploadImageSuccess(String path, int imageId) {
+        currentImage.setTag(null);
         displayImage(currentImage, path);
         currentImage.setTag(imageId);
     }

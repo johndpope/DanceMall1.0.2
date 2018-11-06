@@ -159,7 +159,7 @@ public class ResourceFragment extends BaseFragment {
     private List<MerchantCityTo.ListsBean> cityList;
     private int scrollY;
     private int dScrollY;
-    private boolean haveLoad;
+
     private long lastTime;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -330,7 +330,7 @@ public class ResourceFragment extends BaseFragment {
     public void selectCity(Event<String> event) {
         if ("SelectCity".equals(event.getType())) {
             String city = event.getData().replaceAll("市", "");
-            city = event.getData().replaceAll("特别行政区", "");
+            city = city.replaceAll("特别行政区", "");
             cityName.setText(city);
             presenter.param.setPos_city(presenter.getCityId(city));
             presenter.getCityList(city);
@@ -669,18 +669,27 @@ public class ResourceFragment extends BaseFragment {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             String city = bdLocation.getCity();
-            if (!TextUtils.isEmpty(city)) {
-                city = city.replaceAll("市", "");
-                if (cityName != null)
-                    cityName.setText(haveLoad?SpUtil.getString("LocateCity"):city);
-                presenter.param.setPos_city(!haveLoad?presenter.getCityId(city):SpUtil.getInt("LocateCityId",0));
-                presenter.getCityList(!haveLoad?city:SpUtil.getString("LocateCity"));
+
+            if (!getActivity().getIntent().getBooleanExtra("IsSplash",false)){
+                cityName.setText(SpUtil.getString("LocateCity"));
+                presenter.param.setPos_city(presenter.getCityId(SpUtil.getString("LocateCity")));
+                presenter.getCityList(SpUtil.getString("LocateCity"));
                 presenter.getMerchant();
-                if (!haveLoad) {
+
+            }else {
+                if (!TextUtils.isEmpty(city)) {
+                    city = city.replaceAll("市", "");
+                    if (cityName != null)
+                        cityName.setText(city);
+                    presenter.param.setPos_city(presenter.getCityId(city));
+                    presenter.getCityList(city);
+                    presenter.getMerchant();
+
                     SpUtil.put("LocateCity", city);
                     SpUtil.put("LocateCityId", presenter.param.getPos_city());
+
+
                 }
-                haveLoad=true;
             }
 
         }
@@ -688,6 +697,7 @@ public class ResourceFragment extends BaseFragment {
 
 
     private void setLocate() {
+
         mLocationClient = new LocationClient(appContext);
         //声明LocationClient类
         mLocationClient.registerLocationListener(myListener);

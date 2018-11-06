@@ -49,6 +49,8 @@ public class MyCouponFragment extends BaseFragment {
         MyCouponAdapter adapter = new MyCouponAdapter(getActivity(),type);
         adapter.setList(couponList);
         recycleView.setAdapter(new LRecyclerViewAdapter(adapter));
+        recycleView.setPullRefreshEnabled(false);
+        recycleView.setLoadMoreEnabled(false);
 
         return mView;
     }

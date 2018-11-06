@@ -29,6 +29,7 @@ public class SplashActivity extends BaseActivity {
                     startActivity(intent);
                 }else {
                     Intent intent = new Intent(appContext, MainActivity.class);
+                    intent.putExtra("IsSplash",true);
                     startActivity(intent);
                 }
 

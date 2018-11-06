@@ -162,7 +162,7 @@ public class MessageFragment extends BaseFragment {
             }
         });
 
-
+     messageFragmentLayout.setCurrentItem(getActivity().getIntent().getIntExtra("MessageIndex",0));
 
     }
 
