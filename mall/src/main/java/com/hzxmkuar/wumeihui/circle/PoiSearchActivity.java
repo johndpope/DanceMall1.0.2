@@ -72,7 +72,7 @@ public class PoiSearchActivity extends BaseActivity {
         // 关键字
         poiCitySearchOption.keyword(" ");
         // 城市
-        poiCitySearchOption.city("杭州");
+        poiCitySearchOption.city(SpUtil.getString("LocateCity"));
         // 设置每页容量，默认为每页10条
         poiCitySearchOption.pageCapacity(10);
         // 分页编号

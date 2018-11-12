@@ -28,9 +28,10 @@ public class MainBannerTo {
 
         private int id;
         private int target_module;
-        private int target_id;
+        private String target_id;
         private String urls;
         private String pic;
+        private String tag;
 
 
     }

@@ -26,9 +26,11 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseFragment;
 import com.hzxmkuar.wumeihui.base.Event;
+import com.hzxmkuar.wumeihui.base.WebActivity;
 import com.hzxmkuar.wumeihui.base.banner.BannerMenuView;
 import com.hzxmkuar.wumeihui.base.banner.BannerUtil;
 import com.hzxmkuar.wumeihui.base.util.SpUtil;
@@ -36,6 +38,7 @@ import com.hzxmkuar.wumeihui.business.merchant.MerchantDetailActivity;
 import com.hzxmkuar.wumeihui.circle.PostDetailActivity;
 import com.hzxmkuar.wumeihui.databinding.MainShopItemBinding;
 import com.hzxmkuar.wumeihui.databinding.MerchantScreenLayoutBinding;
+import com.hzxmkuar.wumeihui.personal.MainActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.SelectDemandActivity;
 import com.hzxmkuar.wumeihui.personal.main.SelectProvinceActivity;
 import com.hzxmkuar.wumeihui.personal.main.presenter.ResourcePresenter;
@@ -171,11 +174,11 @@ public class ResourceFragment extends BaseFragment {
         EventBus.getDefault().register(this);
 
 
-          presenter = new ResourcePresenter(this);
-          setSeekBar();
+        presenter = new ResourcePresenter(this);
+        setSeekBar();
 
-          setLocate();
-          setScroll();
+        setLocate();
+        setScroll();
 
 
         return mView;
@@ -201,14 +204,14 @@ public class ResourceFragment extends BaseFragment {
             if (scrollY > (popLayout.getTop() - cityLayout.getBottom())) {
                 popLayoutTop.setVisibility(View.VISIBLE);
                 mainCityLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-                System.out.println(System.currentTimeMillis()-lastTime+"time");
-                if (scrollY - (popLayout.getTop() - cityLayout.getBottom())>100&&(System.currentTimeMillis()-lastTime<1000)){
+                System.out.println(System.currentTimeMillis() - lastTime + "time");
+                if (scrollY - (popLayout.getTop() - cityLayout.getBottom()) > 100 && (System.currentTimeMillis() - lastTime < 1000)) {
                     typeLayout.setVisibility(View.GONE);
                     selectScreenLayout.setVisibility(View.GONE);
                     sortSelectLayout.setVisibility(View.GONE);
                 }
 
-                lastTime=System.currentTimeMillis();
+                lastTime = System.currentTimeMillis();
 
             } else {
                 popLayoutTop.setVisibility(View.GONE);
@@ -220,16 +223,16 @@ public class ResourceFragment extends BaseFragment {
                     switch (motionEvent.getAction()) {
 
                         case MotionEvent.ACTION_DOWN:
-                            dScrollY= (int) motionEvent.getY();
+                            dScrollY = (int) motionEvent.getY();
                             break;
                         case MotionEvent.ACTION_MOVE:
-                            System.out.println(motionEvent.getY()-dScrollY);
+                            System.out.println(motionEvent.getY() - dScrollY);
 
-                            if ((selectScreenLayout.getVisibility()==View.VISIBLE||typeLayout.getVisibility()==View.VISIBLE||sortSelectLayout.getVisibility()==View.VISIBLE)&&motionEvent.getY()-dScrollY<0&&scrollY > (popLayout.getTop() - cityLayout.getBottom())) {
-                                dScrollY= (int) motionEvent.getY();
+                            if ((selectScreenLayout.getVisibility() == View.VISIBLE || typeLayout.getVisibility() == View.VISIBLE || sortSelectLayout.getVisibility() == View.VISIBLE) && motionEvent.getY() - dScrollY < 0 && scrollY > (popLayout.getTop() - cityLayout.getBottom())) {
+                                dScrollY = (int) motionEvent.getY();
                                 return true;
                             }
-                            dScrollY= (int) motionEvent.getY();
+                            dScrollY = (int) motionEvent.getY();
                             break;
                     }
 
@@ -255,14 +258,14 @@ public class ResourceFragment extends BaseFragment {
             binding.area.setText(mode.getArea());
             binding.serviceName.setText(mode.getService_exam());
             binding.starLayout.removeAllViews();
-            for (int k=0;k<5;k++){
-                View star=new View(appContext);
-                GridLayout.LayoutParams starParam=new GridLayout.LayoutParams();
-                starParam.width=30*getScreenWidth()/750;
-                starParam.height=30*getScreenWidth()/750;
-                starParam.setMarginEnd(10*getScreenWidth()/750);
+            for (int k = 0; k < 5; k++) {
+                View star = new View(appContext);
+                GridLayout.LayoutParams starParam = new GridLayout.LayoutParams();
+                starParam.width = 30 * getScreenWidth() / 750;
+                starParam.height = 30 * getScreenWidth() / 750;
+                starParam.setMarginEnd(10 * getScreenWidth() / 750);
                 star.setLayoutParams(starParam);
-                star.setBackgroundResource(((int)mode.getRatings())>=(k+1)?R.drawable.main_start:R.drawable.main_star_gray);
+                star.setBackgroundResource(((int) mode.getRatings()) >= (k + 1) ? R.drawable.main_start : R.drawable.main_star_gray);
                 binding.starLayout.addView(star);
             }
             carefullySelectLayout.addView(mView);
@@ -293,14 +296,14 @@ public class ResourceFragment extends BaseFragment {
             binding.serviceName.setText(mode.getService_exam());
             binding.selectIcon.setVisibility(View.GONE);
             binding.starLayout.removeAllViews();
-            for (int k=0;k<5;k++){
-                View star=new View(appContext);
-                GridLayout.LayoutParams starParam=new GridLayout.LayoutParams();
-                starParam.width=30*getScreenWidth()/750;
-                starParam.height=30*getScreenWidth()/750;
-                starParam.setMarginEnd(10*getScreenWidth()/750);
+            for (int k = 0; k < 5; k++) {
+                View star = new View(appContext);
+                GridLayout.LayoutParams starParam = new GridLayout.LayoutParams();
+                starParam.width = 30 * getScreenWidth() / 750;
+                starParam.height = 30 * getScreenWidth() / 750;
+                starParam.setMarginEnd(10 * getScreenWidth() / 750);
                 star.setLayoutParams(starParam);
-                star.setBackgroundResource(((int)mode.getRatings())>=(k+1)?R.drawable.main_start:R.drawable.main_star_gray);
+                star.setBackgroundResource(((int) mode.getRatings()) >= (k + 1) ? R.drawable.main_start : R.drawable.main_star_gray);
                 binding.starLayout.addView(star);
             }
             moreShopLayout.addView(mView);
@@ -350,7 +353,7 @@ public class ResourceFragment extends BaseFragment {
 
     @OnClick({R.id.city_name, R.id.inquiry,
             R.id.search_layout, R.id.sort_layout, R.id.screen_layout, R.id.sort_text1, R.id.sort_text2, R.id.sort_text3, R.id.sort_text4, R.id.sort_select_layout, R.id.video_layout, R.id.person, R.id.company, R.id.reset, R.id.screen_confirm,
-            R.id.parent, R.id.sort_layout_top, R.id.screen_layout_top, R.id.video_layout_top,R.id.select_screen_layout
+            R.id.parent, R.id.sort_layout_top, R.id.screen_layout_top, R.id.video_layout_top, R.id.select_screen_layout
     })
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -458,6 +461,41 @@ public class ResourceFragment extends BaseFragment {
             goToAnimation(1);
         });
         setMenu(index_menu);
+
+        banner.setOnItemClickListener(position -> {
+            MainBannerTo.IndexSlideshowBean bannerInfoTo = bannerTo.getIndex_slideshow().get(position);
+
+            Intent intent = null;
+            if (bannerInfoTo.getTarget_module() == 1) {
+                ((MainActivity)getActivity()).fragmentLayout.setCurrentItem(1);
+            }
+            if (bannerInfoTo.getTarget_module() == 2) {
+                 intent=new Intent(appContext,MerchantDetailActivity.class);
+                intent.putExtra("MerchantId",Integer.valueOf(bannerInfoTo.getTarget_id()));
+
+            }
+            if (bannerInfoTo.getTarget_module() == 3) {
+                intent = new Intent(appContext, WebActivity.class);
+                intent.putExtra("BannerUrl","http://xmap18070031.php.hzxmnet.com/h5/activity/"+bannerInfoTo.getTarget_id());
+                intent.putExtra("Title",bannerInfoTo.getTag());
+            }
+            if (bannerInfoTo.getTarget_module() == 4) {
+                intent = new Intent(appContext, WebActivity.class);
+                intent.putExtra("BannerUrl","http://xmap18070031.php.hzxmnet.com/h5/page/"+bannerInfoTo.getTarget_id());
+
+                intent.putExtra("Title",bannerInfoTo.getTag());
+            }
+            if (bannerInfoTo.getTarget_module() == 5) {
+                intent = new Intent(appContext, WebActivity.class);
+                intent.putExtra("BannerUrl",bannerInfoTo.getTarget_id());
+                intent.putExtra("Title",bannerInfoTo.getTag());
+            }
+            if (intent == null)
+                return;
+            startActivity(intent);
+            goToAnimation(1);
+
+        });
     }
 
     private void setMenu(List<MainBannerTo.IndexMenuBean> menuList) {
@@ -670,13 +708,13 @@ public class ResourceFragment extends BaseFragment {
         public void onReceiveLocation(BDLocation bdLocation) {
             String city = bdLocation.getCity();
 
-            if (!getActivity().getIntent().getBooleanExtra("IsSplash",false)){
+            if (!getActivity().getIntent().getBooleanExtra("IsSplash", false)) {
                 cityName.setText(SpUtil.getString("LocateCity"));
                 presenter.param.setPos_city(presenter.getCityId(SpUtil.getString("LocateCity")));
                 presenter.getCityList(SpUtil.getString("LocateCity"));
                 presenter.getMerchant();
 
-            }else {
+            } else {
                 if (!TextUtils.isEmpty(city)) {
                     city = city.replaceAll("市", "");
                     if (cityName != null)

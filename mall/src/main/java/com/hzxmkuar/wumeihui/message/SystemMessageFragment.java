@@ -26,15 +26,18 @@ public class SystemMessageFragment extends BaseFragment {
     @BindView(R.id.recycle_view)
     LRecyclerView recycleView;
     Unbinder unbinder;
+    private SystemMessageAdapter adapter;
+    private SystemMessagePresenter presenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = View.inflate(appContext, R.layout.common_recycle_view, null);
-        SystemMessagePresenter presenter = new SystemMessagePresenter(this);
+        presenter = new SystemMessagePresenter(this);
 
         unbinder = ButterKnife.bind(this, mView);
-        setRecycleView(new SystemMessageAdapter(getActivity()),recycleView,presenter);
+        adapter = new SystemMessageAdapter(getActivity());
+        setRecycleView(adapter,recycleView, presenter);
         return mView;
     }
 
@@ -42,5 +45,14 @@ public class SystemMessageFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    public void setDelete(boolean selected) {
+        adapter.setDelete(selected);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void setFinishDelete(boolean selected) {
+        presenter.setFinishDelete();
     }
 }

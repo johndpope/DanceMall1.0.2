@@ -30,9 +30,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="70px"
                 android:text="30"
-                android:maxLength="3"
+                android:maxLength="5"
                 android:textColor="@color/appColor"
-                android:textSize="140px"
+                android:textSize="84px"
                 android:id="@+id/money"
                 android:textStyle="bold" />
 

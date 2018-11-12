@@ -109,7 +109,7 @@
     </com.zhy.autolayout.AutoLinearLayout>
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="125px"
+        android:layout_width="150px"
         android:layout_height="4px"
         android:id="@+id/move_line"
         >

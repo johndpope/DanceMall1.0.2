@@ -62,12 +62,11 @@ public class MyIntegralActivity extends BaseActivity {
         fragmentList.add(new MyIntegralFragment(0));
         fragmentList.add(new MyIntegralFragment(1));
         fragmentList.add(new MyIntegralFragment(2));
-        fragmentList.add(new MyIntegralFragment(3));
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                moveLine.setX(getScreenWidth() / 4 * position + positionOffsetPixels / 4);
+                moveLine.setX(getScreenWidth() / 3 * position + positionOffsetPixels / 3);
             }
 
             @Override

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hzxmkuar.wumeihui.R;
+import com.hzxmkuar.wumeihui.base.ActivityManager;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
 import com.hzxmkuar.wumeihui.login.presenter.BindPhonePresenter;
@@ -100,7 +101,11 @@ public class BindPhoneActivity extends BaseActivity {
         userInfoTo.setHashid(((WechatLoginTo)data).getHashid());
         userInfoHelp.saveUserInfo(userInfoTo);
         Intent intent=new Intent(appContext,MainActivity.class);
+        intent.putExtra("IsSplash",true);
         startActivity(intent);
+        if (ActivityManager.loginActivity!=null)
+            ActivityManager.loginActivity.finish();
+        finish();
         goToAnimation(1);
 
     }

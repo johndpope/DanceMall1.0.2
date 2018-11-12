@@ -51,14 +51,11 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.myself_view)
     View myselfView;
     @BindView(R.id.fragment_layout)
-    NoSlideViewPager fragmentLayout;
-    private FragmentTransaction transaction;
+    public NoSlideViewPager fragmentLayout;
     private ResourceFragment resourceFragment;
     private List<Fragment> fragmentList = new ArrayList<>();
-    private MessageFragment messageFragment;
     private MyselfFragment myselfFragment=new MyselfFragment();
     private MainPresenter presenter;
-    private CircleFragment circleFragment;
     private Handler handler = new Handler();
     private boolean canOut;
 

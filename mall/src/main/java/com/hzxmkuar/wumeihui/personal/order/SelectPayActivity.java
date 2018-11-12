@@ -20,6 +20,7 @@ import com.hzxmkuar.wumeihui.base.ActivityManager;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
 import com.hzxmkuar.wumeihui.base.Event;
+import com.hzxmkuar.wumeihui.base.utils.BaseHelper;
 import com.hzxmkuar.wumeihui.base.utils.Constants;
 import com.hzxmkuar.wumeihui.base.utils.MobileSecurePayer;
 import com.hzxmkuar.wumeihui.business.main.MainMerchantActivity;
@@ -115,6 +116,42 @@ public class SelectPayActivity extends BaseActivity {
                         }
 
                         break;
+                    }
+
+                    if (payType==3){
+                        String strRet = (String) msg.obj;
+                        switch (msg.what) {
+                            case Constants.RQF_PAY: {
+                                JSONObject objContent = BaseHelper.string2JSON(strRet);
+                                String retCode = objContent.optString("ret_code");
+                                String retMsg = objContent.optString("ret_msg");
+
+                                // 成功
+                                if (Constants.RET_CODE_SUCCESS.equals(retCode)) {
+                                    Intent intent = new Intent(appContext, PayFinishActivity.class);
+                                    intent.putExtra("OrderId", getIntent().getIntExtra("OrderId", 0));
+                                    startActivity(intent);
+                                    goToAnimation(1);
+                                } else if (Constants.RET_CODE_PROCESS.equals(retCode)) {
+                                    // TODO 处理中，掉单的情形
+                                    String resulPay = objContent.optString("result_pay");
+                                    if (Constants.RESULT_PAY_PROCESSING
+                                            .equalsIgnoreCase(resulPay)) {
+                                        BaseHelper.showDialog(SelectPayActivity.this, "提示",
+                                                objContent.optString("ret_msg") + "交易状态码："
+                                                        + retCode +" 返回报文:"+strRet,
+                                                android.R.drawable.ic_dialog_alert);
+                                    }
+
+                                } else {
+                                    // TODO 失败
+                                    BaseHelper.showDialog(SelectPayActivity.this, "提示", retMsg
+                                                    + "，交易状态码:" + retCode +" 返回报文:"+strRet,
+                                            android.R.drawable.ic_dialog_alert);
+                                }
+                            }
+                            break;
+                        }
                     }
                 }
                 default:

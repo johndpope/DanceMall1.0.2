@@ -84,7 +84,7 @@
                     android:layout_marginLeft="20px"
                     android:layout_weight="1"
                     android:id="@+id/service_name"
-                    android:text="视频 灯光 音响"
+                    android:text=""
                     android:textColor="@color/gray_9"
                     android:textSize="26px" />
 

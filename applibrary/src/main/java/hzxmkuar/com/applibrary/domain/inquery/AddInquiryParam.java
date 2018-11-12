@@ -31,6 +31,7 @@ public class AddInquiryParam extends BaseParam {
     private int stype;
     private String service_list;
     private String inquiry_bus = "[]";
+    private int pos_city;
 
     @Data
     public static class UseTimeTo {

@@ -53,6 +53,8 @@ public class PayPresenter extends BasePresenter {
                             if (msg.getCode() == 0) {
                                 if (type==1||type==3)
                                 getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
+                                if (type==4)
+                                    getDataSuccess(msg);
                             }
                             else
                                 showMessage(msg.getMsg());
@@ -68,13 +70,17 @@ public class PayPresenter extends BasePresenter {
         param.setOrder_id(activity.getIntent().getIntExtra("OrderId",0));
         param.setHash(getHashString(PayParam.class,param));
         showLoadingDialog();
-        if (type==1) {
+        if (type!=2) {
             ApiClient.create(MerchantApi.class).payBondAli(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                     new MyObserver<MessageTo<PayInfoTo>>(this) {
                         @Override
                         public void onNext(MessageTo<PayInfoTo> msg) {
-                            if (msg.getCode() == 0)
-                                getDataSuccess(msg.getData());
+                            if (msg.getCode() == 0) {
+                                if (type==1||type==3)
+                                    getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
+                                if (type==4)
+                                    getDataSuccess(msg);
+                            }
                             else
                                 showMessage(msg.getMsg());
                         }
@@ -101,13 +107,17 @@ public class PayPresenter extends BasePresenter {
         param.setOrder_id(activity.getIntent().getIntExtra("OrderId",0));
         param.setHash(getHashString(PayParam.class,param));
         showLoadingDialog();
-        if (type==1) {
+        if (type!=2) {
             ApiClient.create(MerchantApi.class).payMerchantTopAli(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                     new MyObserver<MessageTo<PayInfoTo>>(this) {
                         @Override
                         public void onNext(MessageTo<PayInfoTo> msg) {
-                            if (msg.getCode() == 0)
-                                getDataSuccess(msg.getData());
+                            if (msg.getCode() == 0) {
+                                if (type==1||type==3)
+                                    getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
+                                if (type==4)
+                                    getDataSuccess(msg);
+                            }
                             else
                                 showMessage(msg.getMsg());
                         }
@@ -134,13 +144,17 @@ public class PayPresenter extends BasePresenter {
         param.setOrder_id(activity.getIntent().getIntExtra("OrderId",0));
         param.setHash(getHashString(PayParam.class,param));
         showLoadingDialog();
-        if (type==1) {
+        if (type!=2) {
             ApiClient.create(MerchantApi.class).payInquiryTopAli(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                     new MyObserver<MessageTo<PayInfoTo>>(this) {
                         @Override
                         public void onNext(MessageTo<PayInfoTo> msg) {
-                            if (msg.getCode() == 0)
-                                getDataSuccess(msg.getData());
+                            if (msg.getCode() == 0) {
+                                if (type==1||type==3)
+                                    getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
+                                if (type==4)
+                                    getDataSuccess(msg);
+                            }
                             else
                                 showMessage(msg.getMsg());
                         }
@@ -172,8 +186,12 @@ public class PayPresenter extends BasePresenter {
                     new MyObserver<MessageTo>(this) {
                         @Override
                         public void onNext(MessageTo msg) {
-                            if (msg.getCode() == 0)
-                                getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
+                            if (msg.getCode() == 0) {
+                                if (type==1||type==3)
+                                    getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PayInfoTo.class));
+                                if (type==4)
+                                    getDataSuccess(msg);
+                            }
                             else
                                 showMessage(msg.getMsg());
                         }

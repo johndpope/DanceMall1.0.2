@@ -1,5 +1,6 @@
 package com.hyphenate.easeui.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ClipboardManager;
@@ -63,6 +64,7 @@ import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.PathUtil;
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import java.io.File;
 import java.util.List;
@@ -145,6 +147,7 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState, boolean roaming) {
         isRoaming = roaming;
+
         return inflater.inflate(R.layout.ease_fragment_chat, container, false);
     }
 
@@ -796,10 +799,25 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
             }
             switch (itemId) {
             case ITEM_TAKE_PICTURE:
-                selectPicFromCamera();
+                RxPermissions  rxPermissions = new RxPermissions(getActivity());
+                rxPermissions.request(Manifest.permission.CAMERA).subscribe(grant -> {
+                    if (grant)
+                        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE).subscribe(grant2 -> {
+                            selectPicFromCamera();
+                        });
+
+                });
+
+
                 break;
             case ITEM_PICTURE:
-                selectPicFromLocal();
+                RxPermissions  rxPermissions2 = new RxPermissions(getActivity());
+                rxPermissions2.request(Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(grant -> {
+                    if (grant) {
+                        selectPicFromLocal();
+                    }
+                });
+
                 break;
             case ITEM_LOCATION:
                 startActivityForResult(new Intent(getActivity(), EaseBaiduMapActivity.class), REQUEST_CODE_MAP);
@@ -1019,6 +1037,7 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
      * capture new image
      */
     protected void selectPicFromCamera() {
+
         if (!EaseCommonUtils.isSdcardExist()) {
             Toast.makeText(getActivity(), R.string.sd_card_does_not_exist, Toast.LENGTH_SHORT).show();
             return;

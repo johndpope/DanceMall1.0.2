@@ -66,7 +66,6 @@ public class ReceiverCouponAdapter extends BaseAdapter<SelectCouponTo.ListsBean,
         binding.useTime.setText(mode.getUse_times());
         binding.money.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
         binding.moneySymbol.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
-        binding.couponName.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
         binding.receiver.setOnClickListener(view -> {
             if (listener!=null)
                 listener.receiverClick(mode,position);

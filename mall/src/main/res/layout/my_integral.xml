@@ -93,13 +93,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="已完成"
+            android:visibility="gone"
             android:id="@+id/finish_send"
             android:textColor="@color/gray_b"
             android:textSize="28px" />
     </com.zhy.autolayout.AutoLinearLayout>
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="187.5px"
+        android:layout_width="240px"
         android:layout_height="4px"
         android:id="@+id/move_line"
         >

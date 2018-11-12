@@ -29,8 +29,7 @@ import butterknife.OnClick;
 public class MyMerchantOrderActivity extends BaseActivity {
     @BindView(R.id.all)
     TextView all;
-    @BindView(R.id.waite_send)
-    TextView waiteSend;
+
     @BindView(R.id.already_send)
     TextView alreadySend;
     @BindView(R.id.finish_send)
@@ -66,17 +65,16 @@ public class MyMerchantOrderActivity extends BaseActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                moveLine.setX(getScreenWidth() / 6 * position + positionOffsetPixels / 6);
+                moveLine.setX(getScreenWidth() / 5 * position + positionOffsetPixels / 5);
             }
 
             @Override
             public void onPageSelected(int position) {
                 all.setTextColor(position == 0 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
-                waiteSend.setTextColor(position == 1 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
-                alreadySend.setTextColor(position == 2 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
-                finishSend.setTextColor(position == 3 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
-                waiteEvaluate.setTextColor(position == 4 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
-                waiteFinish.setTextColor(position == 5 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
+                alreadySend.setTextColor(position == 1 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
+                finishSend.setTextColor(position == 2 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
+                waiteEvaluate.setTextColor(position == 3 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
+                waiteFinish.setTextColor(position == 4 ? Color.parseColor("#FF961E") : Color.parseColor("#bbbbbb"));
             }
 
             @Override
@@ -88,26 +86,24 @@ public class MyMerchantOrderActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send,R.id.waite_evaluate,R.id.waite_finish})
+    @OnClick({R.id.all,R.id.already_send, R.id.finish_send,R.id.waite_evaluate,R.id.waite_finish})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.all:
                 viewPager.setCurrentItem(0);
                 break;
-            case R.id.waite_send:
+
+            case R.id.already_send:
                 viewPager.setCurrentItem(1);
                 break;
-            case R.id.already_send:
+            case R.id.finish_send:
                 viewPager.setCurrentItem(2);
                 break;
-            case R.id.finish_send:
+            case R.id.waite_evaluate:
                 viewPager.setCurrentItem(3);
                 break;
-            case R.id.waite_evaluate:
-                viewPager.setCurrentItem(4);
-                break;
             case R.id.waite_finish:
-                viewPager.setCurrentItem(5);
+                viewPager.setCurrentItem(4);
                 break;
         }
     }

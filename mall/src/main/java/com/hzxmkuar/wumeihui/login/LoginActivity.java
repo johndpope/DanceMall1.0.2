@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.hzxmkuar.wumeihui.R;
+import com.hzxmkuar.wumeihui.base.ActivityManager;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Event;
 import com.hzxmkuar.wumeihui.base.WebActivity;
@@ -60,6 +61,7 @@ public class LoginActivity extends BaseActivity {
         setView();
         presenter = new LoginPresenter(this);
         EventBus.getDefault().register(this);
+        ActivityManager.loginActivity=this;
     }
 
     private void setView() {
@@ -145,6 +147,7 @@ public class LoginActivity extends BaseActivity {
     protected void submitDataSuccess(Object data) {
        WechatLoginTo loginTo=new Gson().fromJson(JSON.toJSONString(data),WechatLoginTo.class);
         Intent intent = new Intent(appContext, MainActivity.class);
+        intent.putExtra("IsSplash",true);
         userInfoHelp.saveUserLogin(true);
         UserInfoTo userInfoTo = new UserInfoTo();
         userInfoTo.setUid(loginTo.getUid());
@@ -156,25 +159,25 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void weChatLoginSuccess(WechatLoginTo data) {
-        WechatLoginTo userInfoTo = data;
-        if (userInfoTo.getUid() == 0) {
-            Intent intent = new Intent(appContext, BindPhoneActivity.class);
-            intent.putExtra("Oauth",userInfoTo.getOauth_id());
-            startActivity(intent);
-            finish();
-
-        }else {
-            UserInfoTo userInfo=new UserInfoTo();
-            userInfo.setUid(userInfoTo.getUid());
-            userInfo.setHashid(userInfoTo.getHashid());
-            userInfoHelp.saveUserInfo(userInfo);
-
-                Intent intent=new Intent(appContext,MainActivity.class);
-                startActivity(intent);
-
-
-            goToAnimation(1);
-        }
+//        WechatLoginTo userInfoTo = data;
+//        if (userInfoTo.getUid() == 0) {
+//            Intent intent = new Intent(appContext, BindPhoneActivity.class);
+//            intent.putExtra("Oauth",userInfoTo.getOauth_id());
+//            startActivity(intent);
+//
+//
+//        }else {
+//            UserInfoTo userInfo=new UserInfoTo();
+//            userInfo.setUid(userInfoTo.getUid());
+//            userInfo.setHashid(userInfoTo.getHashid());
+//            userInfoHelp.saveUserInfo(userInfo);
+//
+//                Intent intent=new Intent(appContext,MainActivity.class);
+//                startActivity(intent);
+//
+//
+//            goToAnimation(1);
+//        }
     }
 
     @Override

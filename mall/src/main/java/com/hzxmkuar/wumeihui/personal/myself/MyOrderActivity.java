@@ -93,7 +93,7 @@ public class MyOrderActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send, R.id.waite_evaluate,R.id.message})
+    @OnClick({R.id.all, R.id.waite_send,R.id.waite_confirm, R.id.already_send, R.id.finish_send, R.id.waite_evaluate,R.id.message})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.all:
@@ -102,14 +102,17 @@ public class MyOrderActivity extends BaseActivity {
             case R.id.waite_send:
                 viewPager.setCurrentItem(1);
                 break;
-            case R.id.already_send:
+            case R.id.waite_confirm:
                 viewPager.setCurrentItem(2);
                 break;
-            case R.id.finish_send:
+            case R.id.already_send:
                 viewPager.setCurrentItem(3);
                 break;
-            case R.id.waite_evaluate:
+            case R.id.finish_send:
                 viewPager.setCurrentItem(4);
+                break;
+            case R.id.waite_evaluate:
+                viewPager.setCurrentItem(5);
                 break;
             case R.id.message:
                 Intent intent=new Intent(appContext, MainActivity.class);

@@ -49,14 +49,18 @@ public class MessageFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.message_fragment_layout)
     ViewPager messageFragmentLayout;
+    @BindView(R.id.finish_layout)
+    AutoRelativeLayout finishLayout;
+    @BindView(R.id.delete_layout)
+    AutoRelativeLayout deleteLayout;
     private SystemMessageFragment systemMessageFragment;
     private boolean isViewCreate;
     private boolean isUiVisible;
     private FragmentTransaction transaction;
     private BaseActivity baseActivity;
     private EaseConversationListFragment chatFragment;
-    private boolean firstLoad=true;
-    private List<Fragment> fragmentList=new ArrayList<>();
+    private boolean firstLoad = true;
+    private List<Fragment> fragmentList = new ArrayList<>();
 
     public MessageFragment(BaseActivity activity) {
         this.baseActivity = activity;
@@ -70,11 +74,8 @@ public class MessageFragment extends BaseFragment {
         userInfoTo = userInfoHelp.getUserInfo();
 
 
-
-
         return mView;
     }
-
 
 
     @Override
@@ -117,7 +118,6 @@ public class MessageFragment extends BaseFragment {
         chatFragment.setArguments(args);
 
 
-
         chatFragment.setConversationListItemClickListener(conversation -> {
             Intent intent = new Intent(appContext, ChatActivity.class);
             intent.putExtra("UserId", conversation.conversationId());
@@ -146,14 +146,15 @@ public class MessageFragment extends BaseFragment {
         messageFragmentLayout.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-               moveLine.setX((float) (position*getScreenWidth()*0.5+positionOffsetPixels*0.5));
+                moveLine.setX((float) (position * getScreenWidth() * 0.5 + positionOffsetPixels * 0.5));
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                systemMessage.setTextColor(position==0?Color.parseColor("#000000"):Color.parseColor("#999999"));
-                chatMessage.setTextColor(position==1?Color.parseColor("#000000"):Color.parseColor("#999999"));
+                systemMessage.setTextColor(position == 0 ? Color.parseColor("#000000") : Color.parseColor("#999999"));
+                chatMessage.setTextColor(position == 1 ? Color.parseColor("#000000") : Color.parseColor("#999999"));
+                deleteLayout.setVisibility(position==0?View.VISIBLE:View.GONE);
             }
 
             @Override
@@ -162,7 +163,7 @@ public class MessageFragment extends BaseFragment {
             }
         });
 
-     messageFragmentLayout.setCurrentItem(getActivity().getIntent().getIntExtra("MessageIndex",0));
+        messageFragmentLayout.setCurrentItem(getActivity().getIntent().getIntExtra("MessageIndex", 0));
 
     }
 
@@ -172,11 +173,11 @@ public class MessageFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.system_message, R.id.chat_message})
+    @OnClick({R.id.system_message, R.id.chat_message,R.id.delete_layout,R.id.finish_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.system_message:
-               messageFragmentLayout.setCurrentItem(0);
+                messageFragmentLayout.setCurrentItem(0);
 
                 moveLine.setX(0);
                 break;
@@ -184,6 +185,14 @@ public class MessageFragment extends BaseFragment {
                 messageFragmentLayout.setCurrentItem(1);
 
                 moveLine.setX(350 * getScreenWidth() / 750);
+                break;
+            case R.id.delete_layout:
+                deleteLayout.setSelected(!deleteLayout.isSelected());
+                systemMessageFragment.setDelete(deleteLayout.isSelected());
+                finishLayout.setVisibility(deleteLayout.isSelected()?View.VISIBLE:View.GONE);
+                break;
+            case R.id.finish_layout:
+                systemMessageFragment.setFinishDelete(deleteLayout.isSelected());
                 break;
         }
     }

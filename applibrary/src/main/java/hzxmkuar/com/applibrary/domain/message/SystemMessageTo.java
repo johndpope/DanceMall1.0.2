@@ -37,6 +37,7 @@ public class SystemMessageTo {
         private String msg_title;
         private String msg_desc;
         private String dateline;
+      private boolean select;
 
     }
 }

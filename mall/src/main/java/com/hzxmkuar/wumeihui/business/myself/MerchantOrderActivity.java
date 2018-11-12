@@ -197,35 +197,12 @@ public class MerchantOrderActivity extends BaseActivity {
                     startActivity(intent);
                     goToAnimation(1);
                 }
-//                    getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
-//                        @Override
-//                        public void accept(String permission) {
-//                            Intent intent = new Intent(Intent.ACTION_CALL);
-//                            Uri data = Uri.parse("tel:" + mode.getContact_telphone());
-//                            intent.setData(data);
-//                            startActivity(intent);
-//                        }
-//
-//                        @Override
-//                        public void refuse(String permission) {
-//
-//                        }
-//                    });
+
 
             });
         }
 
-        if (mode.getPrice_detail().getDeposit_payment() != null)
-            lastPayTime.setText(mode.getPrice_detail().getDeposit_payment().getLast_amount_paytime());
-        refundLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_refund()==0?View.GONE:View.VISIBLE);
-        refundText.setText("违约金-"+mode.getPrice_detail().getRefund_data().getRefund_type());
-        refundMoney.setText("￥"+mode.getPrice_detail().getRefund_data().getRefund_amount());
-        breachLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_liquidated_damages()==0?View.GONE:View.VISIBLE);
-        breachText.setText("已退款-"+mode.getPrice_detail().getRefund_data().getLiquidated_damages_type());
-        breachMoney.setText("￥"+mode.getPrice_detail().getRefund_data().getLiquidated_damages());
-        if (mode.getPayment_mode()==2){
-            lastPayTime.setVisibility(mode.getPrice_detail().getDeposit_payment().getLast_amount_status()==1?View.GONE:View.VISIBLE);
-        }
+
 
     }
 
@@ -250,11 +227,22 @@ public class MerchantOrderActivity extends BaseActivity {
             couponFee.setText(mode.getCoupon_info().getCoupon_amount());
         }
 
-        bondPayLayout.setVisibility(mode.getButton_list().getZfdj_btn() == 1 ? View.VISIBLE : View.GONE);
+        bondPayLayout.setVisibility(mode.getPayment_mode() == 1 ? View.VISIBLE : View.GONE);
         earnest.setText("-" + mode.getPrice_detail().getDeposit_payment().getPay_amount());
-        payText.setText(mode.getButton_list().getZfdj_btn() == 1 ? "后续需支付" : "需支付");
-        tailMoney.setText("￥" + (mode.getButton_list().getZfdj_btn() == 1 ? mode.getPrice_detail().getDeposit_payment().getLast_amount() : mode.getPrice_detail().getFull_payment().getPay_amount()));
+        payText.setText(mode.getPayment_mode() == 1 ? "后续需支付" : "需支付");
+        tailMoney.setText("￥" + (mode.getPayment_mode() == 1 ? mode.getPrice_detail().getDeposit_payment().getLast_amount() : mode.getPrice_detail().getFull_payment().getPay_amount()));
 
+        if (mode.getPrice_detail().getDeposit_payment() != null)
+            lastPayTime.setText(mode.getPrice_detail().getDeposit_payment().getLast_amount_paytime());
+        breachLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_refund()==0?View.GONE:View.VISIBLE);
+        breachText.setText("已退款-"+mode.getPrice_detail().getRefund_data().getRefund_type());
+        breachMoney.setText("￥"+mode.getPrice_detail().getRefund_data().getRefund_amount());
+        refundLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_liquidated_damages()==0?View.GONE:View.VISIBLE);
+        refundText.setText("违约金-"+mode.getPrice_detail().getRefund_data().getLiquidated_damages_type());
+        refundMoney.setText("￥"+mode.getPrice_detail().getRefund_data().getLiquidated_damages());
+        if (mode.getPayment_mode()==2){
+            lastPayTime.setVisibility(mode.getPrice_detail().getDeposit_payment().getLast_amount_status()==1?View.GONE:View.VISIBLE);
+        }
     }
 
     @OnClick({R.id.chat, R.id.phone, R.id.select_view, R.id.service_agreement, R.id.remark_layout, R.id.service_layout})
@@ -308,6 +296,12 @@ public class MerchantOrderActivity extends BaseActivity {
                 intent = new Intent(appContext, ServiceDetailActivity.class);
                 intent.putExtra("Id", mode.getOrder_id());
                 startActivity(intent);
+                break;
+            case R.id.insurance_layout:
+                intent = new Intent(appContext, WebActivity.class);
+                intent.putExtra("Type", 9);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
         }
     }

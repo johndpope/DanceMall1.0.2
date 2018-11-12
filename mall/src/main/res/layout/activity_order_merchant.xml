@@ -427,7 +427,6 @@
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30px"
                     android:layout_marginTop="18px">
 
                     <TextView
@@ -512,6 +511,12 @@
                         android:textSize="28px" />
                 </com.zhy.autolayout.AutoRelativeLayout>
             </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:background="@color/white"
+                />
 
             <View
                 android:layout_width="match_parent"

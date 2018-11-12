@@ -1,5 +1,6 @@
 package com.hzxmkuar.wumeihui.base;
 
+import com.hzxmkuar.wumeihui.login.LoginActivity;
 import com.hzxmkuar.wumeihui.personal.MainActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.SearchDemandActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.SearchDetailActivity;
@@ -25,4 +26,5 @@ public class ActivityManager {
     public static SearchDemandActivity searchDemandActivity;
     public static SearchDetailActivity searchDetailActivity;
     public static IntegrationDetailActivity integrationDetailActivity;
+    public static LoginActivity loginActivity;
 }

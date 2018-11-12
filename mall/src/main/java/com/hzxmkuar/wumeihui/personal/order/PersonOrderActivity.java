@@ -186,19 +186,20 @@ public class PersonOrderActivity extends BaseActivity {
         earnestText.setText("定金-" + mode.getPrice_detail().getDeposit_payment().getPay_amount_type());
         lastPayTime.setVisibility(mode.getPayment_mode() == 2 ? View.VISIBLE : View.GONE);
         if (mode.getPrice_detail().getDeposit_payment() != null)
-            lastPayTime.setText(mode.getPrice_detail().getDeposit_payment().getLast_amount_paytime());
-       refundLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_refund()==0?View.GONE:View.VISIBLE);
-       refundText.setText("违约金-"+mode.getPrice_detail().getRefund_data().getRefund_type());
-       refundMoney.setText("￥"+mode.getPrice_detail().getRefund_data().getRefund_amount());
-        breachLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_liquidated_damages()==0?View.GONE:View.VISIBLE);
-        breachText.setText("已退款-"+mode.getPrice_detail().getRefund_data().getLiquidated_damages_type());
-        breachMoney.setText("￥"+mode.getPrice_detail().getRefund_data().getLiquidated_damages());
-        if (mode.getPayment_mode()==1){
-            payText.setText(mode.getPrice_detail().getFull_payment().getPay_amount_status()==0?"需支付":"已支付");
+            lastPayTime.setText("最晚支付时间" + mode.getPrice_detail().getDeposit_payment().getLast_amount_paytime());
+        breachLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_refund() == 0 ? View.GONE : View.VISIBLE);
+        breachText.setText("已退款-" + mode.getPrice_detail().getRefund_data().getRefund_type());
+        breachMoney.setText("￥" + mode.getPrice_detail().getRefund_data().getRefund_amount());
+        refundLayout.setVisibility(mode.getPrice_detail().getRefund_data().getIs_liquidated_damages() == 0 ? View.GONE : View.VISIBLE);
+        refundText.setText("违约金-" + mode.getPrice_detail().getRefund_data().getLiquidated_damages_type());
+        refundMoney.setText("￥" + mode.getPrice_detail().getRefund_data().getLiquidated_damages());
+        if (mode.getPayment_mode() == 1) {
+            payText.setText(mode.getPrice_detail().getFull_payment().getPay_amount_status() == 0 ? "需支付" : "已支付");
 
-        }else {
-       payText.setText(mode.getPrice_detail().getDeposit_payment().getLast_amount_status()==0?"尾款":"尾款-"+mode.getPrice_detail().getDeposit_payment().getLast_amount());
-            lastPayTime.setVisibility(mode.getPrice_detail().getDeposit_payment().getLast_amount_status()==1?View.GONE:View.VISIBLE);
+        } else {
+            payText.setText(mode.getPrice_detail().getDeposit_payment().getLast_amount_status() == 0 ? "尾款" : "尾款-" + mode.getPrice_detail().getDeposit_payment().getLast_amount_type());
+            lastPayTime.setVisibility(mode.getPrice_detail().getDeposit_payment().getLast_amount_status() == 1 ? View.GONE : View.VISIBLE);
+            tailMoney.setText("￥" + mode.getPrice_detail().getDeposit_payment().getLast_amount());
         }
     }
 

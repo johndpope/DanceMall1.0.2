@@ -2,6 +2,7 @@ package com.hzxmkuar.wumeihui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.webkit.WebView;
 
 import com.hzxmkuar.wumeihui.MainApp;
@@ -25,6 +26,6 @@ public class WebActivity extends BaseActivity {
         setContentView(R.layout.activity_web);
         ButterKnife.bind(this);
         setTitleName(getIntent().getStringExtra("Title"));
-        webView.loadUrl(MainApp.webBaseUrl + getIntent().getIntExtra("Type", 0));
+        webView.loadUrl(TextUtils.isEmpty(getIntent().getStringExtra("BannerUrl"))?MainApp.webBaseUrl + getIntent().getIntExtra("Type", 0):getIntent().getStringExtra("BannerUrl"));
     }
 }

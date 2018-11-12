@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.hzxmkuar.wumeihui.R;
@@ -22,10 +23,14 @@ import hzxmkuar.com.applibrary.main.DemandSearchTo;
  **/
 
 public class SystemMessageAdapter extends BaseAdapter<SystemMessageTo.ListsBean, SystemMessageItemBinding> {
-    public SystemMessageAdapter(Activity context) {
+   private boolean canVisible;
+   public SystemMessageAdapter(Activity context) {
         super(context);
     }
 
+    public void setDelete(boolean canVisible){
+        this.canVisible=canVisible;
+    }
 
     @NonNull
     @Override
@@ -49,6 +54,12 @@ public class SystemMessageAdapter extends BaseAdapter<SystemMessageTo.ListsBean,
         binding.messageContent.setText(mode.getMsg_desc());
         binding.time.setText(mode.getDateline());
         binding.title.setText(mode.getMsg_title());
+        binding.messageSelect.setBackgroundResource(mode.isSelect()?R.drawable.system_message_select:R.drawable.system_message_un_select);
+        binding.messageSelect.setOnClickListener(view -> {
+            mode.setSelect(!mode.isSelect());
+            binding.messageSelect.setBackgroundResource(mode.isSelect()?R.drawable.system_message_select:R.drawable.system_message_un_select);
+        });
+        binding.messageSelect.setVisibility(canVisible? View.VISIBLE:View.GONE);
     }
 
 

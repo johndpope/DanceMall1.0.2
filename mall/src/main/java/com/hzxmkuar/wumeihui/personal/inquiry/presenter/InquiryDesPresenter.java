@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.BasePresenter;
 import com.hzxmkuar.wumeihui.base.MyObserver;
+import com.hzxmkuar.wumeihui.base.util.SpUtil;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.InquiryApi;
@@ -56,6 +57,7 @@ public class InquiryDesPresenter extends BasePresenter {
         param.setService_address(TextUtils.isEmpty(address)?"暂无地址":address);
         param.setInquiry_bus(inquiryBus);
         param.setService_list(serviceJson);
+        param.setPos_city(SpUtil.getInt("LocateCityId"));
         param.setHash(getHashString(AddInquiryParam.class, param));
 
         System.out.println(JSON.toJSON(param) + "param");

@@ -100,7 +100,7 @@ public class PersonOrderAdapter extends BaseAdapter<MyMerchantOrderTo.ListsBean,
         }
         if ("待服务".equals(mode.getStatus_txt())){
             binding.confirm.setVisibility(View.VISIBLE);
-            binding.cancel.setVisibility(View.GONE);
+            binding.cancel.setVisibility(View.VISIBLE);
             binding.confirm.setText("联系商家");
             mode.setTitle("确认联系商家");
             type=4;

@@ -145,8 +145,10 @@ public class MerchantDetailActivity extends BaseActivity {
                });
                 childView.addView(serviceView);
             }
+            if (i<3)
             serviceName.setText(serviceName.getText() + serviceList.get(i).getCate_name() + " ");
             merchantLayout.addView(mView);
+
         }
     }
 

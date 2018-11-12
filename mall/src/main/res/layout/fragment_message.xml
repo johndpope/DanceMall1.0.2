@@ -34,6 +34,44 @@
             android:text="消息中心"
             android:textColor="@color/black"
             android:textSize="36px" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/finish_layout"
+            android:visibility="gone"
+      >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="25px"
+                android:layout_marginRight="25px"
+
+                android:textColor="@color/black_3"
+                android:text="@string/finish"
+                android:textSize="28px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/delete_layout"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="25px"
+                android:layout_marginRight="25px"
+
+                android:textColor="@color/appColor"
+                android:text="@string/delete"
+                android:textSize="28px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
