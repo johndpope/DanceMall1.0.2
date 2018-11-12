@@ -27,7 +27,7 @@ public class SystemMessageFragment extends BaseFragment {
     LRecyclerView recycleView;
     Unbinder unbinder;
     private SystemMessageAdapter adapter;
-    private SystemMessagePresenter presenter;
+    public SystemMessagePresenter presenter;
 
     @Nullable
     @Override
@@ -48,11 +48,16 @@ public class SystemMessageFragment extends BaseFragment {
     }
 
     public void setDelete(boolean selected) {
-        adapter.setDelete(selected);
-        adapter.notifyDataSetChanged();
+        if (selected) {
+            adapter.setDelete(true);
+            adapter.notifyDataSetChanged();
+        }else
+            presenter.setFinishDelete(adapter);
     }
 
     public void setFinishDelete(boolean selected) {
-        presenter.setFinishDelete();
+        adapter.setDelete(false);
+        adapter.notifyDataSetChanged();
+
     }
 }

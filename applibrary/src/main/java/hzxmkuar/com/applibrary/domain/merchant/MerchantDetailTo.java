@@ -48,6 +48,7 @@ public class MerchantDetailTo implements Serializable{
         private int order_num;
         private String finaladdress;
         private String telephone;
+        private String services;
 
     }
 

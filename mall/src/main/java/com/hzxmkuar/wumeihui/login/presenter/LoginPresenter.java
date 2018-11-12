@@ -75,7 +75,7 @@ public class LoginPresenter extends BasePresenter {
         param.setMobile(phone);
         param.setJpush_id("Jpush");
         param.setInvite_code("android");
-        param.setHash(getHashString(LoginParam.class, param));
+        param.setHash(getHashStringNoUser(LoginParam.class, param));
         showLoadingDialog();
         ApiClient.create(LoginApi.class).login(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
@@ -99,11 +99,11 @@ public class LoginPresenter extends BasePresenter {
 
         WechatLoginParam param = new WechatLoginParam();
         param.setNickname(wechatUserInfoTo.getNickname());
-        param.setSex(wechatUserInfoTo.getSex()==0?1:wechatUserInfoTo.getSex());
+        param.setSex(wechatUserInfoTo.getSex());
         param.setOpenid(wechatUserInfoTo.getOpenid());
         param.setHeadimgurl(wechatUserInfoTo.getHeadimgurl());
         param.setJpush_id("Jpush");
-        param.setHash(getHashString(WechatLoginParam.class, param));
+        param.setHash(getHashStringNoUser(WechatLoginParam.class, param));
 
         ApiClient.create(LoginApi.class).wechatLogin(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<WechatLoginTo>>(this) {

@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,8 @@ public class MessageFragment extends BaseFragment {
     AutoRelativeLayout finishLayout;
     @BindView(R.id.delete_layout)
     AutoRelativeLayout deleteLayout;
+    @BindView(R.id.delete_text)
+    TextView deleteText;
     private SystemMessageFragment systemMessageFragment;
     private boolean isViewCreate;
     private boolean isUiVisible;
@@ -154,7 +157,7 @@ public class MessageFragment extends BaseFragment {
             public void onPageSelected(int position) {
                 systemMessage.setTextColor(position == 0 ? Color.parseColor("#000000") : Color.parseColor("#999999"));
                 chatMessage.setTextColor(position == 1 ? Color.parseColor("#000000") : Color.parseColor("#999999"));
-                deleteLayout.setVisibility(position==0?View.VISIBLE:View.GONE);
+                deleteLayout.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
             }
 
             @Override
@@ -173,7 +176,7 @@ public class MessageFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.system_message, R.id.chat_message,R.id.delete_layout,R.id.finish_layout})
+    @OnClick({R.id.system_message, R.id.chat_message, R.id.delete_layout, R.id.finish_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.system_message:
@@ -187,9 +190,16 @@ public class MessageFragment extends BaseFragment {
                 moveLine.setX(350 * getScreenWidth() / 750);
                 break;
             case R.id.delete_layout:
+                if (deleteLayout.isSelected()) {
+                    if (TextUtils.isEmpty(systemMessageFragment.presenter.getSelectId())) {
+                        showMessage("请选择要删除的消息");
+                        return;
+                    }
+                }
                 deleteLayout.setSelected(!deleteLayout.isSelected());
                 systemMessageFragment.setDelete(deleteLayout.isSelected());
-                finishLayout.setVisibility(deleteLayout.isSelected()?View.VISIBLE:View.GONE);
+                finishLayout.setVisibility(deleteLayout.isSelected() ? View.VISIBLE : View.GONE);
+                deleteText.setText(deleteLayout.isSelected()?"删除":"选择");
                 break;
             case R.id.finish_layout:
                 systemMessageFragment.setFinishDelete(deleteLayout.isSelected());

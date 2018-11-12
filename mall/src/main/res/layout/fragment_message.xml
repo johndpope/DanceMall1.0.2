@@ -67,9 +67,9 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="25px"
                 android:layout_marginRight="25px"
-
+                android:id="@+id/delete_text"
                 android:textColor="@color/appColor"
-                android:text="@string/delete"
+                android:text="选择"
                 android:textSize="28px" />
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoRelativeLayout>

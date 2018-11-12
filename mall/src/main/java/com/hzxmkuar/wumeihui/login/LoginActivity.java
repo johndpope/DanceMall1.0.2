@@ -15,14 +15,10 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.hzxmkuar.wumeihui.R;
-import com.hzxmkuar.wumeihui.base.ActivityManager;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Event;
 import com.hzxmkuar.wumeihui.base.WebActivity;
-import com.hzxmkuar.wumeihui.base.util.SpUtil;
-import com.hzxmkuar.wumeihui.business.main.MainMerchantActivity;
 import com.hzxmkuar.wumeihui.login.presenter.LoginPresenter;
-
 import com.hzxmkuar.wumeihui.personal.MainActivity;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -50,6 +46,8 @@ public class LoginActivity extends BaseActivity {
     EditText phoneNumber;
     @BindView(R.id.verification_code)
     EditText verificationCode;
+    @BindView(R.id.wechat_bg)
+    View wechatBg;
     private LoginPresenter presenter;
     private ObservableInt countTime = new ObservableInt();
 
@@ -61,7 +59,6 @@ public class LoginActivity extends BaseActivity {
         setView();
         presenter = new LoginPresenter(this);
         EventBus.getDefault().register(this);
-        ActivityManager.loginActivity=this;
     }
 
     private void setView() {
@@ -145,9 +142,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void submitDataSuccess(Object data) {
-       WechatLoginTo loginTo=new Gson().fromJson(JSON.toJSONString(data),WechatLoginTo.class);
+        WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
         Intent intent = new Intent(appContext, MainActivity.class);
-        intent.putExtra("IsSplash",true);
+        intent.putExtra("IsSplash", true);
         userInfoHelp.saveUserLogin(true);
         UserInfoTo userInfoTo = new UserInfoTo();
         userInfoTo.setUid(loginTo.getUid());
@@ -159,25 +156,26 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void weChatLoginSuccess(WechatLoginTo data) {
-//        WechatLoginTo userInfoTo = data;
-//        if (userInfoTo.getUid() == 0) {
-//            Intent intent = new Intent(appContext, BindPhoneActivity.class);
-//            intent.putExtra("Oauth",userInfoTo.getOauth_id());
-//            startActivity(intent);
-//
-//
-//        }else {
-//            UserInfoTo userInfo=new UserInfoTo();
-//            userInfo.setUid(userInfoTo.getUid());
-//            userInfo.setHashid(userInfoTo.getHashid());
-//            userInfoHelp.saveUserInfo(userInfo);
-//
-//                Intent intent=new Intent(appContext,MainActivity.class);
-//                startActivity(intent);
-//
-//
-//            goToAnimation(1);
-//        }
+        WechatLoginTo userInfoTo = data;
+        if (userInfoTo.getUid() == 0) {
+            Intent intent = new Intent(appContext, BindPhoneActivity.class);
+            intent.putExtra("Oauth", userInfoTo.getOauth_id());
+            startActivity(intent);
+
+
+        } else {
+            UserInfoTo userInfo = new UserInfoTo();
+            userInfo.setUid(userInfoTo.getUid());
+            userInfo.setHashid(userInfoTo.getHashid());
+            userInfoHelp.saveUserInfo(userInfo);
+            userInfoHelp.saveUserLogin(true);
+            Intent intent = new Intent(appContext, MainActivity.class);
+            intent.putExtra("IsSplash",true);
+            startActivity(intent);
+
+
+            goToAnimation(1);
+        }
     }
 
     @Override
@@ -187,8 +185,9 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void wechatLoginData(Event<WechatUserInfoTo>event ){
-        if ("WechatLoginSuccess".equals(event.getType())){
+    public void wechatLoginData(Event<WechatUserInfoTo> event) {
+        if ("WechatLoginSuccess".equals(event.getType())) {
+            wechatBg.setVisibility(View.VISIBLE);
             presenter.wechatLogin(event.getData());
         }
     }

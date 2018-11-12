@@ -95,7 +95,7 @@ public class MerchantOrderAdapter extends BaseAdapter<MyMerchantOrderTo.ListsBea
             binding.confirm.setVisibility(View.VISIBLE);
             binding.cancel.setVisibility(View.GONE);
             binding.confirm.setText("联系客户");
-        } else if ("确认完成".equals(mode.getStatus_txt())||"客户确认完成".equals(mode.getStatus_txt())) {
+        } else if ("已取消".equals(mode.getStatus_txt())||"确认完成".equals(mode.getStatus_txt())||"客户确认完成".equals(mode.getStatus_txt())) {
             binding.confirm.setVisibility(View.GONE);
             binding.cancel.setVisibility(View.GONE);
 

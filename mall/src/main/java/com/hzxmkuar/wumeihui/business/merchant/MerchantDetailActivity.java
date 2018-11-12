@@ -92,6 +92,7 @@ public class MerchantDetailActivity extends BaseActivity {
         shopType.setText(detailTo.getBus_info().getStype() );
         star.setText("综合评分 " + detailTo.getBus_info().getRatings());
         dealNumber.setText("成交 " + detailTo.getBus_info().getOrder_num() + "笔");
+        serviceName.setText(detailTo.getBus_info().getServices());
         address.setText(detailTo.getBus_info().getFinaladdress());
         displayImage(shopImage, detailTo.getBus_info().getShop_banner());
         collectIcon.setBackgroundResource(detailTo.getIs_collected()==1?R.drawable.merchant_collection:R.drawable.collection_icon);
@@ -145,8 +146,6 @@ public class MerchantDetailActivity extends BaseActivity {
                });
                 childView.addView(serviceView);
             }
-            if (i<3)
-            serviceName.setText(serviceName.getText() + serviceList.get(i).getCate_name() + " ");
             merchantLayout.addView(mView);
 
         }

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.hzxmkuar.wumeihui.base.BaseFragment;
 import com.hzxmkuar.wumeihui.base.BasePresenter;
 import com.hzxmkuar.wumeihui.base.MyObserver;
+import com.hzxmkuar.wumeihui.message.adapter.SystemMessageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import rx.schedulers.Schedulers;
 
 public class SystemMessagePresenter extends BasePresenter {
     public List<SystemMessageTo.ListsBean> messageList = new ArrayList<>();
-    private String selectId;
+    public String selectId;
 
     public SystemMessagePresenter(BaseFragment fragment) {
         initContext(fragment);
@@ -65,16 +66,10 @@ public class SystemMessagePresenter extends BasePresenter {
         getSystemMessage();
     }
 
-    public void setFinishDelete() {
-        selectId = "";
-        IdsParam param = new IdsParam();
-        Observable.from(messageList).filter(SystemMessageTo.ListsBean::isSelect).subscribe(listsBean -> selectId = selectId + listsBean.getId() + ",");
+    public void setFinishDelete(SystemMessageAdapter adapter) {
 
-        if (TextUtils.isEmpty(selectId)) {
-            showMessage("请选择要删除的消息");
-            return;
-        }
-        param.setIds(selectId.substring(0, selectId.length() - 1));
+        IdsParam param = new IdsParam();
+        param.setIds(getSelectId());
         param.setHash(getHashString(IdsParam.class,param));
         showLoadingDialog();
         ApiClient.create(MessageApi.class).deleteMessage(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
@@ -83,11 +78,20 @@ public class SystemMessagePresenter extends BasePresenter {
                     public void onNext(MessageTo msg) {
                         if (msg.getCode()==0){
                             recyclePageIndex=1;
+                            adapter.setDelete(false);
                             getSystemMessage();
                         }else
                             showMessage(msg.getMsg());
                     }
                 }
         );
+    }
+
+    public String getSelectId(){
+        selectId = "";
+        Observable.from(messageList).filter(SystemMessageTo.ListsBean::isSelect).subscribe(listsBean -> selectId = selectId + listsBean.getId() + ",");
+       if (selectId.length()==0)
+           return "";
+        return selectId.substring(0, selectId.length() - 1);
     }
 }

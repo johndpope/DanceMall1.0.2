@@ -158,6 +158,12 @@ public class MerchantOrderActivity extends BaseActivity {
 
         }
 
+        if ("已取消".equals(mode.getStatus_txt())) {
+            confirm.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
+
+
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -216,6 +222,7 @@ public class MerchantOrderActivity extends BaseActivity {
         useTime.setText(mode.getUse_time());
         contact.setText(mode.getContact_name() + "  " + mode.getContact_telphone());
         imageLayout.removeAllViews();
+
         if (mode.getService_list() != null) {
             List<String> imageList = new ArrayList<>();
             Observable.from(mode.getService_list()).subscribe(serviceListBean -> imageList.add(serviceListBean.getService_img()));
@@ -227,10 +234,10 @@ public class MerchantOrderActivity extends BaseActivity {
             couponFee.setText(mode.getCoupon_info().getCoupon_amount());
         }
 
-        bondPayLayout.setVisibility(mode.getPayment_mode() == 1 ? View.VISIBLE : View.GONE);
+        bondPayLayout.setVisibility(mode.getPayment_mode() == 2 ? View.VISIBLE : View.GONE);
         earnest.setText("-" + mode.getPrice_detail().getDeposit_payment().getPay_amount());
-        payText.setText(mode.getPayment_mode() == 1 ? "后续需支付" : "需支付");
-        tailMoney.setText("￥" + (mode.getPayment_mode() == 1 ? mode.getPrice_detail().getDeposit_payment().getLast_amount() : mode.getPrice_detail().getFull_payment().getPay_amount()));
+        payText.setText(mode.getPayment_mode() == 2 ? "后续需支付" : "需支付");
+        tailMoney.setText("￥" + (mode.getPayment_mode() == 2 ? mode.getPrice_detail().getDeposit_payment().getLast_amount() : mode.getPrice_detail().getFull_payment().getPay_amount()));
 
         if (mode.getPrice_detail().getDeposit_payment() != null)
             lastPayTime.setText(mode.getPrice_detail().getDeposit_payment().getLast_amount_paytime());
@@ -245,7 +252,7 @@ public class MerchantOrderActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.chat, R.id.phone, R.id.select_view, R.id.service_agreement, R.id.remark_layout, R.id.service_layout})
+    @OnClick({R.id.chat, R.id.phone, R.id.select_view, R.id.service_agreement, R.id.remark_layout, R.id.service_layout,R.id.insurance_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.phone:

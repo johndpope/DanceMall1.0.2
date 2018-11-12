@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:app="http://schemas.android.com/tools"
+    xmlns:rtv="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/tools"
     xmlns:rtv="http://schemas.android.com/apk/res-auto"
@@ -202,5 +209,13 @@
             app:layout_auto_basewidth="height" />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/wechat_bg"
+        android:visibility="gone"
+        android:background="@drawable/wechat_loading_bg"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
 
 
