@@ -53,7 +53,7 @@ public class MyCouponAdapter extends BaseAdapter<MyCouponTo.CouponTo, CouponItem
         binding.money.setText(payMoney.endsWith(".")?payMoney.substring(0,2):payMoney);
         binding.couponName.setText(mode.getCate_name());
         binding.couponDes.setText(mode.getCate_desc());
-        binding.useTime.setText(DateUtil.longToString(mode.getStart_time(),DateUtil.mDateFormatString)+"-"+DateUtil.longToString(mode.getEnd_time(),DateUtil.mDateFormatString));
+        binding.useTime.setText(DateUtil.longToString(mode.getStart_time()*1000,DateUtil.mDateFormatString)+"-"+DateUtil.longToString(mode.getEnd_time()*1000,DateUtil.mDateFormatString));
         binding.money.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
         binding.moneySymbol.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
         binding.couponName.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));

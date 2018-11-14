@@ -252,7 +252,7 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
                 .setWheelItemTextSize(14)
                 .setHourText("点")
                 .setCyclic(false)
-                .setMinMillseconds(System.currentTimeMillis())
+                .setMinMillseconds(System.currentTimeMillis()+24*3600*1000)
                 .buildNew();
         mimePickerExpect.show(getSupportFragmentManager(), "year_month_day_hour");
     }

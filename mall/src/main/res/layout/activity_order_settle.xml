@@ -232,7 +232,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="67px"
-                        android:text="优惠30.00元"
+                        android:text=""
                         android:id="@+id/coupon_name"
                         android:textColor="@color/dc"
                         android:textSize="28px" />

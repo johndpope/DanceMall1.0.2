@@ -187,7 +187,7 @@ public class LoginActivity extends BaseActivity {
     @Subscribe
     public void wechatLoginData(Event<WechatUserInfoTo> event) {
         if ("WechatLoginSuccess".equals(event.getType())) {
-            wechatBg.setVisibility(View.VISIBLE);
+//            wechatBg.setVisibility(View.VISIBLE);
             presenter.wechatLogin(event.getData());
         }
     }

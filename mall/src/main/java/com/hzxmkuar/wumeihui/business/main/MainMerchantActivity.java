@@ -3,7 +3,9 @@ package com.hzxmkuar.wumeihui.business.main;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,6 +21,7 @@ import com.hzxmkuar.wumeihui.circle.fragment.CircleFragment;
 import com.hzxmkuar.wumeihui.message.MessageFragment;
 import com.hzxmkuar.wumeihui.personal.main.presenter.MainPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,7 +31,7 @@ import butterknife.OnClick;
 public class MainMerchantActivity extends BaseActivity {
 
     @BindView(R.id.fragment_layout)
-    LinearLayout fragmentLayout;
+    ViewPager fragmentLayout;
 
     @BindView(R.id.communication_text)
     TextView communicationText;
@@ -42,15 +45,11 @@ public class MainMerchantActivity extends BaseActivity {
     TextView myselfText;
     @BindView(R.id.myself_view)
     View myselfView;
-    private FragmentTransaction transaction;
+    private List<Fragment> fragmentList = new ArrayList<>();
 
 
-    private MessageFragment messageFragment;
-    private WorkFragment myselfFragment;
-
-    private CircleFragment circleFragment;
     private MainPresenter presenter;
-    private Handler handler=new Handler();
+    private Handler handler = new Handler();
     private boolean canOut;
 
     @Override
@@ -61,55 +60,73 @@ public class MainMerchantActivity extends BaseActivity {
         initFragment();
         presenter = new MainPresenter(this);
 
-        SpUtil.put("IsMerchant",true);
+        SpUtil.put("IsMerchant", true);
 
 //sdk初始化加载的聊天记录为20条，到顶时需要去db里获取更多
 
     }
 
     private void initFragment() {
-//        new LoginPresenter().getVerificationCode();
 
-        circleFragment = new CircleFragment();
-        messageFragment = new MessageFragment(this);
-        myselfFragment = new WorkFragment();
+        fragmentList.add(new WorkFragment());
 
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_layout, getIntent().getIntExtra("Index", 0) == 1 ? circleFragment : myselfFragment);
-        transaction.commit();
+        fragmentList.add(new MessageFragment(this));
+        fragmentList.add(new CircleFragment());
+        fragmentLayout.setAdapter(adapter);
+        fragmentLayout.setOffscreenPageLimit(3);
+        fragmentLayout.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                communicationView.setBackgroundResource(position==2?R.drawable.main_communication_select:R.drawable.main_communication_un_select);
+                messageView.setBackgroundResource(position==1?R.drawable.main_message_select:R.drawable.service_message_ico);
+                myselfView.setBackgroundResource(position==0?R.drawable.main_myself_select:R.drawable.main_myself_un_select);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        fragmentLayout.setCurrentItem(getIntent().getIntExtra("Index", 0));
 
     }
+
+    private FragmentPagerAdapter adapter=new FragmentPagerAdapter(getSupportFragmentManager()) {
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+    };
 
     @OnClick({R.id.communication_layout, R.id.message_layout, R.id.myself_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
             case R.id.communication_layout:
-                modifyFragment(circleFragment);
-                communicationView.setBackgroundResource(R.drawable.main_communication_select);
-                messageView.setBackgroundResource(R.drawable.service_message_ico);
-                myselfView.setBackgroundResource(R.drawable.main_myself_un_select);
+                fragmentLayout.setCurrentItem(2);
+
                 break;
             case R.id.message_layout:
-                communicationView.setBackgroundResource(R.drawable.main_communication_un_select);
-                messageView.setBackgroundResource(R.drawable.main_message_select);
-                myselfView.setBackgroundResource(R.drawable.main_myself_un_select);
-                modifyFragment(messageFragment);
+
+                fragmentLayout.setCurrentItem(1);
                 break;
             case R.id.myself_layout:
-                communicationView.setBackgroundResource(R.drawable.main_communication_un_select);
-                messageView.setBackgroundResource(R.drawable.service_message_ico);
-                myselfView.setBackgroundResource(R.drawable.main_myself_select);
-                modifyFragment(myselfFragment);
+
+                fragmentLayout.setCurrentItem(0);
                 break;
         }
     }
 
-    private void modifyFragment(Fragment fragment) {
-        transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_layout, fragment);
-        transaction.commit();
-    }
 
     @Override
     protected void onDestroy() {
@@ -120,14 +137,14 @@ public class MainMerchantActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if (keyCode==KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             showMessage("再返回一次退出舞美汇");
-            if (canOut){
+            if (canOut) {
                 finish();
             }
-            canOut=true;
+            canOut = true;
 
-            handler.postDelayed(() -> canOut=false,5000);
+            handler.postDelayed(() -> canOut = false, 5000);
             return true;
         }
         return super.onKeyDown(keyCode, event);

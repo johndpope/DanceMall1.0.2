@@ -17,4 +17,5 @@ public class MerchantParam extends BaseParam{
     private String ratings_range="";
     private String onum_range="";
     private String area_ids="";
+    private String sids="";
 }

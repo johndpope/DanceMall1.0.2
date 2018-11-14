@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.adapter.BaseAdapter;
@@ -48,14 +49,20 @@ public class SelectCouponAdapter extends BaseAdapter<SelectCouponTo.ListsBean, S
     public void onBindViewHolder(BindingHolder<SelectCouponItemBinding> holder, int position) {
         super.onBindViewHolder(holder, position);
         SelectCouponItemBinding binding = holder.getBinding();
-       SelectCouponTo.ListsBean mode=mList.get(position);
+        SelectCouponTo.ListsBean mode=mList.get(position);
         binding.money.setText(mode.getAmount()+"");
+        if (binding.money.getText().toString().endsWith(".00"))
+            binding.money.setText(binding.money.getText().toString().substring(0,binding.money.getText().toString().length()-1));
         binding.couponName.setText(mode.getCate_name());
         binding.couponDes.setText(mode.getCate_desc());
         binding.useTime.setText(DateUtil.longToString(mode.getStart_time(),DateUtil.mDateFormatString)+"-"+DateUtil.longToString(mode.getEnd_time(),DateUtil.mDateFormatString));
+        binding.useTime.setText(DateUtil.longToString(mode.getStart_time()*1000,DateUtil.mDateFormatString)+"-"+DateUtil.longToString(mode.getEnd_time()*1000,DateUtil.mDateFormatString));
         binding.money.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
         binding.moneySymbol.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
         binding.couponName.setTextColor(type==0? Color.parseColor("#3FB9FF"):Color.parseColor("#bbbbbb"));
+
+
+
     }
 
 

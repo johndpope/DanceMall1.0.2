@@ -33,6 +33,7 @@ import com.hzxmkuar.wumeihui.base.Event;
 import com.hzxmkuar.wumeihui.base.WebActivity;
 import com.hzxmkuar.wumeihui.base.banner.BannerMenuView;
 import com.hzxmkuar.wumeihui.base.banner.BannerUtil;
+import com.hzxmkuar.wumeihui.base.util.AppUtil;
 import com.hzxmkuar.wumeihui.base.util.SpUtil;
 import com.hzxmkuar.wumeihui.business.merchant.MerchantDetailActivity;
 import com.hzxmkuar.wumeihui.circle.PostDetailActivity;
@@ -164,6 +165,7 @@ public class ResourceFragment extends BaseFragment {
     private int dScrollY;
 
     private long lastTime;
+    private boolean hide;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
@@ -707,7 +709,8 @@ public class ResourceFragment extends BaseFragment {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             String city = bdLocation.getCity();
-
+         if (hide)
+             return;
             if (!getActivity().getIntent().getBooleanExtra("IsSplash", false)) {
                 cityName.setText(SpUtil.getString("LocateCity"));
                 presenter.param.setPos_city(presenter.getCityId(SpUtil.getString("LocateCity")));
@@ -981,4 +984,15 @@ public class ResourceFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        hide=false;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        hide=true;
+    }
 }

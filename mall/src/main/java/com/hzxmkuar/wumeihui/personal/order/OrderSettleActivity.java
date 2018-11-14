@@ -18,6 +18,7 @@ import com.hzxmkuar.wumeihui.base.Constant;
 
 import com.hzxmkuar.wumeihui.base.Event;
 import com.hzxmkuar.wumeihui.base.WebActivity;
+import com.hzxmkuar.wumeihui.base.util.DoubleUtil;
 import com.hzxmkuar.wumeihui.personal.inquiry.ServiceDetailActivity;
 import com.hzxmkuar.wumeihui.personal.order.presenter.OrderSettlePresenter;
 import com.ruffian.library.RTextView;
@@ -93,6 +94,8 @@ public class OrderSettleActivity extends BaseActivity {
     private RemarkTo remarkTo;
     private int couponId;
     private double couponMoney;
+    private double allMoeny;
+    private double moenyPercent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,16 +114,18 @@ public class OrderSettleActivity extends BaseActivity {
     public void setView(OrderSettleTo infoTo) {
         this.infoTo = infoTo;
         if (infoTo.getCoupon_info()!=null) {
-            couponName.setText("优惠" + infoTo.getCoupon_info().getCoupon_amount() + "元");
+            couponName.setText( infoTo.getCoupon_info().getCoupon_name());
             couponId=infoTo.getCoupon_info().getCoupon_id();
             couponMoney=infoTo.getCoupon_info().getCoupon_amount();
             couponFee.setText("-"+couponMoney);
         }else {
-            couponName.setText("优惠0元");
+            couponName.setText("选择优惠券");
             couponFee.setText("-0");
             couponId=0;
             couponMoney=0;
         }
+        allMoeny=infoTo.getPrice_detail().getService_fee();
+        moenyPercent=infoTo.getPrice_detail().getInquiry_deposit_percent();
         merchantTo = (MainMerchantTo.ListsBean) getIntent().getSerializableExtra("MerchantTo");
         shopName.setText(merchantTo.getShop_name());
 
@@ -130,11 +135,11 @@ public class OrderSettleActivity extends BaseActivity {
         contactName.setText(infoTo.getContact_name() + "   " + infoTo.getContact_telphone());
         serviceNum.setText("共" + infoTo.getService_num() + "项服务");
 
-        separatePay.setText("定金支付\n需先支付" + infoTo.getPrice_detail().getDeposit_payment().getPay_amount());
-        payFee.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + "");
-        payMoney.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + "");
-        earnestFee.setText(infoTo.getPrice_detail().getDeposit_payment().getPay_amount() + "");
-        serviceFee.setText(infoTo.getPrice_detail().getService_fee() + "");
+        separatePay.setText("定金支付\n需先支付" + DoubleUtil.mul(allMoeny,moenyPercent));
+        payFee.setText(DoubleUtil.reduce(allMoeny,couponMoney)+ "");
+        payMoney.setText(DoubleUtil.reduce(allMoeny,couponMoney) + "");
+        earnestFee.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
+        serviceFee.setText(allMoeny + "");
 
 
 
@@ -151,8 +156,8 @@ public class OrderSettleActivity extends BaseActivity {
                 separatePay.setBackgroundColorNormal(Color.parseColor("#f7f7f7"));
                 allPay.setTextColor(Color.parseColor("#ffffff"));
                 separatePay.setTextColor(Color.parseColor("#999999"));
-                payFee.setText((infoTo.getPrice_detail().getFull_payment().getPay_amount()+(infoTo.getCoupon_info()==null?0:infoTo.getCoupon_info().getCoupon_amount())-couponMoney) + "");
-                payMoney.setText((infoTo.getPrice_detail().getFull_payment().getPay_amount()+(infoTo.getCoupon_info()==null?0:infoTo.getCoupon_info().getCoupon_amount())-couponMoney) + "");
+                payFee.setText(DoubleUtil.reduce(allMoeny,couponMoney)+ "");
+                payMoney.setText(DoubleUtil.reduce(allMoeny,couponMoney) + "");
                 earnest.setVisibility(View.GONE);
                 payText.setText("需支付");
                 break;
@@ -164,8 +169,8 @@ public class OrderSettleActivity extends BaseActivity {
                 allPay.setTextColor(Color.parseColor("#999999"));
                 separatePay.setTextColor(Color.parseColor("#ffffff"));
                 payText.setText("后续需支付");
-                payFee.setText(infoTo.getPrice_detail().getDeposit_payment().getLast_amount() + "");
-                payMoney.setText(infoTo.getPrice_detail().getDeposit_payment().getPay_amount()+(infoTo.getCoupon_info()==null?0:infoTo.getCoupon_info().getCoupon_amount())-couponMoney + "");
+                payFee.setText(DoubleUtil.reduce(allMoeny,DoubleUtil.mul(allMoeny,moenyPercent))+ "");
+                payMoney.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
                 earnest.setVisibility(View.VISIBLE);
 
                 break;
@@ -253,33 +258,33 @@ public class OrderSettleActivity extends BaseActivity {
     public void receiverCoupon(Event<SelectCouponTo.ListsBean> event){
         if ("NoUseCoupon".equals(event.getType())){
 
-            couponName.setText("优惠0元");
+            couponName.setText("不使用优惠券");
             couponFee.setText("-0");
             couponMoney=0;
-            if (infoTo.getCoupon_info()==null) {
-                payFee.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + "");
-                payMoney.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + "");
-            }else {
-                payFee.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + infoTo.getCoupon_info().getCoupon_amount()+"");
-                payMoney.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount()+ infoTo.getCoupon_info().getCoupon_amount() + "");
-            }
-            earnestFee.setText(infoTo.getPrice_detail().getDeposit_payment().getPay_amount()+ couponMoney+ "");
+             if (earnest.getVisibility()==View.VISIBLE){
+                 payMoney.setText(DoubleUtil.mul(allMoeny,moenyPercent)+"");
+                 payFee.setText(DoubleUtil.mul(allMoeny,moenyPercent)+"");
+
+             }else {
+                 payMoney.setText(allMoeny+"");
+                 payFee.setText(allMoeny+"");
+             }
+            earnestFee.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
         }
         if ("SelectCoupon".equals(event.getType())){
             SelectCouponTo.ListsBean mode=event.getData();
             couponMoney=Double.valueOf(mode.getAmount());
-            couponName.setText("优惠"+mode.getAmount()+"元");
+            couponName.setText(mode.getCate_name());
             couponFee.setText("-"+mode.getAmount());
-            earnestFee.setText(infoTo.getPrice_detail().getDeposit_payment().getPay_amount() + "");
-            if (infoTo.getCoupon_info()==null) {
-                payFee.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + "");
-                payMoney.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + "");
-                earnestFee.setText(infoTo.getPrice_detail().getDeposit_payment().getPay_amount() + couponMoney+"");
+            couponId=mode.getId();
+            if (earnest.getVisibility()==View.GONE) {
+                payFee.setText(DoubleUtil.reduce(allMoeny,couponMoney)+ "");
+                payMoney.setText(DoubleUtil.reduce(allMoeny,couponMoney) + "");
             }else {
-                payFee.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount() + infoTo.getCoupon_info().getCoupon_amount()-Double.valueOf(mode.getAmount())+"");
-                payMoney.setText(infoTo.getPrice_detail().getFull_payment().getPay_amount()+ infoTo.getCoupon_info().getCoupon_amount()-Double.valueOf(mode.getAmount()) + "");
-                earnestFee.setText(infoTo.getPrice_detail().getDeposit_payment().getPay_amount() +infoTo.getCoupon_info().getCoupon_amount()-couponMoney+ "");
+                payFee.setText(DoubleUtil.reduce(allMoeny,DoubleUtil.mul(allMoeny,moenyPercent))+ "");
+                payMoney.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
             }
+            earnestFee.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
         }
     }
 }

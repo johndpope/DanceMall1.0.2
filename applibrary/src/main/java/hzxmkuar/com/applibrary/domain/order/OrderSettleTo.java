@@ -59,6 +59,7 @@ public class OrderSettleTo {
         private FullPaymentBean full_payment;
         private DepositPaymentBean deposit_payment;
         private double service_fee;
+        private double inquiry_deposit_percent;
 
 
         @Data

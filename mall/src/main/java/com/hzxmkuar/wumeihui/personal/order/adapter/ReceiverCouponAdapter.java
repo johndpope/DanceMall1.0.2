@@ -48,19 +48,19 @@ public class ReceiverCouponAdapter extends BaseAdapter<SelectCouponTo.ListsBean,
         super.onBindViewHolder(holder, position);
         ReceiverCouponItemBinding binding = holder.getBinding();
         SelectCouponTo.ListsBean mode=mList.get(position);
-        String payMoney=mode.getDiscount_amount()+"";
-        if (payMoney.length()>2) {
-            payMoney = payMoney.substring(0, 3);
-            if (payMoney.endsWith(".")){
-                if (mode.getDiscount_amount()>10)
-                    payMoney=payMoney.substring(0,2);
+//        String payMoney=mode.getDiscount_amount()+"";
+//        if (payMoney.length()>2) {
+//            payMoney = payMoney.substring(0, 3);
+//            if (payMoney.endsWith(".")){
+//                if (mode.getDiscount_amount()>10)
+//                    payMoney=payMoney.substring(0,2);
+//
+//
+//            }
+//
+//        }
 
-
-            }
-
-        }
-
-        binding.money.setText(payMoney);
+        binding.money.setText(mode.getDiscount_amount());
         binding.couponName.setText(mode.getCate_name());
         binding.couponDes.setText(mode.getCate_desc());
         binding.useTime.setText(mode.getUse_times());

@@ -113,6 +113,10 @@ public class MerchantEnterInputActivity extends BaseActivity implements Permissi
                 uploadHeadImageDialog();
                 break;
             case R.id.submit:
+                if (TextUtils.isEmpty(presenter.enterParam.getMain_service())){
+                    showMessage("请选择主营服务");
+                    return;
+                }
                 presenter.enterParam.setShop_logo((Integer) headImage.getTag());
                 presenter.enterParam.setShop_banner((Integer) mainImage.getTag());
                 presenter.enterParam.setShop_name(shopName.getText().toString());

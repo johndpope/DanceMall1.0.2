@@ -34,13 +34,13 @@ public class SelectCouponTo {
         private String amount;
         private String cate_name;
         private String cate_desc;
-        private int start_time;
-        private int end_time;
+        private long start_time;
+        private long end_time;
 
 
         private int get_status;
         private int cate_id;
-        private double discount_amount;
+        private String discount_amount;
         private String use_times;
 
     }
