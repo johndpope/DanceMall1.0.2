@@ -191,6 +191,7 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
 
 
             EMMessage fromOtherMessage = conversation.getLatestMessageFromOthers();
+
         if (fromOtherMessage!=null) {
             try {
                 Glide.with(getContext()).load(fromOtherMessage.getStringAttribute("pic")).error(R.drawable.ease_default_avatar).placeholder(R.drawable.ease_default_avatar).into(holder.avatar);

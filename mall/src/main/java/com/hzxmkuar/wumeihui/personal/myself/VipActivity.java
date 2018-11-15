@@ -52,7 +52,7 @@ public class VipActivity extends BaseActivity implements PermissionListener {
 
     @OnClick(R.id.vip_btn)
     public void onViewClicked() {
-        if (!AppUtil.readSIMCard(appContext))
+        if (!AppUtil.readSIMCard(appContext,this))
             return;
         if (vipTo.getStatus() == 0) {
             getPermission(Manifest.permission.CALL_PHONE, this);

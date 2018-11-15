@@ -45,6 +45,10 @@ public class MerchantOrderDetailTo implements Serializable {
     private List<ServiceListBean> service_list;
     private ShopInfoTo business_info;
     private int remaining_pay_valid_time;
+    private int remaining_confirm_valid_time;
+    private String customer_mobile;
+    private String customer_username;
+
 
 
     @Data

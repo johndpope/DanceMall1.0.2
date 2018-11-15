@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.adapter.BaseAdapter;
@@ -56,6 +58,17 @@ public class ServiceCommentAdapter extends BaseAdapter<MerchantCommentTo.ListsBe
         List<String> imageList = new ArrayList<>();
         Observable.from(mode.getPic_list()).subscribe(picListBean -> imageList.add(picListBean.getPic()));
         setImageLayout(binding.imageLayout,imageList,158);
+        binding.starLayout.removeAllViews();
+        for (int i=0;i<mode.getScore();i++){
+            View mView=new View(mContext);
+            mView.setBackgroundResource(R.drawable.service_star_icon);
+            GridLayout.LayoutParams layoutParams=new GridLayout.LayoutParams();
+            layoutParams.width=getScreenWidth()*25/750;
+            layoutParams.height=getScreenWidth()*25 /750;
+            layoutParams.leftMargin=20;
+            mView.setLayoutParams(layoutParams);
+            binding.starLayout.addView(mView);
+        }
     }
 
 

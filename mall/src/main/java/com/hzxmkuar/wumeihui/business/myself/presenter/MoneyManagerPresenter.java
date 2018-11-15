@@ -59,7 +59,7 @@ public class MoneyManagerPresenter extends BasePresenter {
             @Override
             public void onNext(MessageTo msg) {
                 if (msg.getCode() == 0) {
-                    showMessage("提现申请成功");
+                showMessage(msg.getMsg());
                     new Handler().postDelayed(() -> {
                         Intent intent = new Intent(activity, MoneyManagerActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

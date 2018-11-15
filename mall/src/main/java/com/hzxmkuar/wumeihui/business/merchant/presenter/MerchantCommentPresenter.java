@@ -4,6 +4,9 @@ import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.BasePresenter;
 import com.hzxmkuar.wumeihui.base.MyObserver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.MerchantApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
@@ -17,7 +20,7 @@ import rx.schedulers.Schedulers;
  */
 
 public class MerchantCommentPresenter extends BasePresenter {
-
+  private List<MerchantCommentTo.ListsBean>commentList=new ArrayList<>();
     public MerchantCommentPresenter(BaseActivity activity){
         initContext(activity);
         getCommentList();
@@ -32,10 +35,22 @@ public class MerchantCommentPresenter extends BasePresenter {
                 new MyObserver<MessageTo<MerchantCommentTo>>(this) {
                     @Override
                     public void onNext(MessageTo<MerchantCommentTo> msg) {
-                        if (msg.getCode()==0)
-                            setRecycleList(msg.getData().getLists());
+                        if (msg.getCode()==0){
+                            if (recyclePageIndex==1)
+                                commentList.clear();
+                            if (msg.getData().getLists()!=null)
+                                commentList.addAll(msg.getData().getLists());
+                            setRecycleList(commentList);
+                        }
+
                     }
                 }
         );
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+   getCommentList();
     }
 }

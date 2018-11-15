@@ -66,7 +66,7 @@ public class SelectMerchantPresenter extends BasePresenter {
     }
 
     public void getMerchant() {
-
+         param.setSids(activity.getIntent().getStringExtra("ServiceId"));
         param.setHash(getHashString(MerchantParam.class, param));
 
         ApiClient.create(MainApi.class).getMerchantList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(

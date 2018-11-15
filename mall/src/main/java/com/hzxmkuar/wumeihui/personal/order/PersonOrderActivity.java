@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.GridLayout;
@@ -149,6 +150,8 @@ public class PersonOrderActivity extends BaseActivity {
         statue.setText(mode.getStatus_txt());
         address.setText(mode.getService_address());
         useTime.setText(mode.getUse_time());
+        phone.setVisibility(TextUtils.isEmpty(mode.getContact_telphone())?View.GONE:View.VISIBLE);
+        chat.setVisibility(TextUtils.isEmpty(mode.getContact_telphone())?View.GONE:View.VISIBLE);
         contact.setText(mode.getContact_name() + "  " + mode.getContact_telphone());
         if (mode.getService_list() != null) {
             List<String> imageList = new ArrayList<>();
@@ -170,7 +173,7 @@ public class PersonOrderActivity extends BaseActivity {
             countTime.start(mode.getRemaining_pay_valid_time() * 1000);
         }
         bondPayLayout.setVisibility(mode.getPayment_mode() == 2 ? View.VISIBLE : View.GONE);
-        earnest.setText("-" + mode.getPrice_detail().getDeposit_payment().getPay_amount());
+        earnest.setText( mode.getPrice_detail().getDeposit_payment().getPay_amount());
 
         payType.setText(getIntent().getIntExtra("PayType", 0) == 1 ? "先定金后尾款" : "全款支付");
         tailMoney.setText("￥" + (getIntent().getIntExtra("PayType", 0) == 1 ? mode.getPrice_detail().getDeposit_payment().getLast_amount() : mode.getPrice_detail().getFull_payment().getPay_amount()));
@@ -225,7 +228,7 @@ public class PersonOrderActivity extends BaseActivity {
             case R.id.phone:
                 AlertDialog.show(this, "确认拨打电话").setOnClickListener(view1 -> {
                     AlertDialog.dismiss();
-                    if (!AppUtil.readSIMCard(appContext))
+                    if (!AppUtil.readSIMCard(appContext,PersonOrderActivity.this))
                         return;
                     getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
                         @Override

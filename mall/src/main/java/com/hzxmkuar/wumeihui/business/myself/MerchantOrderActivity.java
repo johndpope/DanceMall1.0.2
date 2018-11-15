@@ -198,8 +198,8 @@ public class MerchantOrderActivity extends BaseActivity {
                     presenter.finishOrder(mode.getOrder_id());
                 if ("待付尾款".equals(mode.getStatus_txt())) {
                     Intent intent = new Intent(appContext, ChatActivity.class);
-                    intent.putExtra("UserId", mode.getContact_telphone());
-                    intent.putExtra("Name", mode.getContact_name());
+                    intent.putExtra("UserId", mode.getCustomer_username());
+                    intent.putExtra("Name", mode.getCustomer_username());
                     startActivity(intent);
                     goToAnimation(1);
                 }
@@ -220,7 +220,7 @@ public class MerchantOrderActivity extends BaseActivity {
         statue.setText(mode.getStatus_txt());
         address.setText(mode.getService_address());
         useTime.setText(mode.getUse_time());
-        contact.setText(mode.getContact_name() + "  " + mode.getContact_telphone());
+        contact.setText(mode.getContact_name() + "  " + mode.getCustomer_mobile());
         imageLayout.removeAllViews();
 
         if (mode.getService_list() != null) {
@@ -235,7 +235,7 @@ public class MerchantOrderActivity extends BaseActivity {
         }
 
         bondPayLayout.setVisibility(mode.getPayment_mode() == 2 ? View.VISIBLE : View.GONE);
-        earnest.setText("-" + mode.getPrice_detail().getDeposit_payment().getPay_amount());
+        earnest.setText(mode.getPrice_detail().getDeposit_payment().getPay_amount());
         payText.setText(mode.getPayment_mode() == 2 ? "后续需支付" : "需支付");
         tailMoney.setText("￥" + (mode.getPayment_mode() == 2 ? mode.getPrice_detail().getDeposit_payment().getLast_amount() : mode.getPrice_detail().getFull_payment().getPay_amount()));
 
@@ -256,7 +256,7 @@ public class MerchantOrderActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.phone:
-                if (!AppUtil.readSIMCard(appContext))
+                if (!AppUtil.readSIMCard(appContext,this))
                     return;
                 AlertDialog.show(this, "确认拨打电话").setOnClickListener(view1 -> {
                     AlertDialog.dismiss();
@@ -264,7 +264,7 @@ public class MerchantOrderActivity extends BaseActivity {
                         @Override
                         public void accept(String permission) {
                             Intent intent = new Intent(Intent.ACTION_DIAL);
-                            Uri data = Uri.parse("tel:" + mode.getContact_telphone());
+                            Uri data = Uri.parse("tel:" + mode.getCustomer_mobile());
                             intent.setData(data);
                             startActivity(intent);
                         }
@@ -278,8 +278,8 @@ public class MerchantOrderActivity extends BaseActivity {
                 break;
             case R.id.chat:
                 Intent intent1 = new Intent(appContext, ChatActivity.class);
-                intent1.putExtra("UserId", mode.getContact_telphone());
-                intent1.putExtra("Name", mode.getContact_name());
+                intent1.putExtra("UserId", mode.getCustomer_mobile());
+                intent1.putExtra("Name", mode.getCustomer_username());
                 startActivity(intent1);
                 goToAnimation(1);
                 break;

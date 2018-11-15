@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
 
         presenter = new MainPresenter(this);
 
-
+        SpUtil.put("IsMerchant", false);
 
     }
 
@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
         initFragment();
         SpUtil.put("ChatName", userInfoTo.getUsername());
         SpUtil.put("ChatPic", userInfoTo.getFace_url());
-        SpUtil.put("IsMerchant", false);
+
     }
 
     private void initFragment() {

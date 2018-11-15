@@ -27,6 +27,7 @@ public class SelectCouponPresenter extends BasePresenter {
         param.setBusoffer_id(activity.getIntent().getIntExtra("BusofferId",0));
         param.setPayment_mode(activity.getIntent().getIntExtra("Mode",1));
         param.setHash(getHashString(SelectCouponParam.class,param));
+        showLoadingDialog();
         ApiClient.create(OrderApi.class).getSelectCouponList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<SelectCouponTo>>(this) {
                     @Override

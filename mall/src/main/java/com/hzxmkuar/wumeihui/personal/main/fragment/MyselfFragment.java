@@ -208,7 +208,7 @@ public class MyselfFragment extends BaseFragment {
                 dialog.show();
                 dialog.findViewById(R.id.phone).setOnClickListener(view1 -> {
                     dialog.dismiss();
-                    if (!AppUtil.readSIMCard(appContext))
+                    if (!AppUtil.readSIMCard(appContext,getActivity()))
                         return;
                     getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
                         @Override

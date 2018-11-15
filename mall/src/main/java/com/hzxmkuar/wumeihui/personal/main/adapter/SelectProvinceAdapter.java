@@ -58,7 +58,9 @@ public class SelectProvinceAdapter extends BaseAdapter<ProvinceTo,SelectCityItem
 
         int position=0;
         for (ProvinceTo cityTo:mList){
+            System.out.println(PingYinUtil.getPingYin(cityTo.getProvinceName()).substring(0,1).toUpperCase()+"==="+positionString);
             if (positionString.equals(PingYinUtil.getPingYin(cityTo.getProvinceName()).substring(0,1).toUpperCase())){
+
                 break;
             }
             position++;

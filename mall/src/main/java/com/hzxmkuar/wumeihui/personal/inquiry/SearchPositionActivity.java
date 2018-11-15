@@ -55,6 +55,7 @@ public class SearchPositionActivity extends BaseActivity {
     private SearchPositionAdapter adapter;
     private PoiCitySearchOption poiCitySearchOption;
     private int count;
+    private boolean isFirst=true;
 
 
     @Override
@@ -84,7 +85,39 @@ public class SearchPositionActivity extends BaseActivity {
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+              if (isFirst){
+                  isFirst=false;
+                  poiCitySearchOption.keyword(charSequence + "");
+                  poiSearch.searchInCity(poiCitySearchOption);
 
+                  poiSearch.setOnGetPoiSearchResultListener(new OnGetPoiSearchResultListener() {
+                      @Override
+                      public void onGetPoiResult(PoiResult poiResult) {
+                          poiList = poiResult.getAllPoi();
+                          if (historyPoiList!=null){
+                              for (int i=0;i<historyPoiList.size()&&i<5;i++)
+                                  poiList.add(historyPoiList.get(i));
+                          }
+                          adapter.setList(poiList);
+                          adapter.notifyDataSetChanged();
+                      }
+
+                      @Override
+                      public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
+
+                      }
+
+                      @Override
+                      public void onGetPoiDetailResult(PoiDetailSearchResult poiDetailSearchResult) {
+
+                      }
+
+                      @Override
+                      public void onGetPoiIndoorResult(PoiIndoorResult poiIndoorResult) {
+
+                      }
+                  });
+              }
             }
 
             @Override
@@ -95,6 +128,10 @@ public class SearchPositionActivity extends BaseActivity {
                     @Override
                     public void onGetPoiResult(PoiResult poiResult) {
                         poiList = poiResult.getAllPoi();
+                        if (historyPoiList!=null){
+                            for (int i=0;i<historyPoiList.size()&&i<5;i++)
+                                poiList.add(historyPoiList.get(i));
+                        }
                         adapter.setList(poiList);
                         adapter.notifyDataSetChanged();
                     }
@@ -134,11 +171,19 @@ public class SearchPositionActivity extends BaseActivity {
 
         adapter = new SearchPositionAdapter(this);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
+
         LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        if (historyPoiList!=null){
+            for (int i=0;i<historyPoiList.size()&&i<5;i++)
+                poiList.add(historyPoiList.get(i));
+        }
+
         adapter.setList(poiList);
         View footView = View.inflate(appContext, R.layout.search_position_bottom_view, null);
         lRecyclerViewAdapter.addFooterView(footView);
         recycleView.setAdapter(lRecyclerViewAdapter);
+        recycleView.setPullRefreshEnabled(false);
+
         lRecyclerViewAdapter.setOnItemClickListener((view, position) -> {
             Intent intent = new Intent();
             intent.putExtra("PoiInfo", poiList.get(position).name);

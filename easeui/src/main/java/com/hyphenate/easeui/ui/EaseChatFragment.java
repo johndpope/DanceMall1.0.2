@@ -428,7 +428,8 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
     
     protected void setListItemClickListener() {
         messageList.setItemClickListener(new EaseChatMessageList.MessageListItemClickListener() {
-            
+
+
             @Override
             public void onUserAvatarClick(String username) {
                 if(chatFragmentHelper != null){
@@ -721,6 +722,8 @@ public class EaseChatFragment extends EaseBaseFragment implements EMMessageListe
 
 
             try {
+
+
                 final EaseUser easeUser = new EaseUser(message.getStringAttribute("Name"));
                 easeUser.setNickname(message.getStringAttribute("Pic"));
                 EaseUI.getInstance().setUserProfileProvider(new EaseUI.EaseUserProfileProvider() {

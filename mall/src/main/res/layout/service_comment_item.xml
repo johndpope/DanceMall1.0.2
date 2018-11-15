@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30px"
             android:layout_marginRight="30px"
-            android:minHeight="427px"
+
             android:orientation="vertical"
 
             >
@@ -71,11 +71,12 @@
                         android:textSize="24px" />
 
                     <GridLayout
-                        android:layout_width="24px"
-                        android:layout_height="24px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10px"
-                        android:background="@drawable/service_star_icon" />
+                        android:id="@+id/star_layout"
+                        />
 
                 </com.zhy.autolayout.AutoLinearLayout>
 

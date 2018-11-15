@@ -30,6 +30,8 @@ public class QuoteDetailTo {
     private String contact_name;
     private String service_address;
     private String contact_telphone;
+    private String customer_mobile;
+    private String customer_username;
     private int service_num;
     private int valid_time;
 

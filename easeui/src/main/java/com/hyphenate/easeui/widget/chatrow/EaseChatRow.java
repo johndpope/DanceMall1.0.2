@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMMessage.Direct;
+import com.hyphenate.easeui.ChatSpUtil;
 import com.hyphenate.easeui.EaseUI;
 import com.hyphenate.easeui.R;
 import com.hyphenate.easeui.adapter.EaseMessageAdapter;
@@ -146,7 +147,7 @@ public abstract class EaseChatRow extends LinearLayout {
         if(userAvatarView != null) {
             //set nickname and avatar
             if (message.direct() == Direct.SEND) {
-                Glide.with(context).load(message.getStringAttribute("pic","")).placeholder(R.drawable.ease_default_avatar).error(R.drawable.ease_default_avatar).into(userAvatarView);
+                Glide.with(context).load(ChatSpUtil.getString("ChatPic",context)).placeholder(R.drawable.ease_default_avatar).error(R.drawable.ease_default_avatar).into(userAvatarView);
 
 //                EaseUserUtils.setUserAvatar(context, EMClient.getInstance().getCurrentUser(), userAvatarView);
             } else {

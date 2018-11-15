@@ -255,10 +255,18 @@ public class SelectPayActivity extends BaseActivity {
             MobileSecurePayer msp = new MobileSecurePayer();
             boolean bRet = msp.pay(JSON.toJSONString(payInfoTo.getLianlianpay()), mHandler, Constants.RQF_PAY, SelectPayActivity.this, false);
         }else if (payType==4){
-            Intent intent = new Intent(appContext, PayFinishActivity.class);
-            intent.putExtra("OrderId", getIntent().getIntExtra("OrderId", 0));
-            startActivity(intent);
-            goToAnimation(1);
+            if (type == 2) {
+                Intent intent = new Intent(appContext, MainMerchantActivity.class);
+                startActivity(intent);
+                Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+                goToAnimation(2);
+            }else {
+
+                Intent intent = new Intent(appContext, PayFinishActivity.class);
+                intent.putExtra("OrderId", getIntent().getIntExtra("OrderId", 0));
+                startActivity(intent);
+                goToAnimation(1);
+            }
         }
 
 
@@ -321,86 +329,5 @@ public class SelectPayActivity extends BaseActivity {
             }
         }
     }
-    public static String toJSONString(Object obj)
-    {
-        JSONObject json = new JSONObject();
-        try
-        {
-            Map<String, String> map = bean2Parameters(obj);
-            for (Map.Entry<String, String> entry : map.entrySet())
-            {
-                json.put(entry.getKey(), entry.getValue());
-            }
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return json.toString();
-    }
 
-    public static Map<String, String> bean2Parameters(Object bean)
-    {
-        if (bean == null)
-        {
-            return null;
-        }
-
-        Map<String, String> parameters = new HashMap<String, String>();
-
-        if(null != parameters) {
-            // 取得bean所有public 方法
-            Method[] Methods = bean.getClass().getMethods();
-            for (Method method : Methods)
-            {
-                if (method != null && method.getName().startsWith("get")
-                        && !method.getName().startsWith("getClass"))
-                {
-                    // 得到属性的类名
-                    String value = "";
-                    // 得到属性值
-                    try
-                    {
-                        String className = method.getReturnType().getSimpleName();
-                        if (className.equalsIgnoreCase("int"))
-                        {
-                            int val = 0;
-                            try
-                            {
-                                val = (Integer) method.invoke(bean);
-                            } catch (InvocationTargetException e)
-                            {
-                            }
-                            value = String.valueOf(val);
-                        } else if (className.equalsIgnoreCase("String"))
-                        {
-                            try
-                            {
-                                value = (String) method.invoke(bean);
-                            } catch (InvocationTargetException e)
-                            {
-                            }
-                        }
-                        if (value != null && value != "")
-                        {
-                            // 添加参数
-                            // 将方法名称转化为id，去除get，将方法首字母改为小写
-                            String param = method.getName().replaceFirst("get", "");
-                            if (param.length() > 0)
-                            {
-                                String first = String.valueOf(param.charAt(0)).toLowerCase();
-                                param = first + param.substring(1);
-                            }
-                            parameters.put(param, value);
-                        }
-                    } catch (IllegalArgumentException e)
-                    {
-                    } catch (IllegalAccessException e)
-                    {
-                    }
-                }
-            }
-        }
-
-        return parameters;
-    }
 }

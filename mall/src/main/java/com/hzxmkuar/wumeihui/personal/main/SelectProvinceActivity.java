@@ -94,6 +94,7 @@ public class SelectProvinceActivity extends BaseActivity {
         adapter.setList(sortList);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
         recycleView.setAdapter(lRecyclerViewAdapter);
+        showMessage(sortList+"");
         lRecyclerViewAdapter.setOnItemClickListener((view, position) -> {
             if (sortList.get(position).getCitys() != null && sortList.get(position).getCitys().size() > 0) {
                 Intent intent = new Intent(appContext, SelectCityActivity.class);
@@ -154,5 +155,6 @@ public class SelectProvinceActivity extends BaseActivity {
 
         });
     }
+
 
 }

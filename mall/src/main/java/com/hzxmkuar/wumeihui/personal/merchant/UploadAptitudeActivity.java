@@ -1,6 +1,7 @@
 package com.hzxmkuar.wumeihui.personal.merchant;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -184,9 +185,9 @@ public class UploadAptitudeActivity extends BaseActivity implements UploadImageP
 
     @Override
     protected void submitDataSuccess(Object data) {
-        Observable.from(ActivityManager.merchantEnterList).subscribe(activity -> finish());
         Intent intent=new Intent(appContext,MerchantCheckActivity.class);
         startActivity(intent);
+        Observable.from(ActivityManager.merchantEnterList).subscribe(Activity::finish);
         goToAnimation(1);
     }
 }

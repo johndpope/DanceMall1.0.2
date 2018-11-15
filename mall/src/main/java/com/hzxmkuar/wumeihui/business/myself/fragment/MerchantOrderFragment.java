@@ -84,7 +84,7 @@ public class MerchantOrderFragment extends BaseFragment {
                     if ("服务中".equals(mode.getStatus_txt()))
                         presenter.finishOrder(mode.getId());
                     if ("待付尾款".equals(mode.getStatus_txt())) {
-                        if (!AppUtil.readSIMCard(appContext))
+                        if (!AppUtil.readSIMCard(appContext,getActivity()))
                             return;
                         getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
                             @Override

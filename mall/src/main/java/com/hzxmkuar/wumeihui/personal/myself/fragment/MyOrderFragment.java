@@ -80,7 +80,7 @@ public class MyOrderFragment extends BaseFragment {
                             presenter.confirmFinish(mode.getId());
                         }
                         if (mode.getType()==4){
-                            if (!AppUtil.readSIMCard(appContext))
+                            if (!AppUtil.readSIMCard(appContext,getActivity()))
                                 return;
                             getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
                                 @Override

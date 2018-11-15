@@ -21,6 +21,7 @@ public class DateUtil {
 	private static SimpleDateFormat mDateTimeFormat ;
 	public final static String mTimeFormat ="HH:mm:ss";
 	public final static String mDateFormatString = "yyyy.MM.dd";
+	public final static String mDateFormatYearString = "yyyy年";
 	public final static String mDateTimeFormatString = "yyyy-MM-dd HH:mm:ss";
 	public final static String mDateTimeFormatStringPhoto = "yyyy-MM-dd HH:mm:ss";
 	public final static String mFormatDateString = "yyyy-MM-dd";

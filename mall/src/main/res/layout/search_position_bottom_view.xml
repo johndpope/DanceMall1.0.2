@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="更多历史纪录"
+        android:text="更多历史记录"
         android:id="@+id/more_history"
         android:layout_marginBottom="74px"
         android:layout_alignParentBottom="true"

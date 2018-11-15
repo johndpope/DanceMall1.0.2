@@ -138,7 +138,7 @@ public class OrderSettleActivity extends BaseActivity {
         separatePay.setText("定金支付\n需先支付" + DoubleUtil.mul(allMoeny,moenyPercent));
         payFee.setText(DoubleUtil.reduce(allMoeny,couponMoney)+ "");
         payMoney.setText(DoubleUtil.reduce(allMoeny,couponMoney) + "");
-        earnestFee.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
+        earnestFee.setText(DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent) + "");
         serviceFee.setText(allMoeny + "");
 
 
@@ -169,8 +169,8 @@ public class OrderSettleActivity extends BaseActivity {
                 allPay.setTextColor(Color.parseColor("#999999"));
                 separatePay.setTextColor(Color.parseColor("#ffffff"));
                 payText.setText("后续需支付");
-                payFee.setText(DoubleUtil.reduce(allMoeny,DoubleUtil.mul(allMoeny,moenyPercent))+ "");
-                payMoney.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
+                payFee.setText(DoubleUtil.reduce(DoubleUtil.reduce(allMoeny,couponMoney),DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent))+ "");
+                payMoney.setText(DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent) + "");
                 earnest.setVisibility(View.VISIBLE);
 
                 break;
@@ -239,7 +239,7 @@ public class OrderSettleActivity extends BaseActivity {
     protected void submitDataSuccess(Object data) {
         Intent intent = new Intent(appContext, SelectPayActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("Money",((OrderSettleInfoTo) data).getTotal_amount()+"");
+        intent.putExtra("Money",payMoney.getText().toString());
         intent.putExtra("OrderId", ((OrderSettleInfoTo) data).getOrder_id());
         intent.putExtra("Type",10);
         startActivity(intent);
@@ -258,7 +258,7 @@ public class OrderSettleActivity extends BaseActivity {
     public void receiverCoupon(Event<SelectCouponTo.ListsBean> event){
         if ("NoUseCoupon".equals(event.getType())){
 
-            couponName.setText("不使用优惠券");
+            couponName.setText("未使用优惠券");
             couponFee.setText("-0");
             couponMoney=0;
              if (earnest.getVisibility()==View.VISIBLE){
@@ -269,7 +269,7 @@ public class OrderSettleActivity extends BaseActivity {
                  payMoney.setText(allMoeny+"");
                  payFee.setText(allMoeny+"");
              }
-            earnestFee.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
+            earnestFee.setText(DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent) + "");
         }
         if ("SelectCoupon".equals(event.getType())){
             SelectCouponTo.ListsBean mode=event.getData();
@@ -281,10 +281,10 @@ public class OrderSettleActivity extends BaseActivity {
                 payFee.setText(DoubleUtil.reduce(allMoeny,couponMoney)+ "");
                 payMoney.setText(DoubleUtil.reduce(allMoeny,couponMoney) + "");
             }else {
-                payFee.setText(DoubleUtil.reduce(allMoeny,DoubleUtil.mul(allMoeny,moenyPercent))+ "");
-                payMoney.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
+                payFee.setText(DoubleUtil.reduce(DoubleUtil.reduce(allMoeny,couponMoney),DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent))+ "");
+                payMoney.setText(DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent) + "");
             }
-            earnestFee.setText(DoubleUtil.reduce(DoubleUtil.mul(allMoeny,moenyPercent),couponMoney) + "");
+            earnestFee.setText(DoubleUtil.mul(DoubleUtil.reduce(allMoeny,couponMoney),moenyPercent) + "");
         }
     }
 }

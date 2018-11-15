@@ -6,8 +6,10 @@ import com.hzxmkuar.wumeihui.base.MyObserver;
 import com.hzxmkuar.wumeihui.business.merchant.MerchantDetailActivity;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
+import hzxmkuar.com.applibrary.api.InquiryApi;
 import hzxmkuar.com.applibrary.api.MerchantApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.inquery.ConfirmInquiryParam;
 import hzxmkuar.com.applibrary.domain.merchant.BusUidParam;
 import hzxmkuar.com.applibrary.domain.merchant.MerchantCollectTo;
 import hzxmkuar.com.applibrary.domain.merchant.MerchantDetailTo;
@@ -60,4 +62,21 @@ public class MerchantDetailPresenter extends BasePresenter {
     }
 
 
+    public void inquiry(int id) {
+        ConfirmInquiryParam param = new ConfirmInquiryParam();
+        param.setHashid(userInfoTo.getHashid());
+        param.setUid(userInfoTo.getUid());
+        param.setSids(id+"");
+        param.setHash(getHashString(ConfirmInquiryParam.class, param));
+        showLoadingDialog();
+        ApiClient.create(InquiryApi.class).confirmInquiry(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode() == 0)
+                            submitDataSuccess(msg.getData());
+                    }
+                }
+        );
+    }
 }

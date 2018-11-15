@@ -39,6 +39,8 @@ public class SearchDetailActivity extends BaseActivity {
         presenter = new SearchServicePresenter(this);
         SearchDetailAdapter adapter = new SearchDetailAdapter(this);
         setRecycleView(adapter, recycleView, presenter);
+        recycleView.setLoadMoreEnabled(false);
+        recycleView.setPullRefreshEnabled(false);
         setSearch();
     }
 

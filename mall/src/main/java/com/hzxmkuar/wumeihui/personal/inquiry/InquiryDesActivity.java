@@ -229,7 +229,9 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
                 selectMerchant="["+merchantDetailTo.getBus_info().getBus_uid()+"]";
             }
             mView.findViewById(R.id.select_merchant_layout).setOnClickListener(view -> {
+
                 Intent intent = new Intent(appContext, SelectMerchantActivity.class);
+                intent.putExtra("ServiceId",mode.getId()+"");
                 selectMerchantName = mView.findViewById(R.id.select_merchant);
                 startActivityForResult(intent, 30);
                 goToAnimation(1);
@@ -262,9 +264,11 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
         if (TextUtils.isEmpty(serviceTime)) {
             serviceTime = DateUtil.longToString(millseconds, DateUtil.serviceTime) + ":00";
             initTimeDialog("结束时间");
+            useTime.setTag(millseconds+"-");
         } else {
             serviceTime = serviceTime + "-" + DateUtil.longToString(millseconds, DateUtil.serviceTime) + ":00";
             useTime.setText(serviceTime);
+            useTime.setTag((String)useTime.getTag()+millseconds);
         }
     }
 
@@ -378,8 +382,7 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
                     showMessage("请选择时间");
                     return;
                 }
-
-                if (DateUtil.isBeforeDate(serviceTime.split("-")[0]+":00",serviceTime.split("-")[1]+":00")){
+                if (Long.valueOf(((String)useTime.getTag()).split("-")[0])>Long.valueOf(((String)useTime.getTag()).split("-")[1])){
                     showMessage("开始时间不能在结束时间之后");
                     return;
                 }
@@ -422,7 +425,11 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
                     serviceLayout.getChildAt(i).findViewById(R.id.select_merchant_layout).setVisibility(View.GONE);
                 break;
             case R.id.select_merchant_layout:
+                String serviceIds="";
+                for (ConfirmInquiryPageTo.ServiceListBean serviceListBean:serviceList)
+                    serviceIds=serviceIds+serviceListBean.getId()+",";
                 intent = new Intent(appContext, SelectMerchantActivity.class);
+                intent.putExtra("ServiceId",serviceIds.substring(0,serviceIds.length()-1));
                 selectMerchantName = findViewById(R.id.select_merchant);
                 startActivityForResult(intent, 30);
                 goToAnimation(1);

@@ -58,7 +58,8 @@ public class MerchantListPresenter extends BasePresenter {
     }
 
     public void getMerchant() {
-     param.setService_cate(activity.getIntent().getIntExtra("CateId",0));
+        param.setPos_city(SpUtil.getInt("LocateCityId"));
+        param.setService_cate(activity.getIntent().getIntExtra("CateId", 0));
         param.setHash(getHashString(MerchantParam.class, param));
         ApiClient.create(MainApi.class).getMerchantList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<MerchantTo>>(this) {
@@ -72,32 +73,32 @@ public class MerchantListPresenter extends BasePresenter {
         );
     }
 
-    private void getServiceSort(){
-        BaseParam param=new BaseParam();
-        param.setHash(getHashString(BaseParam.class,param));
+    private void getServiceSort() {
+        BaseParam param = new BaseParam();
+        param.setHash(getHashString(BaseParam.class, param));
         showLoadingDialog();
         ApiClient.create(MerchantApi.class).getServiceList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<ServiceListTo>>(this) {
                     @Override
                     public void onNext(MessageTo<ServiceListTo> msg) {
-                        if (msg.getCode()==0)
-                            ((MerchantListActivity)activity).setSort(msg.getData().getLists());
+                        if (msg.getCode() == 0)
+                            ((MerchantListActivity) activity).setSort(msg.getData().getLists());
                     }
                 }
         );
     }
 
-    private void getCityList(){
-        PosCityParam param=new PosCityParam();
+    private void getCityList() {
+        PosCityParam param = new PosCityParam();
         param.setPos_city(SpUtil.getInt("LocateCityId"));
-        param.setHash(getHashString(PosCityParam.class,param));
+        param.setHash(getHashString(PosCityParam.class, param));
         showLoadingDialog();
         ApiClient.create(MerchantApi.class).getCityList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<MerchantCityTo>>(this) {
                     @Override
                     public void onNext(MessageTo<MerchantCityTo> msg) {
-                        if (msg.getCode()==0)
-                            ((MerchantListActivity)activity).setCityLayout(msg.getData().getLists());
+                        if (msg.getCode() == 0)
+                            ((MerchantListActivity) activity).setCityLayout(msg.getData().getLists());
                     }
                 }
         );

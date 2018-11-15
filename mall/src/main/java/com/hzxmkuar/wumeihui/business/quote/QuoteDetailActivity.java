@@ -82,7 +82,7 @@ public class QuoteDetailActivity extends BaseActivity {
         }
         cancelQuote.setVisibility(detailTo.getStatus_arr().getStatus()==1?View.VISIBLE:View.GONE);
         binding.phone.setOnClickListener(view -> {
-            if (!AppUtil.readSIMCard(appContext))
+            if (!AppUtil.readSIMCard(appContext,QuoteDetailActivity.this))
                 return;
             AlertDialog.show(this, "确认拨打电话").setOnClickListener(view1 -> {
                 AlertDialog.dismiss();
@@ -90,7 +90,7 @@ public class QuoteDetailActivity extends BaseActivity {
                     @Override
                     public void accept(String permission) {
                         Intent intent = new Intent(Intent.ACTION_DIAL);
-                        Uri data = Uri.parse("tel:" + detailTo.getContact_telphone());
+                        Uri data = Uri.parse("tel:" + detailTo.getCustomer_mobile());
                         intent.setData(data);
                         startActivity(intent);
                     }
@@ -105,13 +105,13 @@ public class QuoteDetailActivity extends BaseActivity {
 
         binding.message.setOnClickListener(view -> {
             Intent intent1 = new Intent(appContext, ChatActivity.class);
-            intent1.putExtra("UserId", detailTo.getContact_telphone());
-            intent1.putExtra("Name",detailTo.getContact_name());
+            intent1.putExtra("UserId", detailTo.getCustomer_mobile());
+            intent1.putExtra("Name",detailTo.getCustomer_username());
             startActivity(intent1);
             goToAnimation(1);
         });
         binding.countTimeLayout.setVisibility((detailTo.getStatus_arr().getStatus()==1||detailTo.getStatus_arr().getStatus()==2)?View.VISIBLE:View.GONE);
-        binding.countTime.start(detailTo.getValid_time());
+        binding.countTime.start(detailTo.getValid_time()*1000);
 
 
     }

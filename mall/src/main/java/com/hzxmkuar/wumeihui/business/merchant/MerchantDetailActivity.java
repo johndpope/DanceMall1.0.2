@@ -23,10 +23,12 @@ import com.hzxmkuar.wumeihui.business.merchant.presenter.MerchantDetailPresenter
 import com.hzxmkuar.wumeihui.databinding.ServiceCommentItemBinding;
 import com.hzxmkuar.wumeihui.message.ChatActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.CaseDetailActivity;
+import com.hzxmkuar.wumeihui.personal.inquiry.InquiryDesActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.SelectDemandActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.ServiceCaseActivity;
 import com.hzxmkuar.wumeihui.personal.inquiry.ServiceCommentActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,6 +124,19 @@ public class MerchantDetailActivity extends BaseActivity {
             Observable.from(mode.getPic_list()).subscribe(picListBean -> imageList.add(picListBean.getPic()));
             setImageLayoutLocal(binding.imageLayout, imageList, 158);
             commentLayout.addView(mView);
+
+
+            binding.starLayout.removeAllViews();
+            for (int k=0;k<mode.getScore();k++){
+                View starView=new View(appContext);
+                starView.setBackgroundResource(R.drawable.service_star_icon);
+                GridLayout.LayoutParams layoutParams=new GridLayout.LayoutParams();
+                layoutParams.width=getScreenWidth()*25/750;
+                layoutParams.height=getScreenWidth()*25/750;
+                layoutParams.leftMargin=20;
+                starView.setLayoutParams(layoutParams);
+                binding.starLayout.addView(starView);
+            }
         }
     }
 
@@ -139,10 +154,9 @@ public class MerchantDetailActivity extends BaseActivity {
                 ((TextView) serviceView.findViewById(R.id.type_name)).setText(serviceTo.getService_name());
                 displayImage(serviceView.findViewById(R.id.head_image),serviceTo.getService_img());
                 serviceView.findViewById(R.id.inquiry).setOnClickListener(view -> {
-                   Intent intent=new Intent(appContext, SelectDemandActivity.class);
-                    intent.putExtra("MerchantDetailTo",detailTo);
-                   startActivity(intent);
-                   goToAnimation(1);
+
+                    presenter.inquiry(serviceTo.getId());
+
                });
                 childView.addView(serviceView);
             }
@@ -196,7 +210,7 @@ public class MerchantDetailActivity extends BaseActivity {
                 goToAnimation(1);
                 break;
             case R.id.phone_layout:
-                if (!AppUtil.readSIMCard(appContext))
+                if (!AppUtil.readSIMCard(appContext,this))
                     return;
                 AlertDialog.show(this, "确认拨打电话").setOnClickListener(view1 -> {
                     AlertDialog.dismiss();
@@ -273,5 +287,14 @@ public class MerchantDetailActivity extends BaseActivity {
             imageLayout.addView(imageView);
 
         }
+    }
+
+    @Override
+    protected void submitDataSuccess(Object data) {
+
+        Intent intent = new Intent(appContext, InquiryDesActivity.class);
+        intent.putExtra("MerchantDetailTo",detailTo);
+        startActivity(intent);
+        goToAnimation(1);
     }
 }

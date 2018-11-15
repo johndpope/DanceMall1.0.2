@@ -16,6 +16,7 @@ import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
 import com.hzxmkuar.wumeihui.base.util.AppUtil;
+import com.hzxmkuar.wumeihui.message.ChatActivity;
 import com.hzxmkuar.wumeihui.personal.integral.fragment.MyIntegralFragment;
 import com.zhy.autolayout.AutoRelativeLayout;
 
@@ -57,7 +58,6 @@ public class MyIntegralActivity extends BaseActivity {
     }
 
 
-
     private void initFragment() {
         fragmentList.add(new MyIntegralFragment(0));
         fragmentList.add(new MyIntegralFragment(1));
@@ -85,7 +85,7 @@ public class MyIntegralActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send,R.id.telephone})
+    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.finish_send, R.id.telephone})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.all:
@@ -101,23 +101,13 @@ public class MyIntegralActivity extends BaseActivity {
                 viewPager.setCurrentItem(3);
                 break;
             case R.id.telephone:
-                if (!AppUtil.readSIMCard(appContext))
-                    return;
-                getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
-                    @Override
-                    public void accept(String permission) {
-                        Intent intent = new Intent(Intent.ACTION_CALL);
-                        Uri data = Uri.parse("tel:" + getIntent().getStringExtra("Telephone"));
-                        intent.setData(data);
-                        startActivity(intent);
 
-                    }
+                Intent intent = new Intent(appContext, ChatActivity.class);
+                intent.putExtra("UserId", getIntent().getStringExtra("Telephone"));
+                intent.putExtra("Name","在线客服");
+                startActivity(intent);
+                goToAnimation(1);
 
-                    @Override
-                    public void refuse(String permission) {
-
-                    }
-                });
                 break;
         }
     }

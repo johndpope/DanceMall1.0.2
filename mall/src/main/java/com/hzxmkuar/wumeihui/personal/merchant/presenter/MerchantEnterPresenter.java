@@ -58,7 +58,8 @@ public class MerchantEnterPresenter extends BasePresenter  {
                         if (msg.getCode()==0) {
                             showMessage("上传资料成功");
                             submitDataSuccess(msg.getData());
-                        }
+                        }else
+                            showMessage(msg.getMsg());
                     }
                 }
         );

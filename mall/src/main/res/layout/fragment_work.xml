@@ -81,6 +81,9 @@
                     android:layout_marginLeft="150px"
                     android:layout_marginTop="7px"
                     android:text=""
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:maxLength="20"
                     android:textColor="@color/black"
                     android:textSize="30px" />
 

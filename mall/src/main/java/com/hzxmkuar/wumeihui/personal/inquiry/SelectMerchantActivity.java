@@ -19,6 +19,7 @@ import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
 import com.hzxmkuar.wumeihui.base.Event;
+import com.hzxmkuar.wumeihui.base.util.SpUtil;
 import com.hzxmkuar.wumeihui.databinding.MainShopItemBinding;
 import com.hzxmkuar.wumeihui.databinding.MerchantScreenLayoutBinding;
 import com.hzxmkuar.wumeihui.personal.inquiry.presenter.SelectMerchantPresenter;
@@ -142,6 +143,7 @@ public class SelectMerchantActivity extends BaseActivity {
     }
 
     private void setSearch() {
+        presenter.param.setPos_city(SpUtil.getInt("LocateCityId"));
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -368,7 +370,7 @@ public class SelectMerchantActivity extends BaseActivity {
         if ("SelectCity".equals(event.getType())) {
             String city = event.getData().replaceAll("市", "");
             changeCity.setText(city);
-            presenter.param.setPos_city(presenter.getCityId(city));
+//            presenter.param.setPos_city(presenter.getCityId(city));
             presenter.getMerchant();
             presenter.getCityList(presenter.param.getPos_city());
         }

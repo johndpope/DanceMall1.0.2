@@ -28,11 +28,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="60px"
+                android:layout_marginLeft="50px"
                 android:text="30"
                 android:maxLength="5"
                 android:textColor="@color/appColor"
-                android:textSize="84px"
+                android:textSize="78px"
                 android:id="@+id/money"
                 android:textStyle="bold" />
 

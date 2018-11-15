@@ -156,7 +156,7 @@ public class InquiryActivity extends BaseActivity {
                 goToAnimation(1);
             });
             binding.phone.setOnClickListener(v -> {
-                if (!AppUtil.readSIMCard(appContext))
+                if (!AppUtil.readSIMCard(appContext,InquiryActivity.this))
                     return;
                 getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
                     @Override

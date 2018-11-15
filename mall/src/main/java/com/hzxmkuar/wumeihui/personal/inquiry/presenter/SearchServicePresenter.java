@@ -28,7 +28,6 @@ public class SearchServicePresenter extends BasePresenter {
         KeyWordParam param=new KeyWordParam();
         param.setKeyword(search);
         param.setHash(getHashString(KeyWordParam.class,param));
-        showLoadingDialog();
         ApiClient.create(InquiryApi.class).getSearchList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<DemandSearchTo>>(this) {
                     @Override
