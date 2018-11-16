@@ -180,7 +180,7 @@
             android:layout_height="match_parent"
             android:background="@color/gray_f7"
             android:gravity="top"
-            android:hint="请输入您对司机的评价"
+            android:hint="请输入您对服务的评价"
             android:padding="30px"
             android:id="@+id/content"
             android:textColor="@color/black_3"

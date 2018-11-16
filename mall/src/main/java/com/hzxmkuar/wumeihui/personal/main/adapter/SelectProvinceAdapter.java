@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hzxmkuar.com.applibrary.main.DemandSearchTo;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2018/8/28.
@@ -55,12 +56,10 @@ public class SelectProvinceAdapter extends BaseAdapter<ProvinceTo,SelectCityItem
     }
 
     public int getSectionForPosition(String positionString) {
-
+        Observable.from(mList).subscribe(provinceTo -> System.out.println(PingYinUtil.getPingYin(provinceTo.getProvinceName()).toUpperCase()));
         int position=0;
         for (ProvinceTo cityTo:mList){
-            System.out.println(PingYinUtil.getPingYin(cityTo.getProvinceName()).substring(0,1).toUpperCase()+"==="+positionString);
-            if (positionString.equals(PingYinUtil.getPingYin(cityTo.getProvinceName()).substring(0,1).toUpperCase())){
-
+            if (positionString.equals(PingYinUtil.getPingYin(cityTo.getProvinceName()).substring(0,1).toUpperCase())&&!(positionString.equals("Z")&&"zhongqingshi".equals(PingYinUtil.getPingYin(cityTo.getProvinceName())))){
                 break;
             }
             position++;

@@ -11,6 +11,8 @@ import com.hzxmkuar.wumeihui.base.util.SpUtil;
 import com.hzxmkuar.wumeihui.business.main.MainMerchantActivity;
 import com.hzxmkuar.wumeihui.personal.MainActivity;
 
+import cn.jpush.android.api.JPushInterface;
+
 
 /**
  * Created by Administrator on 2018/9/11.
@@ -22,6 +24,7 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        JPushInterface.init(this);
         new Handler().postDelayed(() -> {
             if (userInfoHelp.getUserLogin()){
                 if (SpUtil.getBoolean("IsMerchant")){

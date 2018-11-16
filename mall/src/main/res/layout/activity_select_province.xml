@@ -76,12 +76,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.github.jdsjlzx.recyclerview.LRecyclerView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/recycle_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60px">
 
-        </com.github.jdsjlzx.recyclerview.LRecyclerView>
+        </android.support.v7.widget.RecyclerView>
 
         <com.hzxmkuar.wumeihui.base.util.SideBar
             android:id="@+id/side_bar"

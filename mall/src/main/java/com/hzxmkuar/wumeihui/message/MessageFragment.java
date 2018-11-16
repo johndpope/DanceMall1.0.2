@@ -88,6 +88,8 @@ public class MessageFragment extends BaseFragment {
             return;
         }
         firstLoad = false;
+
+        EMClient.getInstance().logout(true);
         EMClient.getInstance().login(userInfoTo.getMobile(), "123456", new EMCallBack() {
             @Override
             public void onSuccess() {
@@ -96,9 +98,10 @@ public class MessageFragment extends BaseFragment {
 
             @Override
             public void onError(int i, String s) {
-//                getActivity().runOnUiThread(() -> showMessage(i+"==="+s));
-//             if (i==200)
-//                 getActivity().runOnUiThread(() ->initFragment());
+
+                getActivity().runOnUiThread(() -> showMessage(i+"==="+s));
+             if (i==200)
+                 getActivity().runOnUiThread(() ->initFragment());
 
             }
 

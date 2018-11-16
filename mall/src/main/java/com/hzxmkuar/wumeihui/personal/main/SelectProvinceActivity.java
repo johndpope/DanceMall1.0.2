@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.GridLayout;
@@ -21,6 +22,7 @@ import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
 import com.hzxmkuar.wumeihui.base.Event;
+import com.hzxmkuar.wumeihui.base.adapter.BaseAdapter;
 import com.hzxmkuar.wumeihui.base.util.SideBar;
 import com.hzxmkuar.wumeihui.base.util.city.CityJsonTo;
 import com.hzxmkuar.wumeihui.base.util.city.ProvinceTo;
@@ -52,7 +54,7 @@ public class SelectProvinceActivity extends BaseActivity {
     @BindView(R.id.position_select)
     View positionSelect;
     @BindView(R.id.recycle_view)
-    LRecyclerView recycleView;
+    RecyclerView recycleView;
     @BindView(R.id.side_bar)
     SideBar sideBar;
     @BindView(R.id.select_dialog)
@@ -60,6 +62,7 @@ public class SelectProvinceActivity extends BaseActivity {
 
     private MyLocationListener myListener = new MyLocationListener();
     private SelectProvinceAdapter adapter;
+    private List<ProvinceTo> provinceList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,29 +76,28 @@ public class SelectProvinceActivity extends BaseActivity {
     }
 
     private void setProvince() {
-        List<ProvinceTo> provinceList = CityJsonTo.getProVinceList();
+        provinceList = CityJsonTo.getProVinceList();
         String[] arr = new String[provinceList.size()];
-        for (int i=0;i<provinceList.size();i++ ){
-            arr[i]=provinceList.get(i).getProvinceName();
+        for (int i = 0; i< provinceList.size(); i++ ){
+            arr[i]= provinceList.get(i).getProvinceName();
         }
         Collator cmp = Collator.getInstance(java.util.Locale.CHINA);
         Arrays.sort(arr, cmp);
         List<ProvinceTo>sortList=new ArrayList<>();
 
         for (String name:arr){
-            for (ProvinceTo provinceTo:provinceList){
+            for (ProvinceTo provinceTo: provinceList){
                 if (name.equals(provinceTo.getProvinceName())){
                     sortList.add(provinceTo);
                 }
             }
         }
         adapter = new SelectProvinceAdapter(this);
-        LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+
         adapter.setList(sortList);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
-        recycleView.setAdapter(lRecyclerViewAdapter);
-        showMessage(sortList+"");
-        lRecyclerViewAdapter.setOnItemClickListener((view, position) -> {
+        recycleView.setAdapter(adapter);
+        adapter.setOnItemClickListener((mode, position, view) -> {
             if (sortList.get(position).getCitys() != null && sortList.get(position).getCitys().size() > 0) {
                 Intent intent = new Intent(appContext, SelectCityActivity.class);
                 intent.putExtra("ProvinceTo", sortList.get(position));
@@ -148,7 +150,6 @@ public class SelectProvinceActivity extends BaseActivity {
         sideBar.setTextView(selectDialog);
         sideBar.setOnTouchingLetterChangedListener(s -> {
             int position = adapter.getSectionForPosition(s.toUpperCase().charAt(0) + "");
-
             if (position != -1) {
                 recycleView.smoothScrollToPosition(position);
             }

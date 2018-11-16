@@ -128,10 +128,17 @@ public class SelectPayActivity extends BaseActivity {
 
                                 // 成功
                                 if (Constants.RET_CODE_SUCCESS.equals(retCode)) {
-                                    Intent intent = new Intent(appContext, PayFinishActivity.class);
-                                    intent.putExtra("OrderId", getIntent().getIntExtra("OrderId", 0));
-                                    startActivity(intent);
-                                    goToAnimation(1);
+                                    if (type!=2) {
+                                        Intent intent = new Intent(appContext, PayFinishActivity.class);
+                                        intent.putExtra("OrderId", getIntent().getIntExtra("OrderId", 0));
+                                        startActivity(intent);
+                                        goToAnimation(1);
+                                    }else {
+                                        Intent intent = new Intent(appContext, MainMerchantActivity.class);
+                                        startActivity(intent);
+                                        Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+                                        goToAnimation(2);
+                                    }
                                 } else if (Constants.RET_CODE_PROCESS.equals(retCode)) {
                                     // TODO 处理中，掉单的情形
                                     String resulPay = objContent.optString("result_pay");
@@ -174,7 +181,7 @@ public class SelectPayActivity extends BaseActivity {
     }
 
     private void setView() {
-        if (type == 5||type == 3||type == 4)
+        if (type == 5||type == 3||type == 4||type == 2)
             otherLayout.setVisibility(View.GONE);
 
     }

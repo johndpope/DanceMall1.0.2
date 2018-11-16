@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.jpush.android.api.JPushInterface;
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.LoginApi;
 import hzxmkuar.com.applibrary.domain.BaseParam;
@@ -40,9 +41,10 @@ import util.MD5;
  **/
 
 public class LoginPresenter extends BasePresenter {
-
+    private String jpushId;
     public LoginPresenter(BaseActivity activity) {
         initContext(activity);
+        jpushId= JPushInterface.getRegistrationID(activity);
     }
 
     public void getVerificationCode(String phone) {
@@ -73,7 +75,7 @@ public class LoginPresenter extends BasePresenter {
         LoginParam param = new LoginParam();
         param.setSms_code(code);
         param.setMobile(phone);
-        param.setJpush_id("Jpush");
+        param.setJpush_id(jpushId);
         param.setInvite_code("android");
         param.setHash(getHashStringNoUser(LoginParam.class, param));
         showLoadingDialog();
@@ -102,7 +104,7 @@ public class LoginPresenter extends BasePresenter {
         param.setSex(wechatUserInfoTo.getSex());
         param.setOpenid(wechatUserInfoTo.getOpenid());
         param.setHeadimgurl(wechatUserInfoTo.getHeadimgurl());
-        param.setJpush_id("Jpush");
+        param.setJpush_id(jpushId);
         param.setHash(getHashStringNoUser(WechatLoginParam.class, param));
 
         ApiClient.create(LoginApi.class).wechatLogin(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
