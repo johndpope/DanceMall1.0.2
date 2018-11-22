@@ -71,6 +71,7 @@ public class MerchantListActivity extends BaseActivity {
     View sortSelectIcon1;
     @BindView(R.id.screen_layout)
     AutoLinearLayout screenLayout;
+
     @BindView(R.id.select_screen_layout)
     AutoLinearLayout selectScreenLayout;
     @BindView(R.id.sort_left_layout)
@@ -356,7 +357,7 @@ public class MerchantListActivity extends BaseActivity {
                     sortRightLayout.addView(childView);
                     childView.setOnClickListener(view2 -> {
                         typeLayout.setVisibility(View.GONE);
-                        presenter.param.setSort_type(value.getId());
+                        presenter.param.setService_cate(value.getId());
                         sortText.setText(value.getService_name());
                         presenter.getMerchant();
                         window.dismiss();
@@ -371,7 +372,7 @@ public class MerchantListActivity extends BaseActivity {
             sortRightLayout.addView(childView);
             childView.setOnClickListener(view -> {
                 typeLayout.setVisibility(View.GONE);
-                presenter.param.setSort_type(value.getId());
+                presenter.param.setService_cate(value.getId());
                 sortText.setText(value.getService_name());
                 presenter.getMerchant();
                 window.dismiss();
@@ -474,7 +475,7 @@ public class MerchantListActivity extends BaseActivity {
             }
         });
 
-        binding.flowLayout.setMaxSelectCount(1);
+
         binding.flowLayout.setAdapter(new TagAdapter<MerchantCityTo.ListsBean>(cityList) {
             @Override
             public View getView(FlowLayout parent, int position, MerchantCityTo.ListsBean cityTo) {
@@ -486,15 +487,24 @@ public class MerchantListActivity extends BaseActivity {
             }
         });
         binding.flowLayout.setOnTagClickListener((view, position, parent) -> {
-            lastTag.setBackgroundColorNormal(Color.parseColor("#ffffff"));
-            lastTag.setTextColorNormal(Color.parseColor("#999999"));
-            lastTag.setBorderColorNormal(Color.parseColor("#999999"));
+            view.setSelected(!view.isSelected());
             RTextView cityName = view.findViewById(R.id.city_name);
-            cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
-            cityName.setTextColorNormal(Color.parseColor("#ffffff"));
-            cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
-            presenter.param.setArea_ids(cityList.get(position).getId() + "");
-            lastTag = cityName;
+            if (!view.isSelected()){
+                cityName.setBackgroundColorNormal(Color.parseColor("#ffffff"));
+                cityName.setTextColorNormal(Color.parseColor("#999999"));
+                cityName.setBorderColorNormal(Color.parseColor("#999999"));
+            }else {
+                cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
+                cityName.setTextColorNormal(Color.parseColor("#ffffff"));
+                cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
+            }
+            String areaId="";
+            for (int i=0;i<flowLayout.getChildCount();i++){
+                if (flowLayout.getChildAt(i).isSelected())
+                    areaId=areaId+cityList.get(i).getId()+",";
+            }
+            if (areaId.length()>0)
+                presenter.param.setArea_ids(areaId.substring(0,areaId.length()-1));
             return false;
         });
     }
@@ -522,7 +532,8 @@ public class MerchantListActivity extends BaseActivity {
                     sortRightLayout.addView(childView);
                     childView.setOnClickListener(view2 -> {
                         typeLayout.setVisibility(View.GONE);
-                        presenter.param.setSort_type(value.getId());
+
+                        presenter.param.setService_cate(value.getId());
                         presenter.getMerchant();
                         typeLayout.setVisibility(View.GONE);
                     });
@@ -536,7 +547,7 @@ public class MerchantListActivity extends BaseActivity {
             sortRightLayout.addView(childView);
             childView.setOnClickListener(view -> {
                 typeLayout.setVisibility(View.GONE);
-                presenter.param.setSort_type(value.getId());
+                presenter.param.setService_cate(value.getId());
                 presenter.getMerchant();
                 typeLayout.setVisibility(View.GONE);
             });

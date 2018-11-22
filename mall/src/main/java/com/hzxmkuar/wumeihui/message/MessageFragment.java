@@ -99,7 +99,7 @@ public class MessageFragment extends BaseFragment {
             @Override
             public void onError(int i, String s) {
 
-                getActivity().runOnUiThread(() -> showMessage(i+"==="+s));
+
              if (i==200)
                  getActivity().runOnUiThread(() ->initFragment());
 

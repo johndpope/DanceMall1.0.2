@@ -164,7 +164,9 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="130px">
+                android:layout_height="130px"
+                android:id="@+id/scroll_view"
+                >
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/select_layout"
                 android:layout_width="match_parent"
@@ -186,6 +188,7 @@
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="100px"
+            android:id="@+id/already_select_layout"
 
             >
 

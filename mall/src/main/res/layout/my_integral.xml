@@ -46,6 +46,7 @@
                 android:layout_marginRight="30px"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:visibility="gone"
                 android:background="@drawable/customer_service" />
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoRelativeLayout>

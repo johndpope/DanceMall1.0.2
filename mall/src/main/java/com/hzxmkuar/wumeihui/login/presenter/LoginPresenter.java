@@ -115,7 +115,7 @@ public class LoginPresenter extends BasePresenter {
                             ((LoginActivity)activity). weChatLoginSuccess(msg.getData());
 
                         } else
-                            showMessage(msg.getMsg());
+                            showMessage(msg+"");
                     }
 
 

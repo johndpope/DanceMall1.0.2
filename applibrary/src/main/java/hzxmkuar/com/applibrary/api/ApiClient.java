@@ -106,7 +106,7 @@ public class ApiClient {
                 .addInterceptor(headInterceptor)
                 .addInterceptor(logInterceptor)
 //                .sslSocketFactory(getSSLSocketFactory(mContext, certificates))
-                .hostnameVerifier((hostname, session) -> "prodatacenter.joyhomenet.com".equals(hostname))
+                .hostnameVerifier((hostname, session) -> "".equals(hostname))
                 .addNetworkInterceptor(new HttpCacheInterceptor())
                 .cache(cache)
                 .build();
@@ -114,7 +114,7 @@ public class ApiClient {
 
 
 
-     String baseUrl ="http://xmap18070031.php.hzxmnet.com";
+     String baseUrl ="http://m.wumeihui.net/";
 
 
 

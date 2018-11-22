@@ -367,7 +367,7 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
     protected void disPlayRoundImage(ImageView imageView) {
 
         Glide.with(appContext).load(R.drawable.post_image_default).transform(new GlideCircleTransform(appContext)).into(imageView);
-
+         imageView.setTag(null);
 
 
     }

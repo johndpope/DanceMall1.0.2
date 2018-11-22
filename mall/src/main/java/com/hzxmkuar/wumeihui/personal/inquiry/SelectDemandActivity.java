@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.GridLayout;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.hzxmkuar.wumeihui.R;
@@ -21,7 +23,6 @@ import com.hzxmkuar.wumeihui.personal.inquiry.presenter.SelectInquiryPresenter;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -52,6 +53,8 @@ public class SelectDemandActivity extends BaseActivity {
     TagFlowLayout selectLayout;
     @BindView(R.id.select_number)
     TextView selectNumber;
+    @BindView(R.id.scroll_view)
+    ScrollView scrollView;
     private InquiryTo inquiryTo;
     private List<InquiryListTo> selectInquiryList = new ArrayList<>();
     private SelectDemandRightAdapter demandAdapter;
@@ -173,7 +176,7 @@ public class SelectDemandActivity extends BaseActivity {
                 mView.setTag(mode);
                 mView.findViewById(R.id.delete_icon).setOnClickListener(view -> {
                     mView.setVisibility(View.GONE);
-                    ((InquiryListTo)mView.getTag()).setSelect(false);
+                    ((InquiryListTo) mView.getTag()).setSelect(false);
                     selectInquiryList.remove(mView.getTag());
                     demandAdapter.notifyDataSetChanged();
                     selectNumber.setText(selectInquiryList.size() + "");
@@ -191,7 +194,7 @@ public class SelectDemandActivity extends BaseActivity {
         setView();
     }
 
-    @OnClick({R.id.search_layout, R.id.clean, R.id.submit})
+    @OnClick({R.id.search_layout, R.id.clean, R.id.submit, R.id.already_select_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.search_layout:
@@ -217,28 +220,33 @@ public class SelectDemandActivity extends BaseActivity {
                 });
                 presenter.confirmInquiry(serviceId.substring(0, serviceId.length() - 1));
                 break;
+            case R.id.already_select_layout:
+                scrollView.setSelected(!scrollView.isSelected());
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getScreenWidth(),scrollView.isSelected()? ViewGroup.LayoutParams.WRAP_CONTENT:130*getScreenWidth()/750);
+                scrollView.setLayoutParams(layoutParams);
+                break;
         }
     }
 
     @Override
     protected void submitDataSuccess(Object data) {
-        MerchantDetailTo merchantDetailTo= (MerchantDetailTo) getIntent().getSerializableExtra("MerchantDetailTo");
+        MerchantDetailTo merchantDetailTo = (MerchantDetailTo) getIntent().getSerializableExtra("MerchantDetailTo");
         Intent intent = new Intent(appContext, InquiryDesActivity.class);
         intent.putExtra("SelectInquiryList", (Serializable) selectInquiryList);
 
-        intent.putExtra("MerchantDetailTo",merchantDetailTo);
+        intent.putExtra("MerchantDetailTo", merchantDetailTo);
         startActivity(intent);
         goToAnimation(1);
 
     }
 
     @Subscribe
-    public void getSelectDemand(Event<DemandSearchTo.ListsBeanX.ListsBean> event){
-        String selectIdString="";
+    public void getSelectDemand(Event<DemandSearchTo.ListsBeanX.ListsBean> event) {
+        String selectIdString = "";
 
-        if ("SelectDemandTo".equals(event.getType())){
-            for (InquiryListTo inquiryListTo:selectInquiryList)
-                selectIdString=selectIdString+inquiryListTo.getId()+",";
+        if ("SelectDemandTo".equals(event.getType())) {
+            for (InquiryListTo inquiryListTo : selectInquiryList)
+                selectIdString = selectIdString + inquiryListTo.getId() + ",";
             if (selectIdString.contains(event.getData().getId()))
                 return;
             for (int i = 0; i < menuList.size(); i++) {

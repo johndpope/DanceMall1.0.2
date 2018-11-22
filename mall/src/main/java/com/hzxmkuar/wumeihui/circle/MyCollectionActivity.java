@@ -1,7 +1,9 @@
 package com.hzxmkuar.wumeihui.circle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.hzxmkuar.wumeihui.R;
@@ -12,6 +14,7 @@ import com.hzxmkuar.wumeihui.circle.presenter.MyCirclePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hzxmkuar.com.applibrary.domain.circle.CircleTo;
 
 /**
  * Created by Administrator on 2018/9/4.
@@ -32,5 +35,14 @@ public class MyCollectionActivity extends BaseActivity {
         setRecycleView(new CircleAdapter(this), recycleView, presenter);
         recycleView.setLoadMoreEnabled(false);
         recycleView.setPullRefreshEnabled(false);
+    }
+
+    @Override
+    public void recycleItemClick(View view, int position, Object data) {
+        Intent intent = new Intent(appContext, PostDetailActivity.class);
+
+        intent.putExtra("PostId", ((CircleTo.ListsBean) data).getId());
+        startActivity(intent);
+        goToAnimation(1);
     }
 }

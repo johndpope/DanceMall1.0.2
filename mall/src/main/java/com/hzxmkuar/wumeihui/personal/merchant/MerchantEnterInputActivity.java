@@ -113,10 +113,39 @@ public class MerchantEnterInputActivity extends BaseActivity implements Permissi
                 uploadHeadImageDialog();
                 break;
             case R.id.submit:
+                if (headImage.getTag()==null||(Integer) headImage.getTag()==0){
+                    showMessage("请上传店铺头像");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(shopName.getText().toString())){
+                    showMessage("请填写店铺名");
+                    return;
+                }
+                if (mainImage.getTag()==null||(Integer) mainImage.getTag()==0){
+                    showMessage("请上传店铺招牌图");
+                    return;
+                }
+
                 if (TextUtils.isEmpty(presenter.enterParam.getMain_service())){
                     showMessage("请选择主营服务");
                     return;
                 }
+                if (caseList==null||caseList.size()==0){
+                    showMessage("请上传案例");
+                    return;
+                }
+                if (address.getTag()==null||TextUtils.isEmpty((String) address.getTag())){
+                    showMessage("请填写地址");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(detailAddress.getText().toString())){
+                    showMessage("请填写详细地址");
+                    return;
+                }
+
+
                 presenter.enterParam.setShop_logo((Integer) headImage.getTag());
                 presenter.enterParam.setShop_banner((Integer) mainImage.getTag());
                 presenter.enterParam.setShop_name(shopName.getText().toString());

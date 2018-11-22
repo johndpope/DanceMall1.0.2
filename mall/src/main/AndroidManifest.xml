@@ -129,7 +129,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".personal.inquiry.SelectDemandActivity"
-            android:configChanges="screenSize|keyboardHidden|orientation"
+         android:screenOrientation="portrait"
      />
         <activity android:name=".personal.MorePositionActivity"
             android:screenOrientation="portrait"

@@ -51,6 +51,7 @@ private int type;
     private void setView() {
         if (remarkTo!=null){
             if (remarkTo.getInvoice()!=null){
+                type=remarkTo.getInvoice().getType();
                 typeView1.setBackgroundResource(remarkTo.getInvoice().getType()==1?R.drawable.position_select:R.drawable.position_un_select);
                 typeView2.setBackgroundResource(remarkTo.getInvoice().getType()==2?R.drawable.position_select:R.drawable.position_un_select);
                 typeView3.setBackgroundResource(remarkTo.getInvoice().getType()==3?R.drawable.position_select:R.drawable.position_un_select);

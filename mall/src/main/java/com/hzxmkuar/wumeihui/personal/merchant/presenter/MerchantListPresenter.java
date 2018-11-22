@@ -34,7 +34,7 @@ public class MerchantListPresenter extends BasePresenter {
 
     public MerchantListPresenter(BaseActivity activity) {
         initContext(activity);
-
+        param.setService_cate(activity.getIntent().getIntExtra("CateId", 0));
         getMerchant();
         getServiceSort();
         getCityList();
@@ -59,7 +59,7 @@ public class MerchantListPresenter extends BasePresenter {
 
     public void getMerchant() {
         param.setPos_city(SpUtil.getInt("LocateCityId"));
-        param.setService_cate(activity.getIntent().getIntExtra("CateId", 0));
+
         param.setHash(getHashString(MerchantParam.class, param));
         ApiClient.create(MainApi.class).getMerchantList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<MerchantTo>>(this) {

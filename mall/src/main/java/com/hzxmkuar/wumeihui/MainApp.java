@@ -22,8 +22,8 @@ import hzxmkuar.com.applibrary.api.ApiClient;
 
 public class MainApp extends Application {
 public static Context appContext;
-    public static String webBaseUrl="http://xmap18070031.php.hzxmnet.com/h5/page/";
-    public static String shareUrl="http://xmap18070031.php.hzxmnet.com/download.html?tdsourcetag=s_pctim_aiomsg#";
+    public static String webBaseUrl="http://m.wumeihui.net/h5/page/";
+    public static String shareUrl="http://m.wumeihui.net/download.html?tdsourcetag=s_pctim_aiomsg#";
     @Override
     public void onCreate() {
         super.onCreate();

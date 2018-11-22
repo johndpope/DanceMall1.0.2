@@ -660,7 +660,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="超值兑换单"
+                    android:text="超值兑订单"
 
                     android:textColor="@color/black"
                     android:textSize="30px" />

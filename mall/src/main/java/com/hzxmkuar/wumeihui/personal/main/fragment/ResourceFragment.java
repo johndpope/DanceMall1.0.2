@@ -386,27 +386,36 @@ public class ResourceFragment extends BaseFragment {
                 break;
             case R.id.sort_layout:
             case R.id.sort_layout_top:
-//                sortPopWindow(popLayout);
-                sortSelectLayout.setVisibility(View.VISIBLE);
-                selectScreenLayout.setVisibility(View.GONE);
-                typeLayout.setVisibility(View.GONE);
-                setSortView();
+               if (scrollY*1.0/getScreenHeight()>0.5)
+                sortPopWindow(popLayout);
+                else {
+                   sortSelectLayout.setVisibility(View.VISIBLE);
+                   selectScreenLayout.setVisibility(View.GONE);
+                   typeLayout.setVisibility(View.GONE);
+                   setSortView();
+               }
                 break;
             case R.id.screen_layout:
             case R.id.screen_layout_top:
-//                screenPopWindow(view);
+                if (scrollY*1.0/getScreenHeight()>0.5)
+                    screenPopWindow(view);
+                else {
+//
 
-                selectScreenLayout.setVisibility(View.VISIBLE);
-                sortSelectLayout.setVisibility(View.GONE);
-                typeLayout.setVisibility(View.GONE);
+                    selectScreenLayout.setVisibility(View.VISIBLE);
+                    sortSelectLayout.setVisibility(View.GONE);
+                    typeLayout.setVisibility(View.GONE);
+                }
                 break;
             case R.id.video_layout:
             case R.id.video_layout_top:
-//                topicPopWindow(popLayout);
-                typeLayout.setVisibility(View.VISIBLE);
-                sortSelectLayout.setVisibility(View.GONE);
-                selectScreenLayout.setVisibility(View.GONE);
-
+                if (scrollY*1.0/getScreenHeight()>0.5)
+                topicPopWindow(popLayout);
+                else {
+                    typeLayout.setVisibility(View.VISIBLE);
+                    sortSelectLayout.setVisibility(View.GONE);
+                    selectScreenLayout.setVisibility(View.GONE);
+                }
                 break;
 
 
@@ -593,7 +602,7 @@ public class ResourceFragment extends BaseFragment {
                     sortRightLayout.addView(childView);
                     childView.setOnClickListener(view2 -> {
                         typeLayout.setVisibility(View.GONE);
-                        presenter.param.setSort_type(value.getId());
+                        presenter.param.setService_cate(value.getId());
                         presenter.getMerchant();
                         typeLayout.setVisibility(View.GONE);
                     });
@@ -607,7 +616,7 @@ public class ResourceFragment extends BaseFragment {
             sortRightLayout.addView(childView);
             childView.setOnClickListener(view -> {
                 typeLayout.setVisibility(View.GONE);
-                presenter.param.setSort_type(value.getId());
+                presenter.param.setService_cate(value.getId());
                 presenter.getMerchant();
                 typeLayout.setVisibility(View.GONE);
             });
@@ -639,29 +648,40 @@ public class ResourceFragment extends BaseFragment {
         });
 
 
-        flowLayout.setMaxSelectCount(1);
+
         flowLayout.setAdapter(new TagAdapter<MerchantCityTo.ListsBean>(cityList) {
             @Override
             public View getView(FlowLayout parent, int position, MerchantCityTo.ListsBean cityTo) {
                 View mView = View.inflate(appContext, R.layout.merchant_city_item, null);
                 RTextView cityName = mView.findViewById(R.id.city_name);
+                mView.setSelected(false);
                 cityName.setText(cityTo.getArea());
-                lastTag = cityName;
                 return mView;
             }
         });
         flowLayout.setOnTagClickListener((view, position, parent) -> {
-            lastTag.setBackgroundColorNormal(Color.parseColor("#ffffff"));
-            lastTag.setTextColorNormal(Color.parseColor("#999999"));
-            lastTag.setBorderColorNormal(Color.parseColor("#999999"));
+            view.setSelected(!view.isSelected());
             RTextView cityName = view.findViewById(R.id.city_name);
-            cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
-            cityName.setTextColorNormal(Color.parseColor("#ffffff"));
-            cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
-            presenter.param.setArea_ids(cityList.get(position).getId() + "");
-            lastTag = cityName;
+            if (!view.isSelected()){
+                cityName.setBackgroundColorNormal(Color.parseColor("#ffffff"));
+                cityName.setTextColorNormal(Color.parseColor("#999999"));
+                cityName.setBorderColorNormal(Color.parseColor("#999999"));
+            }else {
+                cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
+                cityName.setTextColorNormal(Color.parseColor("#ffffff"));
+                cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
+            }
+            String areaId="";
+            for (int i=0;i<flowLayout.getChildCount();i++){
+                if (flowLayout.getChildAt(i).isSelected())
+                areaId=areaId+cityList.get(i).getId()+",";
+            }
+            if (areaId.length()>0)
+            presenter.param.setArea_ids(areaId.substring(0,areaId.length()-1));
             return false;
         });
+
+
 
     }
 
@@ -768,7 +788,7 @@ public class ResourceFragment extends BaseFragment {
         contentView.findViewById(R.id.sort_select_icon_2).setVisibility(sortType == 2 ? View.VISIBLE : View.GONE);
         ((TextView) contentView.findViewById(R.id.sort_text3)).setTextColor(sortType == 3 ? Color.parseColor("#3bafd9") : Color.parseColor("#000000"));
         contentView.findViewById(R.id.sort_select_icon_3).setVisibility(sortType == 3 ? View.VISIBLE : View.GONE);
-        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), getScreenHeight() + scrollY - popLayout.getBottom(), true);
+        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), getScreenHeight() , true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -777,7 +797,7 @@ public class ResourceFragment extends BaseFragment {
         window.setTouchable(true);
         // 显示PopupWindow，其中：
         // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
-        window.showAsDropDown(anchor, 0, 0);
+        window.showAsDropDown(popLayoutTop, 0, 0);
         contentView.findViewById(R.id.sort_text1).setOnClickListener(view -> {
             sortType = 1;
             presenter.param.setSort_type(1);
@@ -817,7 +837,7 @@ public class ResourceFragment extends BaseFragment {
         window.setTouchable(true);
         // 显示PopupWindow，其中：
         // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
-        window.showAsDropDown(anchor);
+        window.showAsDropDown(popLayoutTop,0,0);
         sortLeftLayout = contentView.findViewById(R.id.sort_left_layout);
         sortRightLayout = contentView.findViewById(R.id.sort_right_layout);
 
@@ -867,7 +887,7 @@ public class ResourceFragment extends BaseFragment {
     private void screenPopWindow(View anchor) {
         View contentView = View.inflate(appContext, R.layout.merchant_screen_layout, null);
         MerchantScreenLayoutBinding binding = DataBindingUtil.bind(contentView);
-        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), getScreenHeight() + scrollY - popLayout.getBottom(), true);
+        PopupWindow window = new PopupWindow(contentView,getScreenWidth(),getScreenHeight(),true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -876,7 +896,7 @@ public class ResourceFragment extends BaseFragment {
         window.setTouchable(true);
         // 显示PopupWindow，其中：
         // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
-        window.showAsDropDown(anchor, 0, 0);
+        window.showAsDropDown(popLayoutTop, 0, 0);
         person = contentView.findViewById(R.id.person);
         binding.person.setOnClickListener(view -> {
             binding.person.setBorderColorNormal(Color.parseColor("#3bafd9"));
@@ -959,7 +979,7 @@ public class ResourceFragment extends BaseFragment {
             }
         });
 
-        binding.flowLayout.setMaxSelectCount(1);
+
         binding.flowLayout.setAdapter(new TagAdapter<MerchantCityTo.ListsBean>(cityList) {
             @Override
             public View getView(FlowLayout parent, int position, MerchantCityTo.ListsBean cityTo) {
@@ -971,15 +991,24 @@ public class ResourceFragment extends BaseFragment {
             }
         });
         binding.flowLayout.setOnTagClickListener((view, position, parent) -> {
-            lastTag.setBackgroundColorNormal(Color.parseColor("#ffffff"));
-            lastTag.setTextColorNormal(Color.parseColor("#999999"));
-            lastTag.setBorderColorNormal(Color.parseColor("#999999"));
+            view.setSelected(!view.isSelected());
             RTextView cityName = view.findViewById(R.id.city_name);
-            cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
-            cityName.setTextColorNormal(Color.parseColor("#ffffff"));
-            cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
-            presenter.param.setArea_ids(cityList.get(position).getId() + "");
-            lastTag = cityName;
+            if (!view.isSelected()){
+                cityName.setBackgroundColorNormal(Color.parseColor("#ffffff"));
+                cityName.setTextColorNormal(Color.parseColor("#999999"));
+                cityName.setBorderColorNormal(Color.parseColor("#999999"));
+            }else {
+                cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
+                cityName.setTextColorNormal(Color.parseColor("#ffffff"));
+                cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
+            }
+            String areaId="";
+            for (int i=0;i<flowLayout.getChildCount();i++){
+                if (flowLayout.getChildAt(i).isSelected())
+                    areaId=areaId+cityList.get(i).getId()+",";
+            }
+            if (areaId.length()>0)
+                presenter.param.setArea_ids(areaId.substring(0,areaId.length()-1));
             return false;
         });
     }

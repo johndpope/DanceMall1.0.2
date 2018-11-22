@@ -39,6 +39,7 @@
                 android:textSize="36px" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="44px"
                 android:layout_height="44px"
                 android:layout_alignParentEnd="true"
