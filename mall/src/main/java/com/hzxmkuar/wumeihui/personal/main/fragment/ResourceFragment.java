@@ -788,7 +788,7 @@ public class ResourceFragment extends BaseFragment {
         contentView.findViewById(R.id.sort_select_icon_2).setVisibility(sortType == 2 ? View.VISIBLE : View.GONE);
         ((TextView) contentView.findViewById(R.id.sort_text3)).setTextColor(sortType == 3 ? Color.parseColor("#3bafd9") : Color.parseColor("#000000"));
         contentView.findViewById(R.id.sort_select_icon_3).setVisibility(sortType == 3 ? View.VISIBLE : View.GONE);
-        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), getScreenHeight() , true);
+        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), (int) (getScreenHeight()-popLayoutTop.getY()-popLayoutTop.getHeight()), true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -828,7 +828,7 @@ public class ResourceFragment extends BaseFragment {
     private void topicPopWindow(View anchor) {
         View contentView = View.inflate(appContext, R.layout.circle_topic_layout, null);
 
-        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), getScreenHeight() - popLayout.getBottom() + scrollY, true);
+        PopupWindow window = new PopupWindow(contentView, getScreenWidth(), (int) (getScreenHeight()-popLayoutTop.getY()-popLayoutTop.getHeight()), true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -887,7 +887,7 @@ public class ResourceFragment extends BaseFragment {
     private void screenPopWindow(View anchor) {
         View contentView = View.inflate(appContext, R.layout.merchant_screen_layout, null);
         MerchantScreenLayoutBinding binding = DataBindingUtil.bind(contentView);
-        PopupWindow window = new PopupWindow(contentView,getScreenWidth(),getScreenHeight(),true);
+        PopupWindow window = new PopupWindow(contentView,getScreenWidth(),(int) (getScreenHeight()-popLayoutTop.getY()-popLayoutTop.getHeight()),true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件

@@ -577,7 +577,7 @@ public class MerchantListActivity extends BaseActivity {
             presenter.param.setBusiness_type(1);
         });
 
-      flowLayout.setMaxSelectCount(1);
+
      flowLayout.setAdapter(new TagAdapter<MerchantCityTo.ListsBean>(cityList) {
             @Override
             public View getView(FlowLayout parent, int position, MerchantCityTo.ListsBean cityTo) {
@@ -589,16 +589,26 @@ public class MerchantListActivity extends BaseActivity {
             }
         });
        flowLayout.setOnTagClickListener((view, position, parent) -> {
-            lastTag.setBackgroundColorNormal(Color.parseColor("#ffffff"));
-            lastTag.setTextColorNormal(Color.parseColor("#999999"));
-            lastTag.setBorderColorNormal(Color.parseColor("#999999"));
-            RTextView cityName = view.findViewById(R.id.city_name);
-            cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
-            cityName.setTextColorNormal(Color.parseColor("#ffffff"));
-            cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
-            presenter.param.setArea_ids(cityList.get(position).getId() + "");
-            lastTag = cityName;
-            return false;
+           view.setSelected(!view.isSelected());
+           RTextView cityName = view.findViewById(R.id.city_name);
+           if (!view.isSelected()){
+               cityName.setBackgroundColorNormal(Color.parseColor("#ffffff"));
+               cityName.setTextColorNormal(Color.parseColor("#999999"));
+               cityName.setBorderColorNormal(Color.parseColor("#999999"));
+           }else {
+               cityName.setBackgroundColorNormal(Color.parseColor("#3bafd9"));
+               cityName.setTextColorNormal(Color.parseColor("#ffffff"));
+               cityName.setBorderColorNormal(Color.parseColor("#3bafd9"));
+           }
+           String areaId="";
+           for (int i=0;i<flowLayout.getChildCount();i++){
+               if (flowLayout.getChildAt(i).isSelected())
+                   areaId=areaId+cityList.get(i).getId()+",";
+           }
+           if (areaId.length()>0)
+               presenter.param.setArea_ids(areaId.substring(0,areaId.length()-1));
+           return false;
+
         });
     }
 

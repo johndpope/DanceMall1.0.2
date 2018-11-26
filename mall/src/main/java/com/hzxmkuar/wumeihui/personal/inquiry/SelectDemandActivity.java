@@ -17,6 +17,7 @@ import com.hzxmkuar.wumeihui.base.ActivityManager;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.Constant;
 import com.hzxmkuar.wumeihui.base.Event;
+import com.hzxmkuar.wumeihui.base.impl.UploadImageModel;
 import com.hzxmkuar.wumeihui.personal.inquiry.adapter.SelectDemandLeftAdapter;
 import com.hzxmkuar.wumeihui.personal.inquiry.adapter.SelectDemandRightAdapter;
 import com.hzxmkuar.wumeihui.personal.inquiry.presenter.SelectInquiryPresenter;
@@ -209,6 +210,7 @@ public class SelectDemandActivity extends BaseActivity {
                 demandAdapter.notifyDataSetChanged();
                 selectNumber.setText("0");
                 break;
+
             case R.id.submit:
                 if (selectInquiryList.size() == 0) {
                     showMessage("请添加服务");
@@ -221,9 +223,12 @@ public class SelectDemandActivity extends BaseActivity {
                 presenter.confirmInquiry(serviceId.substring(0, serviceId.length() - 1));
                 break;
             case R.id.already_select_layout:
-                scrollView.setSelected(!scrollView.isSelected());
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getScreenWidth(),scrollView.isSelected()? ViewGroup.LayoutParams.WRAP_CONTENT:130*getScreenWidth()/750);
-                scrollView.setLayoutParams(layoutParams);
+
+                if (selectLayout.getHeight()>220*getScreenWidth()/750) {
+                    scrollView.setSelected(!scrollView.isSelected());
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getScreenWidth(), scrollView.isSelected() ? ViewGroup.LayoutParams.WRAP_CONTENT : 130 * getScreenWidth() / 750);
+                    scrollView.setLayoutParams(layoutParams);
+                }
                 break;
         }
     }

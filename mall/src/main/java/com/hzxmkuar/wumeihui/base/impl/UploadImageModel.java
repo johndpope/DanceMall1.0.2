@@ -107,7 +107,7 @@ public class UploadImageModel extends BasePresenter {
         for (int i = 0; i < imagePathList.size(); i++) {
             String imagePath = imagePathList.get(i);
             keyRecordList.clear();
-            File file = saveBitmapFile(ImageCompressUtil.compressPixel(imagePath),imagePath+"compress");//访问手机端的文件资源，保证手机端sdcdrd中必须有这个文件
+            File file = saveBitmapFile(ImageCompressUtil.compressPixel(imagePath),imagePath);//访问手机端的文件资源，保证手机端sdcdrd中必须有这个文件
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
             MultipartBody.Part body = MultipartBody.Part.createFormData("fileName", file.getName(), requestFile);
@@ -158,7 +158,7 @@ public class UploadImageModel extends BasePresenter {
         for (int i = 0; i < imagePathList.size(); i++) {
             String imagePath = imagePathList.get(i);
             keyRecordList.clear();
-            File file = saveBitmapFile(ImageCompressUtil.compressPixel(imagePath),imagePath+"compress");//访问手机端的文件资源，保证手机端sdcdrd中必须有这个文件
+            File file = saveBitmapFile(ImageCompressUtil.compressPixel(imagePath),imagePath);//访问手机端的文件资源，保证手机端sdcdrd中必须有这个文件
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
             MultipartBody.Part body = MultipartBody.Part.createFormData("fileName", file.getName(), requestFile);

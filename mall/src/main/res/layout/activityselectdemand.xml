@@ -163,19 +163,19 @@
 
 
             <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="130px"
                 android:id="@+id/scroll_view"
-                >
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/select_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="33px"
-                android:layout_marginRight="33px"
-                android:columnCount="4">
+                android:layout_height="130px">
 
-            </com.zhy.view.flowlayout.TagFlowLayout>
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/select_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="33px"
+                    android:layout_marginRight="33px"
+                    android:columnCount="4">
+
+                </com.zhy.view.flowlayout.TagFlowLayout>
             </ScrollView>
         </com.zhy.autolayout.AutoLinearLayout>
 
