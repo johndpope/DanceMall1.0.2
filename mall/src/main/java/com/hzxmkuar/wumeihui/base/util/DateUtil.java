@@ -38,6 +38,7 @@ public class DateUtil {
 	public final static String mBillDateFormatString = "yyyy/MM/dd";
 	public final static String shortDateFormatString = "yyyy-MM";
 	public final static String mFormatTimeCamara = "HH:mm";
+	public final static String mFormatTimeCamaraDetail = "HH:mm:ss";
 	public final static String serviceTime = "MM月dd日HH";
 
 	/**

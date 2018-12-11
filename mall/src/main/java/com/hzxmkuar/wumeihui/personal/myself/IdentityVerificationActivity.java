@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hzxmkuar.wumeihui.MainApp;
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
@@ -60,7 +62,6 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
     private ImageView currentImage;
     private UploadImageModel uploadImageModel = new UploadImageModel();
     private IdentityPresenter presenter;
-    private boolean isFront;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,31 +85,29 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
                 break;
             case R.id.face_front:
                 currentImage = faceFront;
-                isFront=true;
                 uploadHeadImageDialog();
                 break;
             case R.id.face_background:
                 currentImage = faceBackground;
-                isFront=false;
                 uploadHeadImageDialog();
                 break;
             case R.id.submit:
                 if (companyLayout.getVisibility() == View.VISIBLE) {
-                    if (TextUtils.isEmpty(companyName.getText().toString())){
+                    if (TextUtils.isEmpty(companyName.getText().toString())) {
                         showMessage("请填写公司名称");
                         return;
                     }
-                    if ( companyImage.getTag()==null||(Integer) companyImage.getTag()==0){
+                    if (companyImage.getTag() == null || (Integer) companyImage.getTag() == 0) {
                         showMessage("请上传企业营业执照");
                         return;
                     }
                     presenter.companyIdentity(companyName.getText().toString(), (Integer) companyImage.getTag());
                 } else {
-                    if ( faceFront.getTag()==null||(Integer) faceFront.getTag()==0){
+                    if (faceFront.getTag() == null || (Integer) faceFront.getTag() == 0) {
                         showMessage("请上传身份证正面");
                         return;
                     }
-                    if ( faceBackground.getTag()==null||(Integer) faceBackground.getTag()==0){
+                    if (faceBackground.getTag() == null || (Integer) faceBackground.getTag() == 0) {
                         showMessage("请上传身份证反面");
                         return;
                     }
@@ -182,7 +181,7 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             try {
                 ContentValues values = new ContentValues(1);
-                File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamara) + ".png");
+                File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamaraDetail) + ".png");
                 photoPath = mOutPhotoFile.getAbsolutePath();
                 values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
                 values.put(MediaStore.Images.Media.DATA, photoPath);
@@ -192,7 +191,7 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
             }
         } else {
 
-            File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamara) + ".png");
+            File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamaraDetail) + ".png");
             photoPath = mOutPhotoFile.getAbsolutePath();
             uri = Uri.fromFile(mOutPhotoFile);
 
@@ -250,9 +249,10 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
     @Override
     public void uploadImageSuccess(String path, int imageId) {
         currentImage.setTag(null);
-
-        displayImage(isFront?faceFront:faceBackground, path);
+        System.out.println(path);
+        displayImage(currentImage, path);
         currentImage.setTag(imageId);
+
     }
 
 
