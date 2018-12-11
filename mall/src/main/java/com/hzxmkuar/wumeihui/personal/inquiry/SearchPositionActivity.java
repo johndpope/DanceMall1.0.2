@@ -128,6 +128,8 @@ public class SearchPositionActivity extends BaseActivity {
                     @Override
                     public void onGetPoiResult(PoiResult poiResult) {
                         poiList = poiResult.getAllPoi();
+                        if(poiList==null)
+                            poiList= new ArrayList<>();
                         if (historyPoiList!=null){
                             for (int i=0;i<historyPoiList.size()&&i<5;i++)
                                 poiList.add(historyPoiList.get(i));

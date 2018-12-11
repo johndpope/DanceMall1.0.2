@@ -32,6 +32,8 @@
             android:hint="请填写昵称"
             android:gravity="right"
             android:id="@+id/nick_name"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textSize="32px"
             android:layout_alignBaseline="@+id/textView4"
             android:layout_alignBottom="@+id/textView4"

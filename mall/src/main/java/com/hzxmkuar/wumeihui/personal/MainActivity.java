@@ -55,9 +55,9 @@ public class MainActivity extends BaseActivity {
     private ResourceFragment resourceFragment;
     private List<Fragment> fragmentList = new ArrayList<>();
     private MyselfFragment myselfFragment=new MyselfFragment();
-    private MainPresenter presenter;
     private Handler handler = new Handler();
     private boolean canOut;
+    private MessageFragment messageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,26 +66,21 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         ActivityManager.mainActivity = this;
 
-        presenter = new MainPresenter(this);
+
 
         SpUtil.put("IsMerchant", false);
-
-    }
-
-    @Override
-    public void loadDataSuccess(Object data) {
-        userInfoTo=userInfoHelp.getUserInfo();
         initFragment();
-        SpUtil.put("ChatName", userInfoTo.getUsername());
-        SpUtil.put("ChatPic", userInfoTo.getFace_url());
+
 
     }
+
 
     private void initFragment() {
         resourceFragment = new ResourceFragment();
+        messageFragment = new MessageFragment(this);
         fragmentList.add(resourceFragment);
         fragmentList.add(new CircleFragment());
-        fragmentList.add( new MessageFragment(this));
+        fragmentList.add( messageFragment);
         fragmentList.add(myselfFragment);
 
         fragmentLayout.setAdapter(pagerAdapter);
@@ -154,7 +149,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.getUserInfo();
+
     }
 
     @Override

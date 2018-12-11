@@ -85,7 +85,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".login.SplashActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppStartLoad"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -464,7 +466,7 @@
         android:value="1344" />
     <meta-data
         android:name="com.baidu.lbsapi.API_KEY"
-        android:value="ZI2RnmrxtxGnHYtZctAEdDzihha817To">
+        android:value="kuc3CqFwzXKQkzYk9XfEhwFtxOXhnh24">
 
     </meta-data>
 

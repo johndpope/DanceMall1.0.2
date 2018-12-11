@@ -79,7 +79,7 @@ public class WXEntryActivity extends WechatHandlerActivity implements IWXAPIEven
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {
                         WeChatTokenTo tokenTo = new Gson().fromJson(responseInfo.result, WeChatTokenTo.class);
-
+                        System.out.println(responseInfo.result+"tokenTo==");
                         getUSerInfo(tokenTo.getAccess_token(), tokenTo.getOpenid());
                     }
 

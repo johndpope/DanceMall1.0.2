@@ -1,6 +1,7 @@
 package com.hzxmkuar.wumeihui.personal.main.presenter;
 
 import com.hzxmkuar.wumeihui.base.BaseActivity;
+import com.hzxmkuar.wumeihui.base.BaseFragment;
 import com.hzxmkuar.wumeihui.base.BasePresenter;
 import com.hzxmkuar.wumeihui.base.MyObserver;
 
@@ -18,7 +19,7 @@ import rx.schedulers.Schedulers;
 
 public class MainPresenter extends BasePresenter {
 
-    public MainPresenter(BaseActivity activity) {
+    public MainPresenter(BaseFragment activity) {
         initContext(activity);
         getUserInfo();
     }

@@ -260,6 +260,8 @@ public class SelectMerchantActivity extends BaseActivity {
                         if (selectList.get(i).getId() == mode.getId()) {
                             selectList.get(i).setSelect(false);
                             selectIdList.remove(mode.getId() + "");
+                           selectMerchant= selectMerchant.replaceAll(mode.getBus_uid()+",","");
+                            selectMerchantName=  selectMerchantName.replaceAll(mode.getShop_name() + "  ","");
                             merchantViewList.get(i).findViewById(R.id.select_icon).setBackgroundResource(R.drawable.service_un_select);
                         }
                     }

@@ -23,6 +23,8 @@ import com.hyphenate.easeui.ui.EaseConversationListFragment;
 import com.hzxmkuar.wumeihui.R;
 import com.hzxmkuar.wumeihui.base.BaseActivity;
 import com.hzxmkuar.wumeihui.base.BaseFragment;
+import com.hzxmkuar.wumeihui.base.util.SpUtil;
+import com.hzxmkuar.wumeihui.personal.main.presenter.MainPresenter;
 import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
@@ -64,6 +66,8 @@ public class MessageFragment extends BaseFragment {
     private EaseConversationListFragment chatFragment;
     private boolean firstLoad = true;
     private List<Fragment> fragmentList = new ArrayList<>();
+    private boolean init;
+    private MainPresenter presenter;
 
     public MessageFragment(BaseActivity activity) {
         this.baseActivity = activity;
@@ -75,7 +79,7 @@ public class MessageFragment extends BaseFragment {
         View mView = View.inflate(appContext, R.layout.fragment_message, null);
         unbinder = ButterKnife.bind(this, mView);
         userInfoTo = userInfoHelp.getUserInfo();
-
+        presenter = new MainPresenter(this);
 
         return mView;
     }
@@ -84,7 +88,8 @@ public class MessageFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (!firstLoad) {
+
+        if (!firstLoad || !init) {
             return;
         }
         firstLoad = false;
@@ -100,8 +105,8 @@ public class MessageFragment extends BaseFragment {
             public void onError(int i, String s) {
 
 
-             if (i==200)
-                 getActivity().runOnUiThread(() ->initFragment());
+                if (i == 200)
+                    getActivity().runOnUiThread(() -> initFragment());
 
             }
 
@@ -111,6 +116,31 @@ public class MessageFragment extends BaseFragment {
             }
         });
 
+    }
+
+    public void init(String phone) {
+        init = true;
+        EMClient.getInstance().logout(true);
+        EMClient.getInstance().login(phone, "123456", new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                getActivity().runOnUiThread(() -> initFragment());
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+
+                if (i == 200)
+                    getActivity().runOnUiThread(() -> initFragment());
+
+            }
+
+            @Override
+            public void onProgress(int i, String s) {
+
+            }
+        });
     }
 
     private void initFragment() {
@@ -202,11 +232,21 @@ public class MessageFragment extends BaseFragment {
                 deleteLayout.setSelected(!deleteLayout.isSelected());
                 systemMessageFragment.setDelete(deleteLayout.isSelected());
                 finishLayout.setVisibility(deleteLayout.isSelected() ? View.VISIBLE : View.GONE);
-                deleteText.setText(deleteLayout.isSelected()?"删除":"选择");
+                deleteText.setText(deleteLayout.isSelected() ? "删除" : "选择");
                 break;
             case R.id.finish_layout:
                 systemMessageFragment.setFinishDelete(deleteLayout.isSelected());
                 break;
         }
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        userInfoTo = userInfoHelp.getUserInfo();
+
+        SpUtil.put("ChatName", userInfoTo.getUsername());
+        SpUtil.put("ChatPic", userInfoTo.getFace_url());
+        init(userInfoTo.getMobile());
+
     }
 }

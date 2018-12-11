@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.hzxmkuar.wumeihui.MainApp;
 import com.hzxmkuar.wumeihui.R;
@@ -21,6 +22,7 @@ import com.hzxmkuar.wumeihui.base.AlertDialog;
 import com.hzxmkuar.wumeihui.base.BaseFragment;
 import com.hzxmkuar.wumeihui.base.CommonDialog;
 import com.hzxmkuar.wumeihui.base.util.AppUtil;
+import com.hzxmkuar.wumeihui.base.util.GlideCircleTransform;
 import com.hzxmkuar.wumeihui.base.util.SpUtil;
 import com.hzxmkuar.wumeihui.business.main.MainMerchantActivity;
 import com.hzxmkuar.wumeihui.circle.MyCollectionActivity;
@@ -354,6 +356,7 @@ public class MyselfFragment extends BaseFragment {
         shareParams.setUrl(MainApp.shareUrl);
         shareParams.setTitle("舞美汇");
         shareParams.setText("中国领先的舞美服务平台");
+
         shareParams.setImageData(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher
         ));
         Platform moment = ShareSDK.getPlatform(WechatMoments.NAME);
@@ -375,7 +378,7 @@ public class MyselfFragment extends BaseFragment {
         collectNum.setText(mode.getMy_wmgroup().getCollected()+"");
         lookNum.setText(mode.getMy_wmgroup().getRecent_browse()+"");
         roleName.setText(mode.getUser_tag());
-        disPlayRoundImage(headImage, mode.getFace_url());
+        Glide.with(appContext).load(mode.getFace_url()).placeholder(R.drawable.user_default_icon).transform(new GlideCircleTransform(appContext)).into(headImage);
         nickName.setText(mode.getUsername());
         SpUtil.put("ChatName",mode.getUsername());
         SpUtil.put("ChatPic",mode.getFace_url());

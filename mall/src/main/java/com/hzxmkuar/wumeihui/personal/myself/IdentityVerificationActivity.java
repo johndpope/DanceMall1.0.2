@@ -60,6 +60,7 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
     private ImageView currentImage;
     private UploadImageModel uploadImageModel = new UploadImageModel();
     private IdentityPresenter presenter;
+    private boolean isFront;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,10 +84,12 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
                 break;
             case R.id.face_front:
                 currentImage = faceFront;
+                isFront=true;
                 uploadHeadImageDialog();
                 break;
             case R.id.face_background:
                 currentImage = faceBackground;
+                isFront=false;
                 uploadHeadImageDialog();
                 break;
             case R.id.submit:
@@ -109,6 +112,7 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
                         showMessage("请上传身份证反面");
                         return;
                     }
+
                     presenter.personIdentity((int) faceFront.getTag(), (int) faceBackground.getTag());
                 }
                 break;
@@ -246,7 +250,8 @@ public class IdentityVerificationActivity extends BaseActivity implements Permis
     @Override
     public void uploadImageSuccess(String path, int imageId) {
         currentImage.setTag(null);
-        displayImage(currentImage, path);
+
+        displayImage(isFront?faceFront:faceBackground, path);
         currentImage.setTag(imageId);
     }
 

@@ -48,9 +48,10 @@ public class MainMerchantActivity extends BaseActivity {
     private List<Fragment> fragmentList = new ArrayList<>();
 
 
-    private MainPresenter presenter;
+
     private Handler handler = new Handler();
     private boolean canOut;
+    private MessageFragment messageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class MainMerchantActivity extends BaseActivity {
         setContentView(R.layout.activity_main_merchant);
         ButterKnife.bind(this);
         initFragment();
-        presenter = new MainPresenter(this);
+
 
         SpUtil.put("IsMerchant", true);
 
@@ -69,8 +70,9 @@ public class MainMerchantActivity extends BaseActivity {
     private void initFragment() {
 
         fragmentList.add(new WorkFragment());
+        messageFragment = new MessageFragment(this);
 
-        fragmentList.add(new MessageFragment(this));
+        fragmentList.add(messageFragment);
         fragmentList.add(new CircleFragment());
         fragmentLayout.setAdapter(adapter);
         fragmentLayout.setOffscreenPageLimit(3);
@@ -108,6 +110,8 @@ public class MainMerchantActivity extends BaseActivity {
         }
     };
 
+
+
     @OnClick({R.id.communication_layout, R.id.message_layout, R.id.myself_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -131,7 +135,7 @@ public class MainMerchantActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.getUserInfo();
+
     }
 
     @Override

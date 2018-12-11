@@ -232,6 +232,7 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
 
                 Intent intent = new Intent(appContext, SelectMerchantActivity.class);
                 intent.putExtra("ServiceId",mode.getId()+"");
+
                 selectMerchantName = mView.findViewById(R.id.select_merchant);
                 startActivityForResult(intent, 30);
                 goToAnimation(1);
@@ -269,6 +270,12 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
             serviceTime = serviceTime + "-" + DateUtil.longToString(millseconds, DateUtil.serviceTime) + ":00";
             useTime.setText(serviceTime);
             useTime.setTag((String)useTime.getTag()+millseconds);
+            if (Long.valueOf(((String)useTime.getTag()).split("-")[0])>Long.valueOf(((String)useTime.getTag()).split("-")[1])){
+                showMessage("开始时间不能在结束时间之后");
+                useTime.setTag(null);
+                useTime.setText("");
+                serviceTime="";
+            }
         }
     }
 
@@ -382,10 +389,7 @@ public class InquiryDesActivity extends BaseActivity implements OnDateSetListene
                     showMessage("请选择时间");
                     return;
                 }
-                if (Long.valueOf(((String)useTime.getTag()).split("-")[0])>Long.valueOf(((String)useTime.getTag()).split("-")[1])){
-                    showMessage("开始时间不能在结束时间之后");
-                    return;
-                }
+
 
 
                 if (contactName.getTag() == null ||(Integer)contactName.getTag() == 0 || TextUtils.isEmpty(contactName.getText().toString())) {
